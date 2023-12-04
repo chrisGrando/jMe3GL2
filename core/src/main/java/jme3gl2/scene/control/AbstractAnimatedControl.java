@@ -96,7 +96,7 @@ class AbstractAnimatedControl<E extends Object> extends AbstractControl {
      */
     protected float speed = 1;
     
-    /** Índice actual de las animaciones. */
+    /** Indice actual de las animaciones. */
     protected int currentIndex;
     
     /** Nombre actual de la animación. */

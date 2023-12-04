@@ -54,13 +54,13 @@ class AWTResolution implements Cloneable, Savable {
      * Valor minimo que puede tener el largo de la
      * pantalla de juego.
      */
-    public static final int MIN_WIDTH  = 1024;
+    public static final int MIN_WIDTH  = 640;
     
     /**
      * Valor minimo que puede tener el nacho de la
      * pantalla de juego.
      */
-    public static final int MIN_HEIGHT = 576;
+    public static final int MIN_HEIGHT = 480;
     
     /** Largo de la pantalla. */
     private int width;

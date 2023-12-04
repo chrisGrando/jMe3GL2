@@ -1,23 +1,31 @@
 # jMe3GL2 - [jMonkeyEngine3 Graphics Library 2D]
-jMe3GL2 es un conjunto de clases que se pueden usar para desarrollar un juego 2D en jMonkeyEngine3.
-Es una biblioteca de mapeo para jME3.3 a Dyn4J.
+jMe3GL2 is a set of classes that can be used to develop a 2D game in jMonkeyEngine3.
+It is a mapping library for jME3 to Dyn4J.
 
-Para utilizar jMe3GL2 se debe tener conocimientos previos de cómo funciona el motor gráficos jme3(https://jmonkeyengine.org/), 
-asi como el motor de física dyn4j(https://dyn4j.org/) para crear mundos maravillosos en 2D.
+To use jMe3GL2, prior knowledge of how the [jME3 graphics engine](https://jmonkeyengine.org/) works,
+as well as the [Dyn4J physics engine](https://dyn4j.org/), is required to create wonderful 2D worlds.
 
-**Algunas características que proporciona esta biblioteca:**
-1. Creación de modelos 2D utilizando una malla *Sprite*
-2. Integración del motor dyn4j a través del *Dyn4jAppState*
-3. Un *Convert* que actúa como puente entre jme3 y dyn4j 
-4. Controles para la aplicación de la física y animaciones: AbstractAnimatedControl, BodyControl
+**Some features provided by this library:**
+1. Creation of 2D models using a Sprite mesh.
+2. Integration of the Dyn4J engine through Dyn4jAppState.
+3. A Convert class that acts as a bridge between jME3 and Dyn4J.
+4. Controls for applying physics and animations: AbstractAnimatedControl, BodyControl.
 
-# Dyn4j
-Como se ha mencionado jMe3GL2 utiliza dyn4j como motor de física, si usted no tiene conocimiento sobre este 
-tema, le aconsejamos ver:
+## Dyn4J
+As mentioned, jMe3GL2 uses Dyn4J as its physics engine. If you are not familiar with this topic,
+we advise you to check out the following resources:
 
-- **Documentación dyn4j**
-  https://dyn4j.org/pages/getting-started
-  
-- **Ejemplos dyn4j**
-  https://github.com/dyn4j/dyn4j-samples
+* **Dyn4J Documentation** -> [https://dyn4j.org/pages/getting-started](https://dyn4j.org/pages/getting-started)
+* **Dyn4J Examples** -> [https://github.com/dyn4j/dyn4j-samples](https://github.com/dyn4j/dyn4j-samples)
  
+## Project changes
+This fork has or is aiming to apply the following changes:
+
+### Already implemented
+* Ported to Apache Netbeans 19.
+* Downgraded minimum screen resolution **from** 1024x576 **to** 640x480.
+* Generate *pom.xml*.
+
+### Working in progress
+* Translating jMe3GL2-awt to English.
+* Translating jMe3GL2-core to English.

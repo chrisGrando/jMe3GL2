@@ -7,7 +7,10 @@
  */
 
 plugins {
+    // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+    // Maven Publish Plugin
+    id 'maven-publish'
 }
 
 group 'jme3gl2.core'
@@ -23,6 +26,10 @@ dependencies {
 }
 
 java {
+	toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+	
     withJavadocJar()
     withSourcesJar()
 }
@@ -36,11 +43,35 @@ tasks.register('myJavadocs', Javadoc) {
     source = sourceSets.main.allJava
 }
 
+build.finalizedBy("generatePomFileForMavenJavaPublication")
+
 gradle.projectsEvaluated {
     tasks.withType(JavaCompile).tap {
         configureEach {
             options.compilerArgs << "-Xlint:unchecked"
             options.compilerArgs <<  "-Xlint:deprecation"
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.chrisGrando'
+            artifactId = 'jMe3GL2-core'
+            from components.java
+
+            pom {
+                name = 'jMonkeyEngine3 Graphics Library 2D'
+                description = 'jMe3GL2 is a set of classes that can be used to develop a 2D game in jMonkeyEngine3.'
+                url = 'https://github.com/chrisGrando/jMe3GL2'
+                licenses {
+                    license {
+                        name = 'The 3-Clause BSD License'
+                        url = 'https://opensource.org/license/bsd-3-clause/'
+                    }
+                }
+            }
         }
     }
 }

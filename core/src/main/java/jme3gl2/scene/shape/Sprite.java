@@ -142,7 +142,7 @@ public class Sprite extends Mesh implements Cloneable {
     private void initializeMesh() {
         transform.setFlipType(Transform.FlipType.NonFlip);
         
-        // Índices. Definimos el orden en que se debe construir la malla
+        // Indices. Definimos el orden en que se debe construir la malla
         short[] indexes = {2, 0, 1, 1, 3, 2};
 
         // Configuración de búferes
