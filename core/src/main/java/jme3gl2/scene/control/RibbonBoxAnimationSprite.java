@@ -66,7 +66,7 @@ public class RibbonBoxAnimationSprite extends AbstractAnimatedControl<RibbonBox>
     /** Logger de la clase. */
     private static final Logger LOG = Logger.getLogger(RibbonBoxAnimationSprite.class.getName());
     
-    /** Índice actual de la caja de animaciones. */
+    /** Indice actual de la caja de animaciones. */
     private int index;
 
     /** Material del 'modelos 2D.' */

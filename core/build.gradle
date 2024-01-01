@@ -14,7 +14,7 @@ plugins {
 }
 
 group 'jme3gl2.core'
-version '2.5-SNAPSHOT'
+version '2.5.0'
 
 dependencies {
     // Implementation of the jme3 library and the dyn4j engine
@@ -26,7 +26,7 @@ dependencies {
 }
 
 java {
-	toolchain {
+    toolchain {
         languageVersion = JavaLanguageVersion.of(11)
     }
 	
@@ -43,7 +43,7 @@ tasks.register('myJavadocs', Javadoc) {
     source = sourceSets.main.allJava
 }
 
-build.finalizedBy("generatePomFileForMavenJavaPublication")
+build.finalizedBy('generatePomFileForMavenJavaPublication')
 
 gradle.projectsEvaluated {
     tasks.withType(JavaCompile).tap {
