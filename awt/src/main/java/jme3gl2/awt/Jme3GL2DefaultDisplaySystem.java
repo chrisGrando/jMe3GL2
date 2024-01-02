@@ -32,7 +32,7 @@
 package jme3gl2.awt;
 
 /**
- * Clase encargado de gestionar la configuracion de pantalla predeterminado.
+ * Class in charge of managing the default display configuration.
  * 
  * @author wil
  * @version 1.1-SNAPSHOT
@@ -47,7 +47,7 @@ public final class Jme3GL2DefaultDisplaySystem {
     private Jme3GL2DefaultDisplaySystem() {}
     
     /**
-     * Devuelve la configuracion predeterminada.
+     * Returns the default configuration.
      * 
      * @return (non-JavaDoc).
      */

@@ -31,8 +31,8 @@
  */
 
 /**
- * Paquete que se encarga de proporcionar una colección de clases para el
- * gestor de resoluciones de pantalla en equipos de escritorio (PC).
+ * Package that is responsible for providing a collection of classes for the
+ * screen resolution manager on desktop computers (PC).
  * 
  * @author wil
  * @version 1.0-SNAPSHOT

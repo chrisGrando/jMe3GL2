@@ -40,7 +40,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * Configuracion de pantalla para PC.
+ * PC screen configuration.
  * 
  * @author wil
  * @version 1.1-SNAPSHOT
@@ -65,18 +65,6 @@ final class Jme3GL2DesktopDisplaySystem implements Jme3GL2DisplaySystem {
 
     @Override
     public AWTResolution getFullScreenResolution() {
-        //AWTResolution resolution = new AWTResolution();
-        //
-        //final AWTResolution[] resAll;
-        //resAll = getWindowedResolutions();
-        //        
-        //for (final AWTResolution res : resAll) {
-        //    if (resolution.getWidth() < res.getWidth() 
-        //            && resolution.getHeight() < res.getHeight()) {
-        //        resolution = res.clone();
-        //    }
-        //}
-        
         DisplayMode mode = device.getDisplayMode();
         AWTResolution resolution = new AWTResolution(mode.getWidth(), mode.getHeight());
         
@@ -153,7 +141,7 @@ final class Jme3GL2DesktopDisplaySystem implements Jme3GL2DisplaySystem {
         return resolutions.toArray(AWTResolution[]::new);
     }
     
-    // Clase comparado.
+    // Class compared.
     private static final 
     class DisplayModeSorter implements Comparator<DisplayMode> {
         @Override

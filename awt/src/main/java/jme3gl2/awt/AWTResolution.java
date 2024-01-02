@@ -40,7 +40,7 @@ import com.jme3.export.Savable;
 import java.io.IOException;
 
 /**
- * Gestiona la resolución de la pantalla del juego.
+ * Manages the screen resolution of the game.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -51,42 +51,42 @@ public final
 class AWTResolution implements Cloneable, Savable {
     
     /**
-     * Valor minimo que puede tener el largo de la
-     * pantalla de juego.
+     * Minimum value that the width of the
+     * game screen can have.
      */
     public static final int MIN_WIDTH  = 640;
     
     /**
-     * Valor minimo que puede tener el nacho de la
-     * pantalla de juego.
+     * Minimum value that the height of the
+     * game screen can have.
      */
     public static final int MIN_HEIGHT = 480;
     
-    /** Largo de la pantalla. */
+    /** Width of the game screen. */
     private int width;
     
-    /** Ancho de la pantalla. */
+    /** Height of the game screen. */
     private int height;
     
-    /** Profundidad de bits. */
+    /** Bit depth. */
     private int bitDepth;
     
-    /** frecuencia de actualización. */
+    /** Refresh rate. */
     private int refreshRate;
 
     /**
-     * Constructor de la clase para uso interno.
+     * Class constructor for internal use.
      */
     protected AWTResolution() {
         this(MIN_WIDTH, MIN_HEIGHT);
     }
 
     /**
-     * Genera un nuevo objeto <code>AWTResolution</code> para establecer una
-     * nueva resolucion de pantalla.
+     * Generates a new object <code>AWTResolution</code> to set a
+     * new screen resolution.
      * 
-     * @param width Valor del largo de la pantalla de juego.
-     * @param height Valor del ancho de la pantalla.
+     * @param width Value of the width of the game screen.
+     * @param height Value of the height of the game screen.
      */
     public AWTResolution(int width, int height) {
         this.width  = width;
@@ -94,8 +94,8 @@ class AWTResolution implements Cloneable, Savable {
     }
 
     /**
-     * Método encargado de clonar a este objeto.
-     * @return clon objeto.
+     * Method in charge of cloning this object.
+     * @return object clone.
      */
     @Override
     public AWTResolution clone() {
@@ -121,40 +121,40 @@ class AWTResolution implements Cloneable, Savable {
     }
 
     /**
-     * Devuelve el ancho de la resolución.
-     * @return ancho,
+     * Returns the width of the resolution.
+     * @return width
      */
     public int getWidth()  { 
         return width; 
     }
     
     /**
-     * Devuelve el largo de la resolución.
-     * @return largo.
+     * Returns the height of the resolution.
+     * @return height
      */
     public int getHeight() { 
         return height; 
     }
 
     /**
-     * Devuelve la profundidad de bits.
-     * @return frecuencia.
+     * Returns the bit depth.
+     * @return bit depth
      */
     public int getBitDepth() {
         return bitDepth;
     }
 
     /**
-     * Devuelve la frecuencia de actualización.
-     * @return frecuencia.
+     * Returns the refresh rate.
+     * @return refresh rate
      */
     public int getRefreshRate() {
         return refreshRate;
     }
 
     /**
-     * Establece un nuevo ancho para la resolución.
-     * @param width nuevo ancho.
+     * Sets a new width for the resolution.
+     * @param width new width
      */
     public void setWidth(int width) {
         if (width < MIN_WIDTH)
@@ -164,8 +164,8 @@ class AWTResolution implements Cloneable, Savable {
     }
     
     /**
-     * Establece un nuevo largo para la resolución.
-     * @param height nuevo largo.
+     * Sets a new height for the resolution.
+     * @param height new height
      */
     public void setHeight(int height) {
         if (height < MIN_WIDTH)
@@ -175,16 +175,16 @@ class AWTResolution implements Cloneable, Savable {
     }
 
     /**
-     * Establece un nuevo valor para la profundidad de bits.
-     * @param bitDepth porfundiad de bits.
+     * Sets a new value for the bit depth.
+     * @param bitDepth bit depth
      */
     public void setBitDepth(int bitDepth) {
         this.bitDepth = bitDepth;
     }
 
     /**
-     * Establece una nueva frecuencia de actualización.
-     * @param refreshRate nueva frecuencia.
+     * Sets a new refresh rate.
+     * @param refreshRate new refresh rate
      */
     public void setRefreshRate(int refreshRate) {
         this.refreshRate = refreshRate;
@@ -196,7 +196,7 @@ class AWTResolution implements Cloneable, Savable {
      * @param ex JmeExporter.
      * @see Savable#write(com.jme3.export.JmeExporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException Exception
      */
     @Override
     public void write(JmeExporter ex) throws IOException {
@@ -213,7 +213,7 @@ class AWTResolution implements Cloneable, Savable {
      * @param im JmeImporter
      * @see Savable#read(com.jme3.export.JmeImporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException Exception
      */
     @Override
     public void read(JmeImporter im) throws IOException {
@@ -225,9 +225,9 @@ class AWTResolution implements Cloneable, Savable {
     }
 
     /**
-     * Genera un codigo hash.
+     * Generates a hash code.
      * @see Object#hashCode() 
-     * @return número hash.
+     * @return hash code
      */
     @Override
     public int hashCode() {
@@ -240,9 +240,9 @@ class AWTResolution implements Cloneable, Savable {
     }
 
     /**
-     * Compara un objeto para determinar su igualdad con este objeto.
+     * Compares an object to determine its equality with this object.
      * @see Object#equals(java.lang.Object)  
-     * @param obj objeto a comparar.
+     * @param obj object to be compared
      * @return boolean
      */
     @Override

@@ -32,11 +32,11 @@
 package jme3gl2.awt;
 
 /**
- * Clase encargado de gestionar la resolución de pantalla que utilizara
- * el juego. En caso de que se este ejecutando en un PC se debe obtener
- * las dimensiones de dciha pantalla con la ayuda de las bibliotecas {@code AWT}.
+ * Class in charge of managing the screen resolution used by the game. In case
+ * the game is running on a PC, the dimensions of the screen must be obtained
+ * with the help of the libraries {@code AWT}.
  * 
- * De lo contrario se debe buscar la forma de obtener dichas resoluciones.
+ * Otherwise, a way must be found to obtain such resolutions.
  * 
  * @author wil
  * @version 1.1-SNAPSHOT
@@ -46,31 +46,31 @@ package jme3gl2.awt;
 public interface Jme3GL2DisplaySystem {
     
     /**
-     * Devuelve un arreglo de resoluciones a utilizar.
+     * Returns an array of resolutions to use.
      * 
      * @return {@link AWTResolution}.
      */
     public AWTResolution[] getResolutions();
     
     /**
-     * Genera la resolucion de la pantalla completa, dicha resolucion será
-     * de la pantalla en donde se está corriendo el juego.
+     * Generates the resolution of the full screen, this resolution will be of
+     * the screen where the game is running.
      * 
      * @return {@link AWTResolution}.
      */
     public AWTResolution getFullScreenResolution();
     
     /**
-     * Método encargado de determinar si la pantalla completa es soportada 
-     * por el equipo.
-     * @return {@code true} si es pantalla completa, de lo contrario
-     *          será {@code false}.
+     * Method to determine if the full screen is supported by the equipment.
+     * 
+     * @return
+     * {@code true} if it's full screen, otherwise it will be {@code false}.
      */
     public boolean isFullScreenSupported();
     
     /**
-     * Método encargado de determinar si se admite cambios de visualización.
-     * @return estado.
+     * Method responsible for determining whether display changes are supported.
+     * @return result
      */
     public boolean isDisplayChangeSupported();
 }

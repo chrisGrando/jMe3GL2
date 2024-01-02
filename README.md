@@ -25,7 +25,7 @@ This fork has or is aiming to apply the following changes:
 * Ported to Apache Netbeans 19.
 * Downgraded minimum screen resolution **from** 1024x576 **to** 640x480.
 * Generate *pom.xml*.
+* Translated jMe3GL2-awt to English.
 
 ### Working in progress
-* Translating jMe3GL2-awt to English.
 * Translating jMe3GL2-core to English.
