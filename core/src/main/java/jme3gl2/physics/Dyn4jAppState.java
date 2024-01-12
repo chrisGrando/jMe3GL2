@@ -50,64 +50,66 @@ import org.dyn4j.collision.Bounds;
 import org.dyn4j.dynamics.Settings;
 
 /**
- * Un <code>Dyn4jAppState</code> es el estado encargado de gestionar el motor<br>
- * de física <code>Dyn4j</code>.
+ * An <code>Dyn4jAppState</code> is the state in charge of managing the
+ * physics engine <code>Dyn4j</code>.
  * <p>
- * Tenga en cuenta que el motor {@code dyn4j} es independiente de {@code jme3},
- * por lo cual debe tener conociminetos para manejos de ambos. </p>
+ * Please note that the engine {@code dyn4j} is independent of {@code jme3},
+ * so you must have the knowledge to manage both.
+ * </p>
  * 
  * @author wil
  * @version 1.0.5-SNAPSHOT
  * 
  * @since 1.0.0
- * @param <E> el tipo {@code PhysicsBody}.
+ * @param <E> the type {@code PhysicsBody}.
  */
 @SuppressWarnings(value = {"unchecked"})
 public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
 
-    /** Tiempo de espera en microsefundos. */
+    /** Waiting time in microseconds. */
     private static final long TIME_STEP_IN_MICROSECONDS = (long) (Settings.DEFAULT_STEP_FREQUENCY * 1000L);
     
     /**
-     * Consulte {@link Application} para obtener más información.
+     * See {@link Application} for more information.
      */
     protected Application app = null;
     
-    /** Administrador de estados. */
+    /** Status manager. */
     protected AppStateManager stateManager = null;
     
-    /** Capacidad inicial de cuerpo del mundo. */
+    /** Initial body capacity of the world. */
     protected Integer initialCapacity = null;
     
-    /** Capacidad inicial para las articulaciones. */
+    /** Initial capacity for joints. */
     protected Integer initialJointCapacity = null;
     
-    /** Límite del mundo.
+    /** Limit of the world.
      * <p>
-     * Tenga encuenta que si se establece un límite, el motor de física al
-     * alcanzar dicho límite dejara dehabilitado el mundo.</p>
+     * Note that if a limit is set, the physics engine will disable the world
+     * when the limit is reached.
+     * </p>
      */
     protected Bounds bounds = null;
     
     /**
-     * Consulte {@link PhysicsSpace} para obtener más información.
+     * See {@link PhysicsSpace} for more information.
      */
     protected PhysicsSpace<E> physicsSpace = null;
     
-    /** fps para el motor. */
+    /** FPS for the engine. */
     protected float tpf = 0;
     
-    /** fps acumulado para el motor. */
+    /** FPS accumulated for the engine. */
     protected float tpfSum = 0;
     
-    // Campos MultiTreading //    
-    /** Consulte {@link ThreadingType} para obtener más información. */
+    // MultiTreading Fields //    
+    /** See {@link ThreadingType} for more information. */
     protected ThreadingType threadingType = null;
     
     /** (non-javadoc) */
     protected ScheduledThreadPoolExecutor executor;
     /** (non-javadoc) */
-     private final Runnable parallelPhysicsUpdate = () -> {
+    private final Runnable parallelPhysicsUpdate = () -> {
          if (!isEnabled()) {
              return;
          }
@@ -116,99 +118,99 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
          Dyn4jAppState.this.tpfSum = 0;
     };
     
-     // Depurador.
-     /** Estado-depuración.*/
+     // Debugger.
+     /** State-debugging. */
      protected Dyn4jDebugAppState<E> debugAppState;
      
      /**
-      * <code>true</code> si se activa el estado depurador para los cuerpos
-      * físico y articulaciones del espacio-físico, de lo contrario
-      * <code>false</code> para desactivarlo.
+      * <code>true</code> if the debugger state is activated for the physical
+      * bodies and joints of the physical-space, otherwise
+      * <code>false</code> to deactivate it.
       */
      protected boolean debug;
      
     /**
-     * Instancia un nuevo objeto <code>Dyn4jAppState</code> con los valores
-     * predeterminados.
+     * Instantiates a new object <code>Dyn4jAppState</code> with the
+     * default values.
      */
     public Dyn4jAppState() {
         this(null, null, ThreadingType.PARALLEL);
     }
 
     /**
-     * Instancia un nuevo objeto <code>Dyn4jAppState</code> e inicializelo con
-     * los valores predeterminados.
+     * Instantiates a new object <code>Dyn4jAppState</code> and initialize it
+     * with the default values.
      * 
-     * @param bounds Límite del mundo.
+     * @param bounds limit of the world.
      */
     public Dyn4jAppState(final Bounds bounds) {
         this(null, null, bounds, ThreadingType.PARALLEL);
     }
 
     /**
-     * Instancia un nuevo objeto <code>Dyn4jAppState</code> e inicializelo con
-     * los valores predeterminados.
+     * Instantiates a new object <code>Dyn4jAppState</code> and initialize it
+     * with the default values.
      * 
-     * @param initialCapacity capacidad inicial (cuerpos en el mundo).
-     * @param initialJointCapacity capacidad inicial de las articulaciones.
+     * @param initialCapacity initial capacity (bodies in the world).
+     * @param initialJointCapacity initial capacity of the joints.
      */
     public Dyn4jAppState(final Integer initialCapacity, final Integer initialJointCapacity) {
         this(initialCapacity, initialJointCapacity,null, ThreadingType.PARALLEL);
     }
 
     /**
-     * Instancia un nuevo objeto <code>Dyn4jAppState</code> e inicializelo con
-     * los valores predeterminados.
+     * Instantiates a new object <code>Dyn4jAppState</code> and initialize it
+     * with the default values.
      * 
-     * @param initialCapacity capacidad inicial (cuerpos en el mundo).
-     * @param initialJointCapacity capacidad inicial de las articulaciones.
-     * @param bounds Límite del mundo.
+     * @param initialCapacity initial capacity (bodies in the world).
+     * @param initialJointCapacity initial capacity of the joints.
+     * @param bounds limit of the world.
      */
     public Dyn4jAppState(final Integer initialCapacity, final Integer initialJointCapacity, final Bounds bounds) {
         this(initialCapacity, initialJointCapacity, bounds, ThreadingType.PARALLEL);
     }
 
     /**
-     * Instancia un nuevo objeto <code>Dyn4jAppState</code> e inicializelo con
-     * los valores predeterminados.
+     * Instantiates a new object <code>Dyn4jAppState</code> and initialize it
+     * with the default values.
      * 
-     * @param threadingType Tipo del integración del motor.
+     * @param threadingType engine integration type.
      */
     public Dyn4jAppState(final ThreadingType threadingType) {
         this(null, null, threadingType);
     }
 
     /**
-     * Instancia un nuevo objeto <code>Dyn4jAppState</code> e inicializelo con
-     * los valores predeterminados.
+     * Instantiates a new object <code>Dyn4jAppState</code> and initialize it
+     * with the default values.
      * 
-     * @param bounds Límite del mundo.
-     * @param threadingType Tipo del integración del motor.
+     * @param bounds limit of the world.
+     * @param threadingType engine integration type.
      */
     public Dyn4jAppState(final Bounds bounds, final ThreadingType threadingType) {
         this(null, null, bounds, threadingType);
     }
 
     /**
-     * Instancia un nuevo objeto <code>Dyn4jAppState</code> e inicializelo con
-     * los valores predeterminados.
+     * Instantiates a new object <code>Dyn4jAppState</code> and initialize it
+     * with the default values.
      * 
-     * @param initialCapacity capacidad inicial (cuerpos en el mundo).
-     * @param initialJointCapacity capacidad inicial de las articulaciones.
-     * @param threadingType Tipo del integración del motor.
+     * @param initialCapacity initial capacity (bodies in the world).
+     * @param initialJointCapacity initial capacity of the joints.
+     * @param threadingType engine integration type.
      */
     public Dyn4jAppState(final Integer initialCapacity, final Integer initialJointCapacity, final ThreadingType threadingType) {
         this(initialCapacity, initialJointCapacity, null, threadingType);
     }
 
     /**
-     * Instancia un nuevo objeto <code>Dyn4jAppState</code> e inicializelo con
-     * los valores predeterminados.
+     * Instantiates a new object <code>Dyn4jAppState</code> and initialize it
+     * with the default values.
      * 
-     * @param initialCapacity capacidad inicial (cuerpos en el mundo).
-     * @param initialJointCapacity capacidad inicial de las articulaciones.
-     * @param bounds Límite del mundo.
-     * @param threadingType Tipo del integración del motor.
+     * @param initialCapacity initial capacity (bodies in the world).
+     * @param initialJointCapacity initial capacity of the joints.
+     * @param bounds limit of the world.
+     * @param threadingType engine integration type.
      */
     public Dyn4jAppState(final Integer initialCapacity, final Integer initialJointCapacity, final Bounds bounds, final ThreadingType threadingType) {
         this.threadingType = threadingType;
@@ -228,14 +230,14 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
         this.app = app;
         this.stateManager = stateManager;
 
-        // Iniciar objetos relacionados con la física.
+        // Initiate physics-related objects.
         startPhysics();
 
         super.initialize(stateManager, app);
     }
 
     /**
-     * Inicializa las física.
+     * Initializes the physics.
      */
     private void startPhysics() {
         if (this.initialized) {
@@ -252,8 +254,8 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
     }
     
     /**
-     * Inicializa la física de manera que se ejecute en paralelo con el motor
-     * {@code jme3}, es decir con nuestros 'modelos 2D'.
+     * Initializes the physics so that it runs in parallel with the engine
+     * {@code jme3}, i.e. with our '2D models'.
      */
     private void startPhysicsOnExecutor() {
         if (this.executor != null) {
@@ -293,14 +295,12 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
      */
     @Override
     public void stateAttached(final AppStateManager stateManager) {
-        // iniciar objetos relacionados con la física 
-        // si appState no está inicializado.
+        // Initiate physics-related objects if appState is not initialized.
         if (!this.initialized) {
             startPhysics();
         }
         
-        // Comprobar si el modo depurador está habilitado 
-        // e iniciar el estado depurador.
+        // Check if the debugger mode is enabled and start the debugger state.
         if (this.debug) {
             this.stateManager = stateManager;
             prepareDebugger(true);
@@ -369,7 +369,7 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
     }
 
     /**
-     * Método encargado de limpiar el estado de la física.
+     * Method in charge of cleaning the state of physics.
      */
     @Override
     public void cleanup() {
@@ -385,37 +385,37 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
     }
 
     /**
-     * Devuelve esl espacio de la física.
-     * @return motor de la física.
+     * Returns the physics space.
+     * @return physics engine.
      */
     public PhysicsSpace<E> getPhysicsSpace() {
         return this.physicsSpace;
     }
 
     /**
-     * Método encargado de devolver el estado del depurador.
-     * @return <code>true</code> si esta habilitado, de lo contrario devolverá
-     * <code>false</code> si se encuentra deshabilitado.
+     * Method in charge of returning the debugger status.
+     * @return <code>true</code> if enabled, otherwise it will return
+     * <code>false</code> if it is disabled.
      */
     public boolean isDebug() {
         return debug;
     }
 
     /**
-     * Método encargado de activar o desactivar el depurador de los cuerpos 
-     * físicos.
+     * Method in charge of activating or deactivating the debugger of the
+     * physical bodies.
      * 
-     * @param debug <code>true</code> para habilitar el estado, de lo contrario
-     * <code>false</code> para deshabilitar.
+     * @param debug <code>true</code> to enable the state, otherwise
+     * <code>false</code> to disable.
      */
     public void setDebug(boolean debug) {
         this.debug = debug;
     }
     
     /**
-     * Método encargado de preparar el depurador para los cuerpos físicos.
-     * @param attach <code>true</code> si se desea agregar al administrador de
-     * estados, de lo contrario <code>false</code>.
+     * Method in charge of preparing the debugger for the physical bodies.
+     * @param attach <code>true</code> if you want to add it to the status
+     * manager, otherwise <code>false</code>.
      */
     protected void prepareDebugger(boolean attach) {
         if (this.debugAppState == null) {
@@ -428,7 +428,7 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
     }
     
     /**
-     * Método encargado de estruir el estado depurador.
+     * Method in charge of destroying the debugger state.
      */
     protected void destroyDebugger() {
         if (this.debugAppState != null) {

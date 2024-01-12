@@ -48,39 +48,40 @@ import org.dyn4j.geometry.Vector2;
 import org.dyn4j.world.World;
 
 /**
- * Un <code>PhysicsSpace</code> es una clase que se encarga de inicializar y
- * preparar el espacio(<code>org.dyn4j.world.World</code>) para la física.
+ * An <code>PhysicsSpace</code> is a class that is in charge of initializing
+ * and preparing the space (<code>org.dyn4j.world.World</code>) for physics.
  * 
  * @author wil
  * @version 1.0.5-SNAPSHOT
  * 
  * @since 1.0.0
- * @param <E> el tipo {@code PhysicsBody}.
+ * @param <E> the type {@code PhysicsBody}.
  */
 @SuppressWarnings(value = {"unchecked"})
 public class PhysicsSpace<E extends PhysicsBody2D> {
 
     /**
-     * Velocidad predeterminada de la física.
+     * Predetermined speed of physics.
      */
     private static final float DEFAULT_SPEED = 1f;
 
-    /** Mundo de la física {@code Dyn4j}. */
+    /**
+     * World of physics {@code Dyn4j}.
+     */
     private World<E> physicsWorld;
     
     /**
-     * Velocidad de las actualizaciones de la física que utiliza
-     * el mundo {@code Dyn4j}.
+     * Speed of the physics updates using the world {@code Dyn4j}.
      */
     protected float speed = DEFAULT_SPEED;
 
     /**
-     * Instancia un nuevo objeto <code>PhysicsSpace</code>. Establezca los 
-     * valores predeterminado del espacio de la física.
+     * Instantiates a new object <code>PhysicsSpace</code>. Set the default
+     * values of the physics space.
      * 
-     * @param initialCapacity capacidad inicial (cuerpos en el mundo).
-     * @param initialJointCapacity capacidad inicial de las articulaciones.
-     * @param bounds Límite del mundo.
+     * @param initialCapacity initial capacity (bodies in the world).
+     * @param initialJointCapacity initial capacity of the joints.
+     * @param bounds Limit of the world.
      */
     public PhysicsSpace(final Integer initialCapacity, final Integer initialJointCapacity, final Bounds bounds) {
         if (initialCapacity != null && initialJointCapacity != null) {
@@ -163,16 +164,16 @@ public class PhysicsSpace<E extends PhysicsBody2D> {
     }
 
     /**
-     * Método encargado de actualizar el mundo de la física.
-     * @param elapsedTime lapso de tiempo.
+     * Method in charge of updating the world of physics.
+     * @param elapsedTime time lapse.
      */
     public void updateFixed(final float elapsedTime) {
         this.physicsWorld.update(elapsedTime);
     }
 
     /**
-     * Limpia el mundo.
-     * @deprecated Utilice <code>destroy()</code> para eliminar el mundo físico.
+     * Clean the world.
+     * @deprecated Use <code>destroy()</code> to eliminate the physical world.
      */
     @Deprecated(since = "2.5.0")
     public void clear() {
@@ -180,27 +181,26 @@ public class PhysicsSpace<E extends PhysicsBody2D> {
     }
     
     /**
-     * Limpia el mundo (cuerpos físico y articulaciones).
-     * @param notify <code>true</code> si se desa nofoticar a los oyentes que
-     * hay una desntrucción de cuerpo o articulación, de lo contrario el
-     * valor es <code>false</code>.
+     * Clean the world (physical bodies and joints).
+     * @param notify <code>true</code> if you wish to inform the listeners that
+     * there is a destruction of body or joint, otherwise the value
+     * is <code>false</code>.
      */
     public void removeAll(boolean notify) {        
-        /*this.physicsWorld = null;*/
         this.physicsWorld.removeAllBodiesAndJoints(true);
     }
     
     /**
-     * Método encargdo de destruir el mundo físico. Vuelve <code>null</code>
-     * el objeto <code>World</code>.
+     * Method in charge of destroying the physical world. Set <code>null</code>
+     * to object <code>World</code>.
      */
     public void destroy() {
         this.physicsWorld = null;
     }
     
     /**
-     * Establece una nueva velocidad para el mundo de la física.
-     * @param speed nueva velocidad.
+     * Sets a new speed for the world of physics.
+     * @param speed new speed.
      */
     public void setSpeed(final float speed) {
         this.speed = speed;
@@ -208,8 +208,8 @@ public class PhysicsSpace<E extends PhysicsBody2D> {
     }
 
     /**
-     * Devuelve la velocidad actual del mundo.
-     * @return velocidad.
+     * Returns the current world speed.
+     * @return speed.
      */
     public float getSpeed() {
         return this.speed;
@@ -241,32 +241,32 @@ public class PhysicsSpace<E extends PhysicsBody2D> {
     }
     
     /**
-     * Devuelve una lista de cuerpos contenido en el mundo.
-     * @return lista de cuerpos.
+     * Returns a list of bodies contained in the world.
+     * @return list of bodies.
      */
     public List<E> getBodies() {
         return this.physicsWorld.getBodies();
     }
     
     /**
-     * Devuelve una lista de articulaciones.
-     * @return lista de articulaciones.
+     * Returns a list of joints.
+     * @return list of joints.
      */
     public List<Joint<E>> getJoints() {
         return this.physicsWorld.getJoints();
     }
     
     /**
-     * Devuelve el mundo de la física {@code Dyn4j}.
-     * @return mundo física.
+     * Returns the world of physics {@code Dyn4j}.
+     * @return world of physics.
      */
     public World<E> getPhysicsWorld() {
         return this.physicsWorld;
     }
     
     /**
-     * Devuelve la cantidad de cuerpos existentes en el mundo.
-     * @return cantidad de cuerpos.
+     * Returns the number of existing bodies in the world.
+     * @return body count.
      */
     public int getBodyCount() {
         return this.physicsWorld.getBodyCount();

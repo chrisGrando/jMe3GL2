@@ -32,8 +32,8 @@
 package jme3gl2.physics;
 
 /**
- * Un <code>ThreadingType</code> es el responsable de definir el comportamiento 
- * del motor de física <code>Dyn4j</code>, es decir, la forma de integrarlo con
+ * An <code>ThreadingType</code> is responsible for defining the behavior of the
+ * physics engine <code>Dyn4j</code>, i.e. how to integrate it with
  * <b><code>jMonkeyEngine3</code></b>.
  * 
  * @author wil
@@ -44,16 +44,16 @@ package jme3gl2.physics;
 public enum ThreadingType {
     
     /**
-     * Modo por defecto; la actualización del usuario, la actualización de la 
-     * física y el renderizado suceden secuencialmente (un solo subproceso)
+     * Default mode; user update, physics update and rendering happen
+     * sequentially (single-threaded).
      */
     SEQUENTIAL,
     
     /**
-     * Modo de rosca paralela; la actualización física y el renderizado se
-     * ejecutan en paralelo, se mantiene el orden de actualización.
+     * Parallel threading mode; physics update and rendering are executed in
+     * parallel, update order is maintained.
      * <br>
-     * Múltiples Dyn4jAppStates se ejecutarán en paralelo en este modo.
+     * Multiple Dyn4jAppStates will run in parallel in this mode.
      */
     PARALLEL;
 }

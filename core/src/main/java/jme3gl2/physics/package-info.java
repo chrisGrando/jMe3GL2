@@ -31,22 +31,22 @@
  */
 
 /**
- * Paquete que contine el mundo físico.
+ * Package containing the physical world.
  * <p>
- * Este paquete nos proprociona los siguientes objetos que son los que se 
- * encargann de integrar el motor <b>dyn4j</b> con <b>jMonkeyEngine3</b>.
- * 
+ * This package provides us with the following objects that are responsible for
+ * integrating the engine <b>dyn4j</b> with <b>jMonkeyEngine3</b>.
+ * </p>
  * <ul>
- * <li>
- *  <b>Dyn4jAppState:</b> Objeto encargado de gestionar las actualizaciones del
- * mundo físico dyn4j.
- * </li>
- * <li>
- *  <b>PhysicsSpace:</b> El espacio físico de dyn4j.
- * </li>
- * <li>
- *  <b>ThreadingType:</b> Tipo de integración.
- * </li>
+ *  <li>
+ *   <b>Dyn4jAppState:</b> Object in charge of managing dyn4j physical world
+ *   updates.
+ *  </li>
+ *  <li>
+ *   <b>PhysicsSpace:</b> The physical space of dyn4j.
+ *  </li>
+ *  <li>
+ *   <b>ThreadingType:</b> Type of integration.
+ *  </li>
  * </ul>
  * 
  * @author wil
