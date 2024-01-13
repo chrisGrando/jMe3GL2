@@ -37,20 +37,20 @@ import java.io.IOException;
 import org.dyn4j.geometry.Convex;
 
 /**
- * Con la clase <code>CollisionShape</code> podemos encapsular cualquier forma
- * que generemos con <code>jMe3GL2Geometry</code>.
+ * With the class <code>CollisionShape</code> we can encapsulate any shape that
+ * we generate with <code>jMe3GL2Geometry</code>.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
  * 
  * @since 1.0.0
- * @param <E> forma colisión.
+ * @param <E> collision form.
  */
 public class CollisionShape<E extends Convex> extends AbstractCollisionShape<E> {
 
     /**
-     * Constructor predeterminado.
-     * @param collisionShape forma.colisión.
+     * Default constructor.
+     * @param collisionShape collision form.
      */
     public CollisionShape(E collisionShape) {
         this.collisionShape = collisionShape;

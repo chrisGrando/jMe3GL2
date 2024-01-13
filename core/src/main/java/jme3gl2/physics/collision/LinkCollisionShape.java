@@ -40,7 +40,7 @@ import org.dyn4j.geometry.Link;
 import org.dyn4j.geometry.Vector2;
 
 /**
- * Implementación de un Link {@code Convex} {@code Shape}
+ * Implementation of a Link {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -49,22 +49,22 @@ import org.dyn4j.geometry.Vector2;
  */
 public class LinkCollisionShape extends AbstractCollisionShape<Link> {
     
-    /** Primer punto. */
+    /** First point */
     private Vector2 point1;
     
-    /** Punto final.*/
+    /** Final point */
     private Vector2 point2;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public LinkCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>LinkCollisionShape</code>.
-     * @param point1 punto-1
-     * @param point2 punto-2
+     * Generate a new object <code>LinkCollisionShape</code>.
+     * @param point1 point 1
+     * @param point2 point 2
      */
     public LinkCollisionShape(Vector2 point1, Vector2 point2) {
         this.point1 = point1;
@@ -73,16 +73,16 @@ public class LinkCollisionShape extends AbstractCollisionShape<Link> {
     }
 
     /**
-     * Devuelve el primer punto.
-     * @return punto-1
+     * Returns the first point.
+     * @return point 1
      */
     public Vector2 getPoint1() {
         return point1;
     }
 
     /**
-     * Devueleve el segundo punto.
-     * @return punto-2
+     * Returns the second point.
+     * @return point 2
      */
     public Vector2 getPoint2() {
         return point2;

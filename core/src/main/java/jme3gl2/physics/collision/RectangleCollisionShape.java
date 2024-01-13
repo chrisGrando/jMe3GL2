@@ -42,7 +42,7 @@ import org.dyn4j.exception.ValueOutOfRangeException;
 import org.dyn4j.geometry.Rectangle;
 
 /**
- * Implementación de un Rectángulo {@code Convex} {@code Shape}
+ * Implementation of a Rectangle {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -51,21 +51,21 @@ import org.dyn4j.geometry.Rectangle;
  */
 public class RectangleCollisionShape extends AbstractCollisionShape<Rectangle> {
     
-    /** El ancho del {@code Rectangle} */
+    /** The width of {@code Rectangle} */
     private double width;
     
-    /** El largo del {@code Rectangle} */
+    /** The height of {@code Rectangle} */
     private double height;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public RectangleCollisionShape() { }
 
     /**
-     * Genere un nuevo objeto <code>RectangleCollisionShape</code> con una
-     * forma de cubo ó caja.
-     * @param size tamaño.
+     * Generate a new object <code>RectangleCollisionShape</code> with a cube or
+     * box shape.
+     * @param size size.
      */
     public RectangleCollisionShape(double size) {
         if (size <= 0.0) 
@@ -76,10 +76,10 @@ public class RectangleCollisionShape extends AbstractCollisionShape<Rectangle> {
     }
     
     /**
-     * Genere un nuevo objeto <code>RectangleCollisionShape</code> con una
-     * forma rectangular.
-     * @param width ancho de rectangulo.
-     * @param height largo del rectangulo.
+     * Generate a new object <code>RectangleCollisionShape</code> with a
+     * rectangular shape.
+     * @param width width of the rectangle.
+     * @param height height of the rectangle.
      */
     public RectangleCollisionShape(double width, double height) {
         this.width = width;
@@ -88,24 +88,24 @@ public class RectangleCollisionShape extends AbstractCollisionShape<Rectangle> {
     }
 
     /**
-     * Devuelve el ancho.
-     * @return ancho.
+     * Returns the width.
+     * @return width.
      */
     public double getWidth() {
         return width;
     }
 
     /**
-     * Devuelve el largo.
-     * @return largo.
+     * Returns the height.
+     * @return height.
      */
     public double getHeight() {
         return height;
     }
     
     /**
-     * Determina si este rectangulo es cuadrada.
-     * @return ¿es cuadrada?
+     * Determine if this rectangle is square.
+     * @return Is it a square?
      */
     public boolean isSquare() {
         return width == height;
@@ -146,5 +146,4 @@ public class RectangleCollisionShape extends AbstractCollisionShape<Rectangle> {
         height = in.readDouble("height", height);
         createCollisionShape();
     }
-    
 }

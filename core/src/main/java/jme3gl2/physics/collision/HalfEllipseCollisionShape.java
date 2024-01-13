@@ -39,7 +39,7 @@ import java.io.IOException;
 import org.dyn4j.geometry.HalfEllipse;
 
 /**
- * Implementación de un Elipse {@code Convex} {@code Shape}
+ * Implementation of an Half-Ellipse {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -48,22 +48,22 @@ import org.dyn4j.geometry.HalfEllipse;
  */
 public class HalfEllipseCollisionShape extends AbstractCollisionShape<HalfEllipse> {
     
-    /** El ancho {@code HalfEllipse} */
+    /** The width of {@code HalfEllipse} */
     private double width;
     
-    /** El largo {@code HalfEllipse} */
+    /** The height of {@code HalfEllipse} */
     private double height;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public HalfEllipseCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>HalfEllipseCollisionShape</code>.
-     * @param width ancho-medio;elipse
-     * @param height largo-medio;elipse
+     * Generate a new object <code>HalfEllipseCollisionShape</code>.
+     * @param width width of the half-ellipse.
+     * @param height height of the half-ellipse.
      */
     public HalfEllipseCollisionShape(double width, double height) {
         this.width = width;
@@ -72,16 +72,16 @@ public class HalfEllipseCollisionShape extends AbstractCollisionShape<HalfEllips
     }
     
     /**
-     * Devuelve el ancho.
-     * @return ancho.
+     * Returns the width.
+     * @return width.
      */
     public double getWidth() {
         return width;
     }
 
     /**
-     * Devuelve el largo.
-     * @return largo.
+     * Returns the height.
+     * @return height.
      */
     public double getHeight() {
         return height;

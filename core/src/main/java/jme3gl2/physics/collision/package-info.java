@@ -31,11 +31,11 @@
  */
 
 /**
- * Paquete con las formas físicas que puede tener un cuerpo.
+ * Package with the physical forms that a body can have.
  * <p>
- * Los objetos de este paquete pueden ser exportados e importados con los 
- * objetos que nos proprociona <code>jme3</code>
- * </p>.
+ * The objects in this package can be exported and imported with the objects
+ * provided by <code>jme3</code>.
+ * </p>
  * 
  * @author wil
  * @version 1.0-SNAPSHOT

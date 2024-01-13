@@ -39,7 +39,7 @@ import java.io.IOException;
 import org.dyn4j.geometry.Slice;
 
 /**
- * Implementación de un Slice {@code Convex} {@code Shape}
+ * Implementation of a Slice {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -48,22 +48,22 @@ import org.dyn4j.geometry.Slice;
  */
 public class SliceCollisionShape extends AbstractCollisionShape<Slice> {
     
-    /** radio. */
+    /** Radius */
     private double radius;
     
-    /** theta de la forma. */
+    /** Theta of the angle */
     private double theta;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public SliceCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>SliceCollisionShape</code>.
-     * @param radius radio.
-     * @param theta thera-forma
+     * Generate a new object <code>SliceCollisionShape</code>.
+     * @param radius radius.
+     * @param theta theta angle.
      */
     public SliceCollisionShape(double radius, double theta) {
         this.radius = radius;
@@ -72,16 +72,16 @@ public class SliceCollisionShape extends AbstractCollisionShape<Slice> {
     }
 
     /**
-     * Devuelve el radio.
-     * @return radio.
+     * Returns the radius.
+     * @return radius
      */
     public double getRadius() {
         return radius;
     }
 
     /**
-     * Devuelve el angulo theta.
-     * @return angulo.
+     * Returns the theta angle.
+     * @return angle
      */
     public double getTheta() {
         return theta;

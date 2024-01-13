@@ -39,7 +39,7 @@ import java.io.IOException;
 import org.dyn4j.geometry.Capsule;
 
 /**
- * Implementación de una Capsula {@code Convex} {@code Shape}
+ * Implementation of a Capsule {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -48,23 +48,23 @@ import org.dyn4j.geometry.Capsule;
  */
 public class CapsuleCollisionShape extends AbstractCollisionShape<Capsule> {
     
-    /** El ancho {@code Capsule} */
+    /** The width of {@code Capsule} */
     private double width;
     
-    /** El largo {@code Capsule} */
+    /** The height of {@code Capsule} */
     private double height;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public CapsuleCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>CapsuleCollisionShape</code> con una
-     * forma de capsula
-     * @param width ancho de la capsula.
-     * @param height largo de la capsula.
+     * Generate a new object <code>CapsuleCollisionShape</code> with a
+     * capsule shape.
+     * @param width width of the capsule.
+     * @param height height of the capsule.
      */
     public CapsuleCollisionShape(double width, double height) {
         this.width  = width;
@@ -84,16 +84,16 @@ public class CapsuleCollisionShape extends AbstractCollisionShape<Capsule> {
     }
     
     /**
-     * Devuelve el ancho.
-     * @return ancho.
+     * Returns the width.
+     * @return width.
      */
     public double getWidth() {
         return width;
     }
 
     /**
-     * Devuelve el largo.
-     * @return largo.
+     * Returns the height.
+     * @return height.
      */
     public double getHeight() {
         return height;

@@ -39,7 +39,7 @@ import java.io.IOException;
 import org.dyn4j.geometry.Ellipse;
 
 /**
- * Implementación de un Elipse {@code Convex} {@code Shape}
+ * Implementation of an Ellipse {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -48,22 +48,22 @@ import org.dyn4j.geometry.Ellipse;
  */
 public class EllipseCollisionShape extends AbstractCollisionShape<Ellipse> {
     
-    /** El ancho {@code Ellipse} */
+    /** The width of {@code Ellipse} */
     private double width;
     
-    /** El largo {@code Ellipse} */
+    /** The height of {@code Ellipse} */
     private double height;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public EllipseCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>EllipseCollisionShape</code>.
-     * @param width ancho-elipse
-     * @param height largo-elipse
+     * Generate a new object <code>EllipseCollisionShape</code>.
+     * @param width width of the ellipse.
+     * @param height height of the ellipse.
      */
     public EllipseCollisionShape(double width, double height) {
         this.width = width;
@@ -72,16 +72,16 @@ public class EllipseCollisionShape extends AbstractCollisionShape<Ellipse> {
     }
     
     /**
-     * Devuelve el ancho.
-     * @return ancho.
+     * Returns the width.
+     * @return width.
      */
     public double getWidth() {
         return width;
     }
 
     /**
-     * Devuelve el largo.
-     * @return largo.
+     * Returns the height.
+     * @return height.
      */
     public double getHeight() {
         return height;

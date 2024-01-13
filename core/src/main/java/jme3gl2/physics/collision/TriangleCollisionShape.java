@@ -40,7 +40,7 @@ import org.dyn4j.geometry.Triangle;
 import org.dyn4j.geometry.Vector2;
 
 /**
- * Implementación de un Triángulo {@code Convex} {@code Shape}
+ * Implementation of a Triangle {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -49,26 +49,26 @@ import org.dyn4j.geometry.Vector2;
  */
 public class TriangleCollisionShape extends AbstractCollisionShape<Triangle> {
     
-    /** Punto - 1. */
+    /** Point 1 */
     private Vector2 point1;
     
-    /** Punto - 2. */
+    /** Point 2 */
     private Vector2 point2;
     
-    /** Punto - 3. */
+    /** Point 3 */
     private Vector2 point3;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public TriangleCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>TriangleCollisionShape</code>.
-     * @param point1 punto-1
-     * @param point2 punto-2
-     * @param point3 punto-3
+     * Generate a new object <code>TriangleCollisionShape</code>.
+     * @param point1 point 1
+     * @param point2 point 2
+     * @param point3 point 3
      */
     public TriangleCollisionShape(Vector2 point1, Vector2 point2, Vector2 point3) {
         this.point1 = point1;
@@ -78,24 +78,24 @@ public class TriangleCollisionShape extends AbstractCollisionShape<Triangle> {
     }
 
     /**
-     * Devuelve el primer punto.
-     * @return punto - 1.
+     * Returns the first point.
+     * @return point 1
      */
     public Vector2 getPoint1() {
         return point1;
     }
 
     /**
-     * Devuelve el segundo punto.
-     * @return punto - 2.
+     * Returns the second point.
+     * @return point 2
      */
     public Vector2 getPoint2() {
         return point2;
     }
 
     /**
-     * Devuelve el tercer punto.
-     * @return punto - 3.
+     * Returns the third point.
+     * @return point 3
      */
     public Vector2 getPoint3() {
         return point3;

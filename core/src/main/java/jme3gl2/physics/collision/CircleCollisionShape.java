@@ -39,7 +39,7 @@ import java.io.IOException;
 import org.dyn4j.geometry.Circle;
 
 /**
- * Implementación de un Circulo {@code Convex} {@code Shape}
+ * Implementation of a Circle {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -48,18 +48,18 @@ import org.dyn4j.geometry.Circle;
  */
 public class CircleCollisionShape extends AbstractCollisionShape<Circle> {
     
-    /** Radios del {@code Circle}. */
+    /** Radius of the {@code Circle}. */
     private double radius;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public CircleCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>CircleCollisionShape</code>.
-     * @param radius radio-circulo.
+     * Generate a new object <code>CircleCollisionShape</code>.
+     * @param radius radius of the circle.
      */
     public CircleCollisionShape(double radius) {
         this.radius = radius;
@@ -67,8 +67,8 @@ public class CircleCollisionShape extends AbstractCollisionShape<Circle> {
     }
 
     /**
-     * Devuelve el radio de la circunferencia.
-     * @return radio.
+     * Returns the radius of the circle.
+     * @return radius.
      */
     public double getRadius() {
         return radius;

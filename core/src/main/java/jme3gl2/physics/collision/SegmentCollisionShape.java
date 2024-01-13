@@ -40,7 +40,7 @@ import org.dyn4j.geometry.Segment;
 import org.dyn4j.geometry.Vector2;
 
 /**
- * Implementación de un Segment {@code Convex} {@code Shape}
+ * Implementation of a Segment {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -49,22 +49,22 @@ import org.dyn4j.geometry.Vector2;
  */
 public class SegmentCollisionShape extends AbstractCollisionShape<Segment> {
     
-    /** Primer punto. */
+    /** First point */
     private Vector2 point1;
     
-    /** Punto final.*/
+    /** Final point */
     private Vector2 point2;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public SegmentCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>SegmentCollisionShape</code>.
-     * @param point1 punto-1
-     * @param point2 punto-2
+     * Generate a new object <code>SegmentCollisionShape</code>.
+     * @param point1 point 1
+     * @param point2 point 2
      */
     public SegmentCollisionShape(Vector2 point1, Vector2 point2) {
         this.point1 = point1;
@@ -73,16 +73,16 @@ public class SegmentCollisionShape extends AbstractCollisionShape<Segment> {
     }
 
     /**
-     * Devuelve el primer punto.
-     * @return punto-1
+     * Returns the first point.
+     * @return point 1
      */
     public Vector2 getPoint1() {
         return point1;
     }
 
     /**
-     * Devueleve el segundo punto.
-     * @return punto-2
+     * Returns the second point.
+     * @return point 2
      */
     public Vector2 getPoint2() {
         return point2;

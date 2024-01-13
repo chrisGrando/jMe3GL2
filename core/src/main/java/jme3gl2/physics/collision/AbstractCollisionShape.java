@@ -35,37 +35,37 @@ import com.jme3.export.Savable;
 import org.dyn4j.geometry.Convex;
 
 /**
- * Un objeto de la clase <code>AbstractCollisionShape</code> se encarga de
- * crear una forma de colisón para los cuerpos físicos.
+ * An object of the class <code>AbstractCollisionShape</code> is responsible for
+ * creating a form of collison for the physical bodies.
  * <p>
- * Extienda de esta clase para crear una forma, es decir la colisión del
- * cuerpo rigido.</p>
+ * Extend this class to create a shape, i.e. rigid body collision.
+ * </p>
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
  * 
  * @since 1.0.0
- * @param <E> tipo de colisión {@code Convex}.
+ * @param <E> type of collision {@code Convex}.
  */
 public abstract class AbstractCollisionShape<E extends Convex> implements Savable {
     
-    /** forma física. */
+    /** Physical form. */
     protected E collisionShape;
 
     /**
-     * Instancie un nuevo <code>AbstractCollisionShape</code>.
+     * Instantiate a new <code>AbstractCollisionShape</code>.
      */
     public AbstractCollisionShape() { }
     
     /**
-     * Método encargado de crear la forma física.
+     * Method in charge of creating the physical form.
      * @return {@link AbstractCollisionShape}.
      */
     public abstract AbstractCollisionShape<E> createCollisionShape();
 
     /**
-     * Devuelve la forma física.
-     * @return forma física del cuerpo.
+     * Returns the physical form.
+     * @return physical form of the body.
      */
     public E getCollisionShape() {
         return collisionShape;

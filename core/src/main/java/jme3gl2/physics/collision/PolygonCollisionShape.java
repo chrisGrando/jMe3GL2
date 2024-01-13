@@ -40,7 +40,7 @@ import org.dyn4j.geometry.Polygon;
 import org.dyn4j.geometry.Vector2;
 
 /**
- * Implementación de un Polygon {@code Convex} {@code Shape}
+ * Implementation of a Polygon {@code Convex} {@code Shape}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -49,18 +49,18 @@ import org.dyn4j.geometry.Vector2;
  */
 public class PolygonCollisionShape extends AbstractCollisionShape<Polygon> {
     
-    /** vértices-poligono. */
+    /** Polygon vertices */
     private Vector2[] vertices;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public PolygonCollisionShape() {
     }
 
     /**
-     * Genere un nuevo objeto <code>EllipseCollisionShape</code>.
-     * @param vertices vértices-poligono
+     * Generate a new object <code>EllipseCollisionShape</code>.
+     * @param vertices polygon vertices
      */
     public PolygonCollisionShape(Vector2... vertices) {
         this.vertices = vertices;
@@ -68,8 +68,8 @@ public class PolygonCollisionShape extends AbstractCollisionShape<Polygon> {
     }
 
     /**
-     * Devuelve los vértices.
-     * @return vértices-poligono.
+     * Returns the vertices.
+     * @return polygon vertices
      */
     public Vector2[] getVertices() {
         return vertices;
