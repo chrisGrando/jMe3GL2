@@ -31,7 +31,7 @@
  */
 
 /**
- * Paquete encargado de gestionar los objetos para el dupurado de los cuerpos
- * físicos.
+ * Package in charge of managing the objects for the debugging of the
+ * physical bodies.
  */
 package jme3gl2.physics.debug;

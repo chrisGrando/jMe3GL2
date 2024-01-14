@@ -65,12 +65,12 @@ import org.dyn4j.geometry.Vector2;
 import org.dyn4j.geometry.Wound;
 
 /**
- * Un objeto de la clase <code>raphics2DRenderer</code> se encarga de renderizar
- * los cuerpos físicos, es decir que se encarga de buscar una forma para ello.
+ * An object of the class <code>Graphics2DRenderer</code> is in charge of
+ * rendering physical bodies, i.e. it is in charge of finding a form for it.
  * <p>
- * Clase encargado de gestionar los colores, materiales y formas de un cuerpo
- * físico para depurarlo en tiempo real.
- * 
+ * Class in charge of managing the colors, materials and shapes of a physical
+ * body to debug it in real time.
+ * </p>
  * @author wil
  * @version 1.0-SNAPSHOT 
  * 
@@ -79,15 +79,15 @@ import org.dyn4j.geometry.Wound;
 public final 
 class Graphics2DRenderer {
 
-    /** Loggre de la clase. */
+    /** Class logger. */
     private static final Logger LOGGER = Logger.getLogger(Graphics2DRenderer.class.getName());
     
-    ///** Administrador-recursos <code>JME</code> */
+    /** Resource manager <code>JME</code>. */
     private final AssetManager assetManager;
 
     /**
-     * Constructor de la clase <code>Graphics2DRenderer</code>.
-     * @param assetManager administrador de recursos <b>JME</b>.
+     * Class constructor <code>Graphics2DRenderer</code>.
+     * @param assetManager resource manager <b>JME</b>.
      */
     public Graphics2DRenderer(AssetManager assetManager) {
         LOGGER.log(Level.INFO, "[ ok ] :{0}", "Initializing Graphics2DRenderer");
@@ -95,11 +95,11 @@ class Graphics2DRenderer {
     }
         
     /**
-     * Método encargado de crear los materiales que utilizarán los
-     * {@code Spatial} para la depuración de los cuerpos físicos.
+     * Method in charge of creating the materials to be used by the
+     * {@code Spatial} for the debugging of the physical bodies.
      * 
-     * @param color color del material.
-     * @return material generado.
+     * @param color color of the material.
+     * @return generated material.
      */
     public Material createMat(ColorRGBA color) {
         final Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
@@ -108,15 +108,15 @@ class Graphics2DRenderer {
     }
     
     /**
-     * Método encargado de renderizar la forma de un <code>Bounds</code> del
-     * mundo de las física utilizado por <b>dyn4j</b>.
+     * Method in charge of rendering the shape of a <code>Bounds</code> of the
+     * world of physics used by <b>dyn4j</b>.
      * 
-     * @param <T> tipo-geometría
-     * @param attach <code>true</code> si se desea devolver un nodo, de lo
-     * contrario <code>false</code> si solo se quiere la geometría.
+     * @param <T> geometry type.
+     * @param attach <code>true</code> if you wish to return a node, otherwise
+     * <code>false</code> if only the geometry is desired.
      * 
-     * @param vs puntos para la forma del <code>Bounds</code>
-     * @return objeto-bounds gráfico.
+     * @param vs points for the shape of the <code>Bounds</code>.
+     * @return graphical object <code>Bounds</code>.
      */
     @SuppressWarnings("unchecked")
     public <T extends Spatial> T renderBounds(boolean attach, Vector2... vs) {
@@ -133,12 +133,12 @@ class Graphics2DRenderer {
     }
     
     /**
-     * Método encargado de renderizar la forma física a un objeto gráfico.
+     * Method in charge of rendering the physical form to a graphic object.
      * 
-     * @param fixture forma física
-     * @param body cuerpo físico
-     * @param color color para la forma física.
-     * @return objeto gráficos generado.
+     * @param fixture physical shape.
+     * @param body physical body.
+     * @param color color for physical shape.
+     * @return generated graphical object.
      */
     public Node render(BodyFixture fixture, PhysicsBody2D body, ColorRGBA color) {
         final Convex shape = fixture.getShape();
@@ -223,10 +223,10 @@ class Graphics2DRenderer {
     }
     
     /**
-     * Método encargado de crear un nodo en los ejes de origen.
+     * Method in charge of creating a node on the origin axes.
      * 
-     * @param center centro del objeto.
-     * @return nodo centrado.
+     * @param center center of the object.
+     * @return centered node.
      */
     private Node createOriginAxes(final Vector2 center) {
         final Node node = new Node("Origin");
@@ -237,11 +237,11 @@ class Graphics2DRenderer {
     }
 
     /**
-     * Método encargado de crear una flecha para los ejes.
+     * Method in charge of creating an arrow for the axes.
      * 
-     * @param direction dirección de la flecha.
-     * @param color color de la flecha.
-     * @return Objeto gráfico generado.
+     * @param direction direction of the arrow.
+     * @param color color of the arrow.
+     * @return generated graphical object.
      */
     private Spatial createAxisArrow(final Vector3f direction, final ColorRGBA color) {
         final Arrow axis = new Arrow(direction);
