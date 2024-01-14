@@ -47,46 +47,46 @@ import org.dyn4j.dynamics.Body;
 import org.dyn4j.geometry.Convex;
 
 /**
- * Una implementación abstracta de la interfaz {@code PhysicsControl}.
+ * An abstract implementation of the interface {@code PhysicsControl}.
  * <p>
- * Un objeto de la clase <code>PhysicsBody2D</code> se puede utilizar como
- * el cuerpo físico de un objeto así como el mismo control de ese modelo</p>.
+ * An object of the class <code>PhysicsBody2D</code> can be used as the physical
+ * body of an object as well as the control of that model itself.
+ * </p>.
  * <p>
- * Para utilizarlo, extienda de esta clase <code>PhysicsBody2D</code> o bien
- * extender de una clase que ya implemente la lógica de control.</p>
+ * To use it, extend this class <code>PhysicsBody2D</code> or extend a class
+ * that already implements the control logic.
+ * </p>
  * 
  * @author wil
  * @version 1.5.0
  *
  * @since 1.0.0
  */
-public abstract class PhysicsBody2D extends Body implements PhysicsControl<PhysicsBody2D>, 
-                                                            BasePhysicsControl<PhysicsBody2D>, Control {
+public abstract class PhysicsBody2D
+  extends Body
+  implements PhysicsControl<PhysicsBody2D>, BasePhysicsControl<PhysicsBody2D>, Control {
     
-    /** Espacio físico. */
+    /** Physical space. */
     protected PhysicsSpace<PhysicsBody2D> physicsSpace;
     
     /**
-     * {@code true} si el control físico esta deshabilitado, de lo contrario
-     * {@code false} si esta en operación.
+     * {@code true} if the physical control is disabled, otherwise {@code false}
+     * if it's in operation.
      */
     protected boolean enabledPhysics = true;
 
-    /** modelo 2D. */
+    /** 2D Model. */
     protected Spatial spatial;
-    
-    ///** Cuerpo físico. */
-    //protected Body body;
 
     /**
-     * Instancie un nuevo objeto utilizadon el contructor de esta clase
-     * <code>AbstractBody</code> con los valores predeterminados.
+     * Instantiate a new object using the constructor of this class
+     * <code>AbstractBody</code> with the default values.
      */
     public PhysicsBody2D() { }
     
     /**
-     * Otra forma de como agregar una forma física.
-     * @param shape forma física.  
+     * Another way of how to add a physical form.
+     * @param shape physical form.
      * @see RigidBody2D#addFixture(org.dyn4j.geometry.Convex) 
      * @see RigidBody2D#addFixture(org.dyn4j.collision.Fixture) 
      * @see RigidBody2D#addFixture(org.dyn4j.geometry.Convex, double, double, double) 
@@ -168,7 +168,6 @@ public abstract class PhysicsBody2D extends Body implements PhysicsControl<Physi
             throw new IllegalStateException("This control has already been added to a Spatial");
         }
         this.spatial = spatial;
-        /*this.setUserData(spatial);*/
         this.ready();
     }
 
@@ -201,8 +200,8 @@ public abstract class PhysicsBody2D extends Body implements PhysicsControl<Physi
     }
 
     /**
-     * Devuelve el <code>Spatial</code> asignado a este cuerpo físico.
-     * @param <T> tipo-spatial
+     * Returns the <code>Spatial</code> assigned to this physical body.
+     * @param <T> Spatial type.
      * @return <code>Spatial</code> JME.
      */
     @Override
@@ -212,35 +211,37 @@ public abstract class PhysicsBody2D extends Body implements PhysicsControl<Physi
     }
 
     /**
-     * Inicializacion de los datos para este cuerpo.
+     * Initialization of the data for this body.
      */
-    protected void ready() {}
+    protected void ready() {
+    }
     
     /**
-     * Actualización de procesos físicos.
-     * @param delta lapso de tiempo por fps.
+     * Update of physical processes.
+     * @param delta time lapse by FPS.
      */
-    protected void physicsProcess(float delta) {}
+    protected void physicsProcess(float delta) {
+    }
     
     /**
-     * Para ser implementado en la subclase.
+     * To be implemented in the subclass.
      *
-     * @param tpf tiempo por cuadro (en segundos)
+     * @param tpf time per frame (in seconds).
      */
     protected abstract void controlUpdate(float tpf);
 
     /**
-     * Para ser implementado en la subclase.
+     * To be implemented in the subclass.
      *
-     * @param rm el RenderManager representando el Spatial controlado (no nulo)
-     * @param vp el ViewPort que se representa (no nulo)
+     * @param rm the RenderManager representing the controlled Spatial (not null).
+     * @param vp the ViewPort to be represented (not null).
      */
     protected abstract void controlRender(RenderManager rm, ViewPort vp);
     
     /**
      * (non-JavaDoc)
-     * @param physicBody cuerpo físico.
-     * @deprecated Utilize <code>applyPhysicsRotation</code>.
+     * @param physicBody physical body.
+     * @deprecated Use <code>applyPhysicsRotation</code>.
      */
     @Deprecated(since = "2.5.0")
     protected void setPhysicsRotation(final PhysicsBody2D physicBody) {
@@ -249,8 +250,8 @@ public abstract class PhysicsBody2D extends Body implements PhysicsControl<Physi
 
     /**
      * (non-JavaDoc)
-     * @param physicBody cuerpo físico.
-     * @deprecated Utilize <code>applyPhysicsLocation()</code>.
+     * @param physicBody physical body.
+     * @deprecated Use <code>applyPhysicsLocation()</code>.
      */
     @Deprecated(since = "2.5.0")
     protected void setPhysicsLocation(final PhysicsBody2D physicBody) {

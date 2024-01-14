@@ -42,32 +42,34 @@ import jme3gl2.util.Converter;
 import org.dyn4j.geometry.Transform;
 
 /**
- * Interfaz <code>BasePhysicsControl</code> encargado de proprocionar métodos
- * base para el control de cuerpos físicos. Su trabajo consiste en aplicar los
- * cambios de estdos de un cuerpo, es decir su posición el mundos y/o rotación.
+ * Interface <code>BasePhysicsControl</code> is responsible for providing basic
+ * methods for the control of physical bodies. It's work consists in applying
+ * the changes of states of a body, i.e. its position in the world and / or
+ * rotation.
  * <p>
- * De manera predeterminada, se implementa un forma de aplicar la traslación y
- * rotación de los cuerpos físico a un <code>Spatial</code>, estos métodos son
- * <code>applyPhysicsRotation</code> y <code>applyPhysicsLocation</code>.
+ * By default, it's implemented for applying the translation and rotation of
+ * physical bodies to a <code>Spatial</code>, these methods are
+ * <code>applyPhysicsRotation</code> and <code>applyPhysicsLocation</code>.
+ * </p>
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
- * @param <E> tipo-cuerpo
+ * @param <E> body type
  * 
  * @since 2.5.0
  */
 public interface BasePhysicsControl<E extends PhysicsBody2D> extends Control {
     
     /**
-     * Devuelve el <code>Spatial</code> asignado a este cuerpo físico.
-     * @param <T> tipo-spatial
-     * @return <code>Spatial</code> JME.
+     * Returns the <code>Spatial</code> assigned to this physical body.
+     * @param <T> spatial type
+     * @return <code>Spatial</code> JME
      */
     public <T extends Spatial> T getJmeObject();
     
     /**
-     * Método encargado de aplicar una rotación física.
-     * @param physicBody cuerpo físico.
+     * Method in charge of applying a physical rotation.
+     * @param physicBody physical body.
      */
     default void applyPhysicsRotation(final E physicBody) {
         final Transform trans = physicBody.getTransform();
@@ -84,8 +86,8 @@ public interface BasePhysicsControl<E extends PhysicsBody2D> extends Control {
     }
 
     /**
-     * Método encargado de aplicar una traslación físico.
-     * @param physicBody cuerpo físico.
+     * Method in charge of applying a physical translation.
+     * @param physicBody physical body.
      */
     default void applyPhysicsLocation(final E physicBody) {
         final Transform trans = physicBody.getTransform();

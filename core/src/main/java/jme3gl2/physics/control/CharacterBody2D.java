@@ -53,32 +53,35 @@ import org.dyn4j.world.listener.StepListenerAdapter;
 import java.util.List;
 
 /**
- * Clase <code>CharacterBody2D</code> especializada para cuerpos físicos que 
- * deben ser controlados por el usuario. Proporciona métodos para la detección 
- * de la hubicación del cuero(piso, techo y pared).
+ * Class <code>CharacterBody2D</code> is specialized for physical bodies to be
+ * controlled by the user. It provides methods for detecting the location of the
+ * leather (floor, ceiling and wall).
  * <p>
- * Cada objeto que se instancie de esta clase debe contar con un identificador
- * unico que se aloja en <code>UserData</code> que proprociona <code>dyn4j</code>,
- * para gestionar los contactos físicos, determina que badera se activan, etc.
- * <br>
- * Si un <code>CharacterBody2D</code> colisicona o hace contacto con otro
- * <code>CharacterBody2D</code> y están en la misma capa, la colisicón de 
- * cuerpos físico se desactiva, es decir que no chocan.
+ * Each object that is instantiated from this class must have a unique
+ * identifier that is hosted at <code>UserData</code> that provides <code>dyn4j</code>,
+ * to manage physical contacts, determine which flags are activated, etc.
+ * </p>
  * <p>
- * Para deterctar si un cuerpo físico hace contacto con un <code>CharacterBody2D</code>
- * y que dicho objeto es un cuerpo que forma parte del terreno, es necesario
- * que esté objeto tenga como dato de usuario lo siguiente:
+ * If a <code>CharacterBody2D</code> collides or makes contact with another
+ * <code>CharacterBody2D</code> and are in the same layer, the collision of
+ * physical bodies is deactivated, i.e. they do not collide.
+ * </p>
+ * <p>
+ * To determine whether a physical body is in contact with a <code>CharacterBody2D</code>
+ * and that this object is a body that is part of the terrain, it is necessary
+ * that this object has as user data the following:
+ * </p>
  * <ul>
- * <li><b>FLOOR:</b> Un cuerpo físico que actua como terreno</li>
- * <li><b>ONE_WAY_PLATFORM:</b> Un cuerpo físico que actua como plataforma, que
- * se puede traspasarla</li>
+ *  <li><b>FLOOR:</b> A physical body acting as a ground</li>
+ *  <li><b>ONE_WAY_PLATFORM:</b> A physical body that acts as a platform, which
+ *  can be passed through</li>
  * </ul>
  * 
- * NOTA: Solo los cuerpos  que formar parte del terreno-mapa del mundo puede
- * tener estos datos de usuario (repetidos).
+ * NOTE: Only bodies that are part of the terrain-map of the world can have this
+ * user data (repeated).
  * 
  * @author wil
- * @param <E> tipo aplicación
+ * @param <E> application type
  * 
  * @version 1.1-SNAPSHOT
  * @since 1.0.0
@@ -88,33 +91,32 @@ import java.util.List;
 public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
 
     /**
-     * Este objeto se puede utiliza como identificador para un solo objeto
-     * del tipo {@link CharacterBody2D}, evite utilizaro si es posible para no
-     * generar problemas a futuro.
+     * This object can be used as an identifier for a single object of type
+     * {@link CharacterBody2D}, avoid using it if possible to avoid problems
+     * in the future.
      */
     public static final Object CHARACTER = new Object();
     
     /**
-     * Identificador para cuerpos físico que forman parte del terreno del
-     * mapa escena.
+     * Identifier for physical bodies that are part of the scene map terrain.
      */
     public static final Object FLOOR = new Object();
     
     /**
-     * Identificador para cuerpos físico que forman parte del terreno (plataformas) 
-     * del mapa escena.
+     * Identifier for physical bodies that are part of the terrain (platforms)
+     * of the scene map.
      */
     public static final Object ONE_WAY_PLATFORM = new Object();
 
-    /** * Error aceptable para la detección de contactos. */
+    /** Acceptable error for contact detection. */
     private static final double ERROR = 0.01;
 
     /**
-     * Objeto encargado de limpiar las banderas si este <code>CharacterBody2D</code>
-     * tiene como identificador:
+     * Object in charge of clearing the flags if this <code>CharacterBody2D</code>
+     * has as identifier:
      * <ul>
-     * <li>FLOOR</li>
-     * <li>ONE_WAY_PLATFORM</li>
+     *  <li>FLOOR</li>
+     *  <li>ONE_WAY_PLATFORM</li>
      * </ul>
      */
     protected final StepListener<PhysicsBody2D> physicsBody2DStepListener = new StepListenerAdapter<>() {
@@ -128,7 +130,7 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
                 }
             }
 
-            // solo límpialo
+            // Just clean it
             if (!isGround) {
                 onGround = onCeiling = onWall = false;
             }
@@ -136,59 +138,59 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     };
 
     /**
-     * Oyente encargdo de verificar, administrar las colisiciones-contactos
-     * de cada cuerpo con este <code>CharacterBody2D</code>.
+     * Listener in charge of verifying, administering the collisions/contacts of
+     * each body with this <code>CharacterBody2D</code>.
      */
     protected final ContactListener<PhysicsBody2D> physicsBody2DContactListener = new ContactListenerAdapter<>() {
         @Override
         public void collision(ContactCollisionData<PhysicsBody2D> collision) {
             ContactConstraint<PhysicsBody2D> cc = collision.getContactConstraint();
 
-            // configure el otro cuerpo en unidireccional si es necesario
+            // Set the other body to unidirectional if necessary
             disableContactForOneWay(cc);
 
-            // seguimiento del estado en tierra
+            // Ground condition monitoring
             trackIsOnGround(cc);
         }
     };
 
     /**
-     * <code>true</code> si este cuerpo físico esta aterrizado en tierra, de
-     * lo contrario su valor es <code>false</code>.
+     * <code>true</code> if this physical body is landed on the ground, otherwise
+     * its value is <code>false</code>.
      */
     private boolean onGround;
     
     /**
-     * <code>true</code> si este cuerpo físico hace contacto con el techo(parte baja)
-     * de otro cuerpo, lo contrario su valor es <code>false</code>.
+     * <code>true</code> if this physical body makes contact with the roof
+     * (lower part) of another body, otherwise its value is <code>false</code>.
      */
     private boolean onCeiling;
     
     /**
-     * <code>true</code> si este cuerpo físico esta en contacto con las paredes
-     * de otro cuerpo, lo contrario su valor es <code>false</code>.
+     * <code>true</code> if this physical body is in contact with the walls of
+     * another body, otherwise its value is <code>false</code>.
      */
     private boolean onWall;
 
     /**
-     * Capa donde pertenece este cuerpo físico, esto se utiliza para verificar
-     * los contactos dentre cuerpos. Si 2 cuerpo colisionan y son del tipo
-     * <code>CharacterBody2D</code> que estan en la misma capa, simplemente
-     * pasan de largo.
+     * Layer where this physical body belongs, this is used to verify the
+     * contacts between bodies. If 2 bodies collide and they are of type
+     * <code>CharacterBody2D</code> that are in the same layer, they simply
+     * pass by.
      */
     private int layer = 0;
 
-    /** Aplicación JME. */
+    /** Application JME. */
     protected E application;
     
-    /** Estado encargado de administar la física. */
+    /** State in charge of managing physics. */
     protected Dyn4jAppState<PhysicsBody2D> dyn4jAppState;
 
     /**
-     * Genere un <code>CharacterBody2D</code> para controlar un personaje 
-     * capas de detercar si esta en el piso, techo o pared.
+     * Generate an <code>CharacterBody2D</code> to control a character that is
+     * able to determine whether it is on the floor, ceiling or wall.
      * 
-     * @param application aplicación principal
+     * @param application main application
      */
     public CharacterBody2D(E application) {
         this.application = application;
@@ -197,10 +199,10 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
         dyn4jAppState = stateManager.getState(Dyn4jAppState.class);
     }
 
-    // getters/settes
+    // Getters / Setters
     
     /**
-     * Devuelve la capa perteneciente para este cuerpo físico.
+     * Returns the layer belonging to this physical body.
      * @return int
      */
     public int getLayer() {
@@ -208,7 +210,7 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Establece una nueva capa para este cuerpo físico.
+     * Establishes a new layer for this physical body.
      * @param layer int
      */
     public void setLayer(int layer) {
@@ -245,11 +247,11 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Método auxiliar para determinar si un cuerpo es uno de los tipos dados, asumiendo
-     * el tipo se almacena en los datos del usuario.
+     * Auxiliar method to determine if a body is one of the given types,
+     * assuming the type is stored in the user data.
      *
-     * @param body el cuerpo
-     * @param types el conjunto de tipos
+     * @param body the body
+     * @param types the set of types
      * @return boolean
      */
     protected boolean is(PhysicsBody2D body, Object... types) {
@@ -262,33 +264,35 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Devuelve <code>true</code> si la plataforma dada debe alternarse como 
-     * unidireccional dada la posición del cuerpo del personaje.
+     * Returns <code>true</code> if the given platform should alternate as
+     * unidirectional given the position of the character's body.
      * 
-     * @param character el cuerpo del personaje
-     * @param platform el cuerpo de la plataforma
+     * @param character the body of the character
+     * @param platform the body of the platform
      * @return boolean
      */
     protected boolean allowOneWayUp(PhysicsBody2D character, PhysicsBody2D platform) {
         AABB wAABB = character.createAABB();
         AABB pAABB = platform.createAABB();
+        /*
+        NOTE: This should change depending on the shape of the platform and its
+        orientation.
         
-        // NOTA: esto debería cambiar según la forma de la plataforma y su orientación.
-        //
-        // Una idea podría ser almacenar la normal permitida de la plataforma
-        // en el cuerpo de la plataforma y compararla con la normal de 
-        // ContactConstraint para ver si apuntan en la misma dirección.
-        //
-        // Otra opción podría ser proyectar ambos en la plataforma normal para
-        // ver dónde se superponen.
+        One idea might be to store the allowed platform normal in the platform
+        body and compare it with the ContactConstraint normal to see if they
+        point in the same direction.
+        
+        Another option could be to project both on the normal platform to see
+        where they overlap.
+        */
         return wAABB.getMinY() < pAABB.getMinY();
     }
 
     /**
-     * Desactiva la restricción si es entre el personaje y la plataforma y
-     * si el escenario cumple la condición de unidireccional.
+     * Disables the restriction if it is between the character and the platform
+     * and if the scenario meets the unidirectional condition.
      * 
-     * @param contactConstraint la restricción
+     * @param contactConstraint the restriction
      */
     protected void disableContactForOneWay(ContactConstraint<PhysicsBody2D> contactConstraint) {
         PhysicsBody2D b1 = contactConstraint.getBody1();
@@ -322,10 +326,10 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Establece los indicadores-banderas si la restricción de contacto dada 
-     * está entre el cuerpo del personaje y un piso o plataforma unidireccional.
+     * Sets the indicators/flags if the given contact constraint is between the
+     * character's body and a floor or unidirectional platform.
      * 
-     * @param contactConstraint la restricción
+     * @param contactConstraint the restriction
      */
     protected void trackIsOnGround(ContactConstraint<PhysicsBody2D> contactConstraint) {
         PhysicsBody2D b1 = contactConstraint.getBody1();
@@ -343,11 +347,10 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Determina las banderas, si el cuerpo enta contra una pared, piso o
-     * techo.
+     * Determine the flags, if the body enters against a wall, floor or ceiling.
      * 
-     * @param character el cuerpo del personaje
-     * @param platform el cuerpo de la plataforma
+     * @param character the body of the character
+     * @param platform the body of the platform
      */
     protected void collision(PhysicsBody2D character, PhysicsBody2D platform) {
         AABB wAABB = character.createAABB();
@@ -381,7 +384,8 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Libera este cuerpo físico de la escena así como del espacio físico.
+     * Release this physical body from the scene as well as from the physical
+     * space.
      */
     public void queueFree() {
         synchronized (this) {
@@ -408,7 +412,7 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Devuelve el estado del jugador para bajar de una plataforma.
+     * Returns the player's status for getting off a platform.
      * @return boolean
      */
     protected boolean isActiveButNotHandled() {
@@ -416,16 +420,16 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Establece el estado del jugador.
+     * Sets the player's status.
      * @param b boolean
      */
     protected void setHasBeenHandled(boolean b) {
     }
 
-    // banderas
+    // Flags
     
     /**
-     * Devuelve el estado del juegor contra el techo.
+     * Returns the status of the player against the ceiling.
      * @return boolean
      */
     public boolean isOnCeiling() {
@@ -433,7 +437,7 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Devuelve el estado del juegor contra el piso.
+     * Returns the state of the player against the floor.
      * @return boolean
      */
     public boolean isOnFloor() {
@@ -441,7 +445,7 @@ public class CharacterBody2D<E extends Application> extends PhysicsBody2D {
     }
 
     /**
-     * Devuelve el estado del juegor con las paredes.
+     * Returns the state of the player with the walls.
      * @return boolean
      */
     public boolean isOnWall() {

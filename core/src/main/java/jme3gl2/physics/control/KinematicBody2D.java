@@ -39,13 +39,13 @@ import jme3gl2.physics.collision.AbstractCollisionShape;
 import org.dyn4j.geometry.Convex;
 
 /**
- * Los cuerpos <code>KinematicBody2D</code> son tipos especiales de cuerpos
- * destinados a ser controlados por el usuario.
+ * The bodies <code>KinematicBody2D</code> are special types of bodies intended
+ * to be controlled by the user.
  *
  * <p>
- * No se ven afectados por la física en absoluto; a comparación de otros tipo de
- * cuerpos, como un personaje o un cuerpo rígido, estos son lo mismo que un
- * cuerpo estático.</p>
+ * They are not affected by physics at all; compared to other types of bodies,
+ * such as a character or a rigid body, they are the same as a static body.
+ * </p>
  *
  * @author wil
  * @version 1.5-SNAPSHOT
@@ -55,14 +55,14 @@ import org.dyn4j.geometry.Convex;
 public class KinematicBody2D extends PhysicsBody2D {
 
     /**
-     * Constructor de la clase <code>KinematicBody2D</code>.
+     * Class constructor <code>KinematicBody2D</code>.
      */
     public KinematicBody2D() {
     }
     
     /**
-     * Constructor de la clase <code>KinematicBody2D</code>.
-     * @param collisionShape forma físico.
+     * Class constructor <code>KinematicBody2D</code>.
+     * @param collisionShape physical form
      */
     public KinematicBody2D(AbstractCollisionShape<? extends Convex> collisionShape) {
         this.addFixture(collisionShape.getCollisionShape());
@@ -89,5 +89,6 @@ public class KinematicBody2D extends PhysicsBody2D {
      * @see PhysicsBody2D#render(com.jme3.renderer.RenderManager, com.jme3.renderer.ViewPort) 
      */
     @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) { }
+    protected void controlRender(RenderManager rm, ViewPort vp) {
+    }
 }

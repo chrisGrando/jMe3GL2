@@ -35,45 +35,44 @@ import com.jme3.scene.control.Control;
 import jme3gl2.physics.PhysicsSpace;
 
 /**
- * Un <code>PhysicsControl</code> se utilizan para especificar cierta lógica de
- * actualización y procesamiento para un {@code Spatial} qur utiliza el
- * motor de física <code>Dyn4j</code>.
+ * An <code>PhysicsControl</code> is used to specify certain updating and
+ * processing logic for a {@code Spatial} using the physics engine <code>Dyn4j</code>.
  * 
  * @author wil
  * @version 1.5.0
- * @param <E> tipo-cuerpo
+ * @param <E> body type
  * 
  * @since 1.0.0
  */
-public interface PhysicsControl<E extends PhysicsBody2D> extends BasePhysicsControl<E> ,Control {
+public interface PhysicsControl<E extends PhysicsBody2D> extends BasePhysicsControl<E>, Control {
     
     /**
-     * Método encargado de establecer el espacio de la física.
-     * @param physicsSpace espacio física.
+     * Method in charge of establishing the space of physics.
+     * @param physicsSpace physical space.
      */
     public void setPhysicsSpace(PhysicsSpace<E> physicsSpace);
     
     /**
-     * Devuelve el espacio de la física del cuerpo rigido.
-     * @return espacio física.
+     * Returns the space of rigid body physics.
+     * @return physical space.
      */
     public PhysicsSpace<E> getPhysicsSpace();
     
     /**
-     * Devuelve el cuerpo que gestiona este control.
-     * @return cuerpo físico.
+     * Returns the body that manages this control.
+     * @return physical body.
      */
     public E getBody();
     
     /**
-     * Método encargado de habilidat ó deshabilitar el control.
-     * @param enabled estado de control.
+     * Method in charge of enabling or disabling the control.
+     * @param enabled control status.
      */
     public void setEnabledPhysicsControl(boolean enabled);
     
     /**
-     * Devuelve el estado actual de este control.
-     * @return estado de control.
+     * Returns the current status of this control.
+     * @return control status.
      */
     public boolean isEnabledPhysicsControl();
 }

@@ -41,9 +41,9 @@ import jme3gl2.util.Converter;
 import org.dyn4j.geometry.Convex;
 
 /**
- * Un objeto de la clase <code>RigidBody2D</code> se encarga de controlar y
- * aplicar la física en el <code>Spatial</code> (modelo 2D) con un cuerpo
- * rigido.
+ * An object of the class <code>RigidBody2D</code> is responsible for the
+ * control and application of physics in the <code>Spatial</code> (2D model)
+ * with a rigid body.
  *
  * @author wil
  * @version 1.0.1-SNAPSHOT
@@ -53,13 +53,14 @@ import org.dyn4j.geometry.Convex;
 public class RigidBody2D extends PhysicsBody2D {
 
     /**
-     * Constructor de la clase <code>RigidBody2D</code>.
+     * Class constructor <code>RigidBody2D</code>.
      */
-    public RigidBody2D() { }
+    public RigidBody2D() {
+    }
     
     /**
-     * Constructor de la clase <code>RigidBody2D</code>.
-     * @param collisionShape forma físico.
+     * Class constructor <code>RigidBody2D</code>.
+     * @param collisionShape physical form.
      */
     public RigidBody2D(AbstractCollisionShape<? extends Convex> collisionShape) {
         this.addFixture(collisionShape.getCollisionShape());
@@ -77,32 +78,32 @@ public class RigidBody2D extends PhysicsBody2D {
     }
 
     /**
-     * Detecta si este cuerpo contiene mas de un {@code Fixture}.
-     * @return {@code true} si tiene mas de un {@code Fixture}, de lo contrario
-     *              devolverá {@code false}.
+     * Detects if this body contains more than one {@code Fixture}.
+     * @return {@code true} if it has more than one {@code Fixture},
+     * otherwise it will return {@code false}.
      */
     public boolean hasMultipleBodies() {
         return this.getFixtureCount() > 1;
     }
     
     /**
-     * Método encaegado de devolver la posición actual.
-     * @return posición actual.
+     * Method in charge of returning the current position.
+     * @return current position.
      */
     public Vector3f getPhysicsLocation() {
         return new Vector3f(Converter.toFloat(getTransform().getTranslationX()), Converter.toFloat(getTransform().getTranslationY()), this.spatial.getLocalTranslation().z);
     }
 
     /**
-     * Método encargado de devolver la posición mundial de este cuerpo.
-     * @return posición mundial.
+     * Method in charge of returning the world position of this body.
+     * @return world position.
      */
     public Vector3f getWorldLocation() {
         return new Vector3f(Converter.toFloat(getWorldCenter().x), Converter.toFloat(getWorldCenter().y), this.spatial.getWorldTranslation().z);
     }
 
     /**
-     * Limpia las fuerzas.
+     * Cleans the forces.
      */
     public void clearForces() {
         this.clearForce();
@@ -120,5 +121,6 @@ public class RigidBody2D extends PhysicsBody2D {
      * @see PhysicsBody2D#render(com.jme3.renderer.RenderManager, com.jme3.renderer.ViewPort) 
      */
     @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) { }
+    protected void controlRender(RenderManager rm, ViewPort vp) {
+    }
 }
