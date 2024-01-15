@@ -31,7 +31,6 @@
  */
 
 /**
- * Constrol para los nodos y geometrías para las formas depuradas de los
- * cuepos en el espacio físico.
+ * Control for nodes and geometries for debugged body shapes in physical space.
  */
 package jme3gl2.physics.debug.control;

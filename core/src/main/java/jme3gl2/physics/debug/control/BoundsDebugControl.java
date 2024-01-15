@@ -47,30 +47,30 @@ import org.dyn4j.geometry.Vector2;
 import org.dyn4j.world.World;
 
 /**
- * Clase <code>BoundsDebugControl</code> encargado de gestionar un depurador
- * para los límites del mundo físico definido por un <code>AxisAlignedBounds</code>.
+ * Class <code>BoundsDebugControl</code> to manage a debugger for the boundaries
+ * of the physical world as defined by a <code>AxisAlignedBounds</code>.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT 
  * 
  * @since 2.5.0
- * @param <E> tipo-cuerpo
+ * @param <E> body type
  */
 public class BoundsDebugControl<E extends PhysicsBody2D> extends AbstractControl {
 
-    /** Renderizador. */
+    /** Renderer. */
     protected final Graphics2DRenderer renderer;
     
-    /** Mundo físico. */
+    /** Physical world. */
     protected final World<E> world;
     
-    /** Nodo depuración. */
+    /** Debugging node. */
     protected Node boundsNode;
 
     /**
-     * Constructor de la clase <code>BoundsDebugControl</code>.
-     * @param world mundo físico.
-     * @param renderer renderizador.
+     * Class constructor <code>BoundsDebugControl</code>.
+     * @param world physical world.
+     * @param renderer renderer.
      */
     public BoundsDebugControl(World<E> world, Graphics2DRenderer renderer) {
         this.renderer = renderer;
@@ -90,10 +90,11 @@ public class BoundsDebugControl<E extends PhysicsBody2D> extends AbstractControl
     }
 
     /**
-     * Método encargdo de verificar si existe un <code>Bounds</code> para el
-     * mundo físico actual. De se asi se fenerar una forma para ella.
+     * Method for verifying if there is a <code>Bounds</code> for the actual
+     * physical world. If so, a form can be generated for it.
      * <p>
-     * Nota: Solo es compatible con la forma <code>xisAlignedBounds</code>.
+     * Note: Only compatible with the form <code>AxisAlignedBounds</code>.
+     * </p>
      */
     protected void renderBounds() {
         final Bounds bounds = world.getBounds();
@@ -145,6 +146,5 @@ public class BoundsDebugControl<E extends PhysicsBody2D> extends AbstractControl
      */
     @Override
     protected void controlRender(RenderManager rm, ViewPort vp) {
-        /* NADA. */
     }
 }

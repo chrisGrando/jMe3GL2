@@ -40,25 +40,25 @@ import jme3gl2.physics.control.BasePhysicsControl;
 import jme3gl2.physics.control.PhysicsBody2D;
 
 /**
- * Clase abstracta <code>AbstractPhysicsDebugControl</code> encargado de controlar la
- * geometría para la depuración de los cuerpos físicos.
+ * Abstract class <code>AbstractPhysicsDebugControl</code> in charge of controlling
+ * the geometry for the debugging of physical bodies.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT 
  * 
  * @since 2.5.0
- * @param <E> tipo-cuerpo.
+ * @param <E> body type
  */
 public abstract 
 class AbstractPhysicsDebugControl<E extends PhysicsBody2D> extends AbstractControl implements BasePhysicsControl<E> {
 
-    /** Cuerpo físico. */
+    /** Physical body. */
     protected final E body;
 
     /**
-     * Constructor de la clase <code>PhysicsDebugBody2D</code> donde se 
-     * establece un cuerpo físico a depurar.
-     * @param body cuepor físico.
+     * Class constructor of <code>PhysicsDebugBody2D</code> where a physical body
+     * to be debugged is established.
+     * @param body physical body.
      */
     public AbstractPhysicsDebugControl(E body) {
         this.body = body;
@@ -67,7 +67,7 @@ class AbstractPhysicsDebugControl<E extends PhysicsBody2D> extends AbstractContr
     /**
      * (non-JavaDoc)
      * @see com.jme3.scene.control.AbstractControl#controlUpdate(float)
-     * @param tpf tiempo por cuador por segundo.
+     * @param tpf time per counter per second.
      */
     @Override
     protected void controlUpdate(float tpf) {
@@ -79,8 +79,8 @@ class AbstractPhysicsDebugControl<E extends PhysicsBody2D> extends AbstractContr
      * (non-JavaDoc)
      * @see BasePhysicsControl#getJmeObject() 
      * 
-     * @param <T> tipo-spatial
-     * @return Spatial.
+     * @param <T> spatial type
+     * @return Spatial
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -91,11 +91,10 @@ class AbstractPhysicsDebugControl<E extends PhysicsBody2D> extends AbstractContr
     /**
      * (non-JavaDoc)
      * @see com.jme3.scene.control.AbstractControl#controlRender(com.jme3.renderer.RenderManager, com.jme3.renderer.ViewPort)
-     * @param rm admin-render
-     * @param vp vista
+     * @param rm render-manager
+     * @param vp view-port
      */
     @Override
     protected void controlRender(RenderManager rm, ViewPort vp) {
-        /* NADA. */
     }
 }

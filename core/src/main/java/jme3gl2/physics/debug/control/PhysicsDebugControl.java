@@ -43,8 +43,8 @@ import java.util.Map;
 import org.dyn4j.dynamics.BodyFixture;
 
 /**
- * Clase <code>PhysicsDebugControl</code> encargado de controlar las formas
- * físicas de un cuerpo en el espacio.
+ * Class <code>PhysicsDebugControl</code> in charge of controlling the physical
+ * forms of a body in space.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT 
@@ -53,21 +53,21 @@ import org.dyn4j.dynamics.BodyFixture;
  */
 public class PhysicsDebugControl extends AbstractPhysicsDebugControl<PhysicsBody2D> {
     
-    /** Renderizador para las formas físcas. */
+    /** Renderer for physical shapes. */
     protected Graphics2DRenderer renderer;
     
-    /** Nodo mapa para todas las formas físicias de un cuerpo. */
+    /** Node map for all physical forms of a body. */
     protected Map<BodyFixture, Node> shapes = new HashMap<>();
     
-    /** Nodo padre que contiene las formas físicas.*/
+    /** Parent node containing the physical forms. */
     protected Node spatialAsNode = null;
     
     /**
      * Control de la clase <code>PhysicsDebugControl</code> donde se inicializa
      * las formas físicos contenido en los cerpos físicos-
      * 
-     * @param renderer renderizador para los cuerpos físicos.
-     * @param body cuerpo físico.
+     * @param renderer renderer for physical bodies.
+     * @param body physical body.
      */
     public PhysicsDebugControl(Graphics2DRenderer renderer, PhysicsBody2D body) {
         super(body);
@@ -78,13 +78,13 @@ public class PhysicsDebugControl extends AbstractPhysicsDebugControl<PhysicsBody
     }
     
     /**
-     * Método encargado de establecer el <code>Spatial</code> a controlar, 
-     * normalmente será un <code>Node</code> al cual se agregaran las
-     * geometrías de los cuerpos físicos depurados.
+     * Method for establishing the <code>Spatial</code> to control, it will
+     * normally be a <code>Node</code> to which the geometries of the debugged
+     * physical bodies will be added.
      * <p>
-     * Solo se agregan los cuerpos que esten disponible en la pila.
-     * 
-     * @param spatial <code>Spatial</code> a controlar.
+     * Only bodies that are available in the stack are added.
+     * </p>
+     * @param spatial <code>Spatial</code> to control.
      */
     @Override
     public void setSpatial(final Spatial spatial) {
@@ -102,14 +102,13 @@ public class PhysicsDebugControl extends AbstractPhysicsDebugControl<PhysicsBody
     }
 
     /**
-     * Método encargado de actualizar la lista de nodos para las formas físicas
-     * del cuerpo.
+     * Method in charge of updating the list of nodes for the physical body
+     * shapes.
      * <p>
-     * Si hay un cambio o una nueva formas, se notifica al nodo padre para
-     * desechar los hijos que tiene para luego agregar la nueva pila de
-     * geometrías.
-     * 
-     * @param tpf tipo por cuadors por segundo.
+     * If there is a change or a new shape, the parent node is notified to
+     * discard its children and then add the new geometry stack.
+     * </p>
+     * @param tpf time per frames per second.
      */
     @Override
     protected void controlUpdate(float tpf) {
@@ -125,7 +124,7 @@ public class PhysicsDebugControl extends AbstractPhysicsDebugControl<PhysicsBody
             }
         }
                 
-        // Establecer material según el estado del cuerpo.
+        // Set material according to body condition
         for (final Map.Entry<?, Node> entry : oldMap.entrySet()) {
             entry.getValue().removeFromParent();
         }
@@ -133,10 +132,9 @@ public class PhysicsDebugControl extends AbstractPhysicsDebugControl<PhysicsBody
     }
     
     /**
-     * Método encargado de procesar el renderizado de los cuepor físicos, es 
-     * decir su forma.
-     * @param shape forma física.
-     * @return forma gráfica.
+     * Method in charge of processing the rendering of physical bodies, i.e. their shape.
+     * @param shape physical form.
+     * @return graphical form.
      */
     private Node processRender(BodyFixture bf) {
         final Node node = renderer.render(bf, body, null);        

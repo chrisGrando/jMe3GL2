@@ -55,44 +55,48 @@ import org.dyn4j.geometry.Slice;
 import org.dyn4j.geometry.Vector2;
 
 /**
- * Clase <code>AbstractConvexDebugControl</code> encargado de controlar la 
- * posición y rotación de una forma física.
+ * Class <code>AbstractConvexDebugControl</code> in charge of controlling the
+ * position and rotation of a physical form.
  * <p>
- * <b>Dyn4j</b> tiene la libertad de trasladar una forma <code>Convex</code>
- * a un punto específico de un cuerpo, dado que es relativo al cuerpo físico se
- * tiene que controlar por aparte.
+ * <b>Dyn4j</b> has the freedom to transfer a form <code>Convex</code>
+ * to a specific point of a body, since it is relative to the physical body it
+ * has to be controlled separately.
+ * </p>
  * <p>
- * Las siguientes formas, sus posiciones y rotación son peculiares por ende
- * tienen una clase dedicada a obtener dichas coordenadas:
+ * The following shapes, their positions and rotations are peculiar and therefore
+ * have a class dedicated to obtain these coordinates:
+ * </p>
  * <ul>
- * <li>Capsule</li>
- * <li>Circle</li>
- * <li>Ellipse</li>
- * <li>HalfEllipse</li>
- * <li>Slice</li>
+ *  <li>Capsule</li>
+ *  <li>Circle</li>
+ *  <li>Ellipse</li>
+ *  <li>HalfEllipse</li>
+ *  <li>Slice</li>
  * </ul>
- * Por otro lado un forma <code>Polygon</code> o que implemente la interfaz
- * <code>Wound</code> no tiene la necesidad de tener un control dado que sus
- * puntos-vértices se modifican al trasladarlos o rotarlos en su forma.
+ * <p>
+ * On the other hand, a form <code>Polygon</code> or that implements the interface
+ * <code>Wound</code> has no need to have a control since its points/vertices are
+ * modified by moving or rotating them in its shape.
+ * </p>
  * 
  * @author wil
  * @version 1.5.0
  * 
  * @since 2.5.0
- * @param <E> tipo-cuerpo
+ * @param <E> body type
  */
-public abstract class AbstractConvexDebugControl<E extends Convex> extends AbstractControl  {
+public abstract class AbstractConvexDebugControl<E extends Convex> extends AbstractControl {
 
     /**
-     * Clase interna <code>CapsuleDebugControl</code> encargado de gestionar las
-     * coordenadas de la forma <code>Capsule</code>.
+     * Internal class <code>CapsuleDebugControl</code> responsible for managing
+     * the coordinates of the form <code>Capsule</code>.
      */
     public static final class CapsuleDebugControl extends AbstractConvexDebugControl<Capsule> {
         
         /**
-         * Constructor de la clase <code>CapsuleDebugControl</code>.
-         * @param shape forma física.
-         * @param body cuerpo físico
+         * Class constructor of <code>CapsuleDebugControl</code>.
+         * @param shape physical form.
+         * @param body physical body.
          */
         public CapsuleDebugControl(BodyFixture shape, PhysicsBody2D body) {
             super(shape, body);
@@ -122,15 +126,15 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
 
     /**
-     * Clase interna <code>CircleDebugControl</code> encargado de gestionar las
-     * coordenadas de la forma <code>Circle</code>.
+     * Internal class <code>CircleDebugControl</code> responsible for managing
+     * the coordinates of the form <code>Circle</code>.
      */
     public static final class CircleDebugControl extends AbstractConvexDebugControl<Circle> {
         
         /**
-         * Constructor de la clase <code>CircleDebugControl</code>.
-         * @param shape forma física.
-         * @param body cuerpo físico
+         * Class constructor of <code>CircleDebugControl</code>.
+         * @param shape physical form.
+         * @param body physical body.
          */
         public CircleDebugControl(BodyFixture shape, PhysicsBody2D body) {
             super(shape, body);
@@ -160,15 +164,15 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
     
     /**
-     * Clase interna <code>EllipseDebugControl</code> encargado de gestionar las
-     * coordenadas de la forma <code>Ellipse</code>.
+     * Internal class <code>EllipseDebugControl</code> responsible for managing
+     * the coordinates of the form <code>Ellipse</code>.
      */
     public static final class EllipseDebugControl extends AbstractConvexDebugControl<Ellipse> {
         
         /**
-         * Constructor de la clase <code>EllipseDebugControl</code>.
-         * @param shape forma física.
-         * @param body cuerpo físico
+         * Class constructor of <code>EllipseDebugControl</code>.
+         * @param shape physical form.
+         * @param body physical body.
          */
         public EllipseDebugControl(BodyFixture shape, PhysicsBody2D body) {
             super(shape, body);
@@ -198,15 +202,15 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
     
     /**
-     * Clase interna <code>HalfEllipseDebugControl</code> encargado de gestionar las
-     * coordenadas de la forma <code>HalfEllipse</code>.
+     * Internal class <code>HalfEllipseDebugControl</code> responsible for
+     * managing the coordinates of the form <code>HalfEllipse</code>.
      */
     public static final class HalfEllipseDebugControl extends AbstractConvexDebugControl<HalfEllipse> {
         
         /**
-         * Constructor de la clase <code>HalfEllipseDebugControl</code>.
-         * @param shape forma física.
-         * @param body cuerpo físico
+         * Class constructor of <code>HalfEllipseDebugControl</code>.
+         * @param shape physical form.
+         * @param body physical body.
          */
         public HalfEllipseDebugControl(BodyFixture shape, PhysicsBody2D body) {
             super(shape, body);
@@ -236,17 +240,17 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
     
     /**
-     * Clase interna para cualquier forma convexa.
+     * Internal class for any convex shape.
      */
     public static final class ConvexDebugControl extends AbstractConvexDebugControl<Convex> {
 
-        /** Posición predeterminado. */
+        /** Default position. */
         private final Vector2 v = new Vector2();
         
         /**
-         * Constructor de la clase.
-         * @param shape forma
-         * @param body cuerpo físico
+         * Class constructor.
+         * @param shape physical form.
+         * @param body physical body.
          */
         public ConvexDebugControl(BodyFixture shape, PhysicsBody2D body) {
             super(shape, body);
@@ -276,14 +280,14 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
     
     /**
-     * Clase interna <code>SliceDebugControl</code> encargado de gestionar las
-     * coordenadas de la forma <code>Slice</code>.
+     * Internal class <code>SliceDebugControl</code> responsible for managing
+     * the coordinates of the form <code>Slice</code>.
      */
     public static final class SliceDebugControl extends AbstractConvexDebugControl<Slice> {
         /**
-         * Constructor de la clase <code>SliceDebugControl</code>.
-         * @param shape forma física.
-         * @param body cuerpo físico
+         * Class constructor of <code>SliceDebugControl</code>.
+         * @param shape physical form.
+         * @param body physical body.
          */        
         public SliceDebugControl(BodyFixture shape, PhysicsBody2D body) {
             super(shape, body);
@@ -312,16 +316,16 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
         }        
     }
     
-    /** Forma física del objeto. */
+    /** Physical form of the object. */
     final BodyFixture fixture;
 
-    /** Cuerpos físico. */
+    /** Physical bodies. */
     final PhysicsBody2D body2D;
     
     /**
-     * Constructor privato de la clase <code>AbstractConvexDebugControl</code>.
-     * @param fixture forma física
-     * @param body2D cuerpo físicp
+     * Private class constructor <code>AbstractConvexDebugControl</code>.
+     * @param fixture physical form.
+     * @param body2D physical body.
      */
     private AbstractConvexDebugControl(BodyFixture fixture, PhysicsBody2D body2D) {
         this.fixture = fixture;
@@ -329,7 +333,7 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
     
     /**
-     * Devuelve la forma física.
+     * Returns physical shape.
      * @return Convex
      */
     @SuppressWarnings("unchecked")
@@ -351,7 +355,7 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
     
     /**
-     * Renderiza el objet; gestiona el material de la geometría.
+     * Renders the object; manages the geometry material.
      */
     void renderMaterial() {
         ColorRGBA color;        
@@ -380,7 +384,7 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
 
     /**
-     * Aplica la rotación que tien la forma al la geometría.
+     * Applies the rotation that has the shape to the geometry.
      */
     void applyPhysicsRotation() {
         double rotation = getRotationAngle();
@@ -394,19 +398,19 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
     }
     
     /**
-     * Método encargado de devolver el angulo de rotación de la forma.
-     * @return angulo.
+     * Method in charge of returning the rotation angle of the shape.
+     * @return angle.
      */
     abstract double getRotationAngle();
     
     /**
-     * Mértodo encargado de devolver un desface(posición local) de la forma.
-     * @return posición.
+     * Method in charge of returning the local position of the form.
+     * @return position.
      */
     abstract Vector2 getLocaTranslation();
     
     /**
-     * Método encargado de aplicar una traslación físico.
+     * Method in charge of applying a physical translation.
      */
     void applyPhysicsLocation() {
         final Vector2 center = getLocaTranslation();
@@ -427,5 +431,6 @@ public abstract class AbstractConvexDebugControl<E extends Convex> extends Abstr
      * @param vp view-port
      */
     @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) { }
+    protected void controlRender(RenderManager rm, ViewPort vp) {
+    }
 }
