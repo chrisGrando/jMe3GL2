@@ -37,62 +37,64 @@ import jme3gl2.utilities.GeometryUtilities;
 import jme3gl2.util.Converter;
 
 /**
- * Clase <code>Circle2D</code> encargado de generar una forma de circulo.
+ * Class <code>Circle2D</code> in charge of generating a circle shape.
+ * 
  * @author wil
  * @version 1.0-SNAPSHOT
  * @since 2.5.0
  */
 public class Circle2D extends AbstractShape2D {
     
-    /** Contador predeterminado para generar un circulo. */
+    /** Default counter to generate a circle. */
     public static final int COUNT = 24;
     
     /**
-     * Constructor de la clase <code>Circle2D</code> donde se establecern los
-     * valores para generar un forma circular.
+     * Class constructor <code>Circle2D</code> where the values will be set to
+     * generate a circular shape.
      * 
-     * @param count cantidad de poligonos.
-     * @param radius radio del circulo.
-     * @param theta theta desado.
-     * @param deep profundidad.
+     * @param count number of polygons.
+     * @param radius radius of the circle.
+     * @param theta theta value.
+     * @param deep depth value.
      */
     public Circle2D(int count, float radius, float theta, float deep) {
         Circle2D.this.updateGeometry(count, radius, theta, deep);
     }
 
     /**
-     * Método encargado de actualizar la geometría de esta malla circular.
-     * @param count cantidad de vertices-poligonos.
-     * @param radius radio del circulo.
-     * @param theta un theta para el circulo.
-     * @param deep profundidad.
+     * Method in charge of updating the geometry of this circular mesh.
+     * 
+     * @param count number of vertices/polygons.
+     * @param radius radius of the circle.
+     * @param theta a theta for the circle.
+     * @param deep depth value.
      */
     public void updateGeometry(int count, float radius, float theta, float deep) {
-        // calcular el incremento angular
+        // Calculate the angular increment
         final float pin = Converter.toFloat(GeometryUtilities.TWO_PI / count);
-        // make sure the resulting output is an even number of vertices
-        final Vector3f[] vertices = new Vector3f[count];
+        // Make sure the resulting output is an even number of vertices
+        final Vector3f[] myVertices = new Vector3f[count];
 
         final float c = FastMath.cos(pin);
         final float s = FastMath.sin(pin);
-        float t = 0;
+        float t;
 
         float x = radius;
         float y = 0;
-        // inicializar en theta si es necesario
+        // Initialize in theta if necessary
         if (theta != 0) {
             x = radius * FastMath.cos(theta);
             y = radius * FastMath.sin(theta);
         }
 
         for (int i = 0; i < count; i++) {
-            vertices[i] = new Vector3f(x, y, deep);
+            myVertices[i] = new Vector3f(x, y, deep);
 
-            //aplicar la matriz de rotación
+            // Apply the rotation matrix
             t = x;
             x = c * x - s * y;
             y = s * t + c * y;
         }
-        updateGeometry(vertices);
+        updateGeometry(myVertices);
     }
 }

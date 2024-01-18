@@ -31,7 +31,6 @@
  */
 
 /**
- * Paquete para las formas físicas que se utiliza para depurara los cuerpos
- * del espacio físico.
+ * Package for physical forms used to debug bodies from physical space.
  */
 package jme3gl2.physics.debug.shape;

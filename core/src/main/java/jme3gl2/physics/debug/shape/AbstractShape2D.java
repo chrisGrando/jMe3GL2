@@ -46,10 +46,11 @@ import java.io.IOException;
 import java.nio.FloatBuffer;
 
 /**
- * Clase <code>AbstractShape2D</code> abstracta encargado de implementar la
- * base de las formas de colicioón que ofrece <code>Dyn4j</code>.
+ * Abstract class <code>AbstractShape2D</code> in charge of implementing the
+ * basis for the collision forms offered by <code>Dyn4j</code>.
  * <p>
- * Para generar las formas se utilizarán 'lineas'.
+ * To generate the shapes, 'lines' will be used.
+ * </p>
  * 
  * @author wil
  * @version 1.0-SNAPSHOT 
@@ -58,14 +59,13 @@ import java.nio.FloatBuffer;
  */
 public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable {
     
-    /** Arreglo de vértices para la malla. */
+    /** Vertex array for the mesh. */
     protected Vector3f[] vertices;
     
     /**
-     * Constructor predeterminado interno.
+     * Internal default constructor.
      */
     protected AbstractShape2D() {
-        /* CODIGO. */
         AbstractShape2D.this.setMode(Mode.LineLoop);
     }
 
@@ -73,7 +73,7 @@ public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable
      * (non.JavaDoc)
      * @see com.jme3.scene.Mesh#deepClone() 
      * 
-     * @return clon de este objeto.
+     * @return clone of this object.
      */
     @Override
     public AbstractShape2D deepClone() {
@@ -89,7 +89,7 @@ public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable
      * (non.JavaDoc)
      * @see com.jme3.scene.Mesh#clone() 
      * 
-     * @return clon de este objeto.
+     * @return clone of this object.
      */
     @Override
     public AbstractShape2D clone() {
@@ -99,10 +99,10 @@ public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable
     }
         
     /**
-     * Método encargado de actualizar la geometría de esta malla para generra 
-     * las nuevas coordenadas de las 'lineas'.
+     * Method in charge of updating the geometry of this mesh to generate the
+     * new coordinates of the 'lines'.
      * 
-     * @param vertices nuevo arreglo de vértices.
+     * @param vertices new vertex array.
      */
     protected void updateGeometry(final Vector3f[] vertices) {
         if (vertices == null ) {
@@ -135,7 +135,7 @@ public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable
      * @param im JmeImporter
      * @see com.jme3.scene.Mesh#read(com.jme3.export.JmeImporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException Exception.
      */
     @Override
     public void read(JmeImporter im) throws IOException {
@@ -152,7 +152,7 @@ public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable
      * @param ex JmeExporter.
      * @see com.jme3.scene.Mesh#write(com.jme3.export.JmeExporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException Exception.
      */
     @Override
     public void write(JmeExporter ex) throws IOException {

@@ -39,36 +39,39 @@ import com.jme3.util.BufferUtils;
 import java.nio.FloatBuffer;
 
 /**
- * Clase <code>Cross</code> encargado de generar una forma de cruz.
+ * Class <code>Cross</code> responsible for generating a cross shape.
+ * 
  * @author wil
  * @version 1.0-SNAPSHOT 
  * @since 2.5.0
  */
 public class Cross extends Mesh {
 
-    /** número de segmentos. */
+    /** Number of segments. */
     private float segmentSize;
 
     /**
-     * Constructor predeterminado solo para serialización. No utilice.
+     * Default constructor for serialization only. Do not use.
      */
     public Cross() {
     }
 
     /**
-     * Constructor principal de la clase <code>Cross2D</code> para construir
-     * una instancia de una cruz.
-     * @param segmentSize el tamaño del segmento de la cruz.
+     * Main class constructor <code>Cross2D</code> to build an instance of a
+     * cross.
+     * 
+     * @param segmentSize the size of the cross segment.
      */
     public Cross(final float segmentSize) {
         this(segmentSize, Mode.Lines);
     }
 
     /**
-     * Constructor principal de la clase <code>Cross2D</code> para construir
-     * una instancia de una cruz.
-     * @param segmentSize el tamaño del segmento de la cruz.
-     * @param mode modo para esta malla.
+     * Main class constructor <code>Cross2D</code> to build an instance of a
+     * cross.
+     * 
+     * @param segmentSize the size of the cross segment.
+     * @param mode mode for this mesh.
      */
     public Cross(final float segmentSize, final Mode mode) {
         super();
@@ -77,19 +80,19 @@ public class Cross extends Mesh {
     }
 
     /**
-     * Devuelve el tamaño del segmento de la cruz.
-     * @return Tamaño del segmento de la cruz.
+     * Returns the size of the cross segment.
+     * @return the size.
      */
     public float getSegmentSize() {
         return this.segmentSize;
     }
 
     /**
-     * Reconstruye la cruz basándose en un nuevo conjunto de parámetros.
-     * @param segmentSize el tamaño del segmento de la cruz.
+     * Reconstructs the cross based on a new set of parameters.
+     * @param segmentSize the size of the cross segment.
      */
     public void updateGeometry(final float segmentSize) {
-        /* Crear los buffers */
+        // Create buffers
         this.setBuffer(Type.Position, 3, 
                 BufferUtils.createVector3Buffer(getFloatBuffer(Type.Position),
                         4));
@@ -99,13 +102,13 @@ public class Cross extends Mesh {
         final FloatBuffer pb = getFloatBuffer(Type.Position);
         final IndexBuffer ib = getIndexBuffer();
 
-        // establecer los vertices.
+        // Set the vertices
         pb.put(this.segmentSize).put(this.segmentSize).put(0);
         pb.put(-this.segmentSize).put(this.segmentSize).put(0);
         pb.put(this.segmentSize).put(-this.segmentSize).put(0);
         pb.put(-this.segmentSize).put(-this.segmentSize).put(0);
 
-        // establecer los índices.
+        // Set the indexes
         ib.put(0, 0);
         ib.put(1, 3);
         ib.put(2, 1);

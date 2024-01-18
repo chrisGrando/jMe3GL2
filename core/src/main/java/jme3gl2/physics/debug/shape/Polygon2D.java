@@ -34,7 +34,8 @@ package jme3gl2.physics.debug.shape;
 import com.jme3.math.Vector3f;
 
 /**
- * Clase <code>Polygon2D</code> encargado de generar una forma poligonal.
+ * Class <code>Polygon2D</code> in charge of generating a polygonal shape.
+ * 
  * @author wil
  * @version 1.0-SNAPSHOT
  * @since 2.5.0
@@ -42,9 +43,9 @@ import com.jme3.math.Vector3f;
 public class Polygon2D extends AbstractShape2D {
 
     /**
-     * Constructor de la clase <code>Polygon2D</code> donde se inicializar una
-     * forma poligonal.
-     * @param vertices vértices.
+     * Class constructor <code>Polygon2D</code> where a polygonal shape is
+     * initialized.
+     * @param vertices vertices.
      */
     public Polygon2D(Vector3f ...vertices) {
         Polygon2D.this.updateGeometry(vertices);
@@ -52,7 +53,7 @@ public class Polygon2D extends AbstractShape2D {
 
     /**
      * (non-JavaDoc)
-     * @param vertices vértices.
+     * @param vertices vertices.
      */
     @Override
     public void updateGeometry(Vector3f ...vertices) {
