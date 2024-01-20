@@ -4,12 +4,12 @@ import com.jme3.renderer.Camera;
 import com.jme3.scene.Spatial;
 
 /**
- * Interfaz <code>jMe3GL2Camera</code> encargado de listar los métodos para
- * el gestor de la cámara en 2D-Falos.
+ * Interface <code>Jme3GL2Camera</code> in charge of listing the methods for the
+ * 2D fake camera manager.
  * <p>
- * Los objetos-clases que implemente esta interfaz, se encargan de gestionar el
- * control de la cámara en la escenas del juego, normalmente es en un mundo
- * 3D con un enfoque 2D.
+ * The objects/classes that implement this interface are in charge of managing
+ * the camera control in the game scenes, usually in a 3D world with a 2D approach.
+ * </p>
  * 
  * @author wil
  * @version 1.0-SNAPSHOT 
@@ -19,75 +19,79 @@ import com.jme3.scene.Spatial;
 public interface Jme3GL2Camera {
     
     /**
-     * Método encargado de establecer una nueva distancia para la cámara, dicho
-     * valor se usas para alejar o acercar la cámara de la escenas.
-     * @param frustum distancia-cámara.
+     * Method for setting a new distance for the camera, this value is used to
+     * move the camera away from or towards the scene.
+     * @param frustum camera distance.
      */
     public void setCameraDistanceFrustum(float frustum);
     
     /**
-     * Método encargado de preparar la cámara para que este pueda se utilizada
-     * en las escenas del mundo 2D-Falso.
+     * Method for preparing the camera so that it can be used in the scenes of
+     * the fake 2D world.
      * <p>
-     * Solo se llama una sola vez este método, si se desea cambiar las propiedades
-     * de la cámara se utliza los siguientes metodos:
+     * This method is called only once, if you want to change the camera properties
+     * you can use the following methods:
+     * </p>
      * {@link #setProperty(java.lang.String, java.lang.Object) }
      * {@link #getProperty(java.lang.String, java.lang.Object) }
      * 
-     * @param cam cámara-escenas
+     * @param cam camera scenes.
      */
     void initialize(Camera cam);
     
     /**
-     * Se encarga de actualizar los cambios para la cámara.
-     * @param tpf laspo-tiempo.
+     * Method responsible for updating the changes for the camera.
+     * 
+     * @param tpf time lapse.
      */
     void update(float tpf);
     
     /**
-     * Devuelve un objeto recortador, donde se encarga de gestionar los
-     * límites de la cámara.
-     * @return objeto-recortador.
+     * Returns a trimmer object, where it is in charge of managing the camera
+     * limits.
+     * 
+     * @return trimmer object.
      */
     public Jme3GL2Clipping getClipping();
     
     /**
-     * Método encargado de establecer un objetivo a seguir por la cámara en la
-     * escena del juego.
-     * @param <T> tipo-dato.
-     * @param target objetivo-cámara
+     * Method in charge of establishing a target to be followed by the camera in
+     * the game scene.
+     * 
+     * @param <T> data type.
+     * @param target camera target.
      */
     public <T extends Spatial> void setTarget(T target);
     
     /**
-     * Establece una propiedad al manejador de la cámara, si es una propiedad
-     * inexistente, simplemente es ingonador por el administrador.
+     * Sets a property to the camera handler, if it is a non-existent property,
+     * it is simply set by the administrator.
      * 
-     * @param <T> tipo-dato
-     * @param key nombre clave de la propiedad.
-     * @param value nuevo valor de la propiedad
-     * @return devuelve {@link Jme3GL2Camera}.
+     * @param <T> data type.
+     * @param key key name of the property.
+     * @param value new value of the property.
+     * @return {@link Jme3GL2Camera}.
      */
     public <T extends Object> Jme3GL2Camera setProperty(String key, T value);
     
     /**
-     * Devuelve el valor de una propiedad según la clave de ello. Si no 
-     * existe tal propiedad; se devuelve el valor predeterminado.
+     * Returns the value of a property according to its key. If no such property
+     * exists; the default value is returned.
      * 
-     * @param <T> tipo-dato
-     * @param key nombre clave de la propiedad.
-     * @param defaultVal valor predeterminado a devolver.
-     * @return valor de la propiedad.
+     * @param <T> data type.
+     * @param key key name of the property.
+     * @param defaultVal default value to return.
+     * @return value of the property.
      */
     public <T extends Object> T getProperty(String key, T defaultVal);
     
     /**
-     * Devuelve el valor de una propiedad según la clave de ello.
+     * Returns the value of a property according to it's key.
      * @see Jme3GL2Camera#getProperty(java.lang.String, java.lang.Object) 
      * 
-     * @param <T> tipo-dato
-     * @param key nombre clave de la propiedad.
-     * @return valor de la propiedad.
+     * @param <T> data type.
+     * @param key key name of the property.
+     * @return value of the property.
      */
     public default <T extends Object> T getProperty(String key) {
         return getProperty(key, null);

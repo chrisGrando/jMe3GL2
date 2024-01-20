@@ -7,12 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Clase <code>AbstractjMe3GL2camera</code> encargado de implementar la interfaz
- * {@link Jme3GL2Camera} donde se prepara una plantilla para el gestionamiento
- * de propiedades.
+ * Class <code>AbstractjMe3GL2camera</code> in charge of implementing the interface
+ * {@link Jme3GL2Camera} where a template for property management is prepared.
  * <p>
- * Esta clase solo proporciona una plantilla para administrar la cámara en las
- * escenas.
+ * This class only provides a template for managing the camera in scenes.
+ * </p>
  * 
  * @author wil
  * @version 1.0-SNAPSHOT 
@@ -24,48 +23,43 @@ public abstract
 class AbstractJme3GL2camera implements Jme3GL2Camera {
     
     /**
-     * Clase interna <code>Target</code> encargado de administrar el objetivo
-     * de la cámara.
+     * Internal class <code>Target</code> in charge of managing the camera lens.
      * <p>
-     * Esto se utiliza para mantener un registro del desplazamiento de la cámara
-     * durante la ejecución del juego. 
+     * This is used to keep track of camera displacement during gameplay.
      * 
-     * Para evitar que la cámara se mueva en el
-     * punto <code>(0,0,0)</code> al quitarle su objetivo.
+     * To prevent the camera from moving at the point <code>(0,0,0)</code> by
+     * removing its target.
      * </p>
      * 
-     * @param <E> tipo de objetivo
+     * @param <E> type of target
      * @version 1.5.0
      */
     protected static 
     class Target<E extends Spatial> {
         
-        /** Objetivo. */
+        /** Target. */
         private E value;
         
         /**
-         * Registro de desplazamiento de la cámara durante la ejecución
-         * del juego.
+         * Registration of camera displacement during game execution.
          * 
          * <p>
-         * Esto se utiliza cuando no hay un objetivo establecido por parte
-         * del usuario.
+         * This is used when there is no target set by the user.
          * </p>
          */
         private Vector3f aux;
         
         /**
-         * Constructor predeterminado de la clase interna <code>Target</code>
-         * donde se inicializa los objetos para el funcionamiento de este
-         * nuevo objeto.
+         * Default constructor of the inner class <code>Target</code> where the
+         * objects are initialized for the operation of this new object.
          */
         public Target() {
             this.aux = new Vector3f();
         }
 
         /**
-         * Método encargado de establecer un nuevo objetivo.
-         * @param value nuevo-objetivo.
+         * Method for establishing a new target.
+         * @param value new target.
          */
         public void setValue(E value) {
             if (value == null && this.value != null) {
@@ -75,14 +69,14 @@ class AbstractJme3GL2camera implements Jme3GL2Camera {
         }
         
         /**
-         * Devuelve la posición del objetivo actual, de lo contrario será
-         * el registro de ello.
+         * Returns the position of the current target, otherwise it will be the
+         * record of it.
          * 
-         * @param isWorld <code>true</code> si se desea obtener la posición
-         * mundial-global del objetivo, de lo contrario <code>false</code> para
-         * los posición local-relativa.
+         * @param isWorld <code>true</code> if the world/global position of the
+         * target is to be obtained, otherwise <code>false</code> for
+         * local/relative position.
          * 
-         * @return traslación del objetivo.
+         * @return translation of the target.
          */
         public Vector3f getLocalTranslation(boolean isWorld) {
             if (this.value == null) {
@@ -92,9 +86,9 @@ class AbstractJme3GL2camera implements Jme3GL2Camera {
         }
         
         /**
-         * Devuelve el objetivo si la hay, de lo contrario el valor es
+         * Returns the target if there is one, otherwise the value is
          * <code>null</code>.
-         * @return objetivo.
+         * @return target.
          */
         public E getValue() {
             return value;
@@ -102,16 +96,16 @@ class AbstractJme3GL2camera implements Jme3GL2Camera {
     }
     
     /**
-     * Mapa de atributos para el gestionamiento de la cámara.
+     * Attribute map for camera management.
      */
     private final Map<String, Object> attributes;
     
-    /** Objeto-objetivo. */
+    /** Object / Target. */
     protected final Target<Spatial> target;
 
     /**
-     * Constructor de la clase <code>AbstractjMe3GL2camera</code> donde se
-     * inicializar las propiedades-atributos de este objeto instanciado.
+     * Class constructor <code>AbstractjMe3GL2camera</code> where the
+     * properties/attributes of this instantiated object are initialized.
      */
     public AbstractJme3GL2camera() {
         this.attributes = new HashMap<>();
@@ -154,9 +148,9 @@ class AbstractJme3GL2camera implements Jme3GL2Camera {
     }
 
     /**
-     * Método encargado de generar un mensage de texto con las información de las
-     * propiedades utilizadas por el gestor de cámara.
-     * @return mensage-cadena.
+     * Method in charge of generating a text message with the information of the
+     * properties used by the camera manager.
+     * @return message/string.
      */
     @Override
     public String toString() {

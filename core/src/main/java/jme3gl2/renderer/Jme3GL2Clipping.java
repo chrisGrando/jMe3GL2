@@ -35,11 +35,11 @@ import com.jme3.math.FastMath;
 import com.jme3.math.Vector2f;
 
 /**
- * Un objeto de la clase <code>jMe3GL2Clipping</code> se encarga de gestionar los
- * cortes de la cámara 2D.
+ * An object of the class <code>Jme3GL2Clipping</code> is responsible for managing
+ * the 2D camera clipping.
  * <p>
- * En esta clase es donde se define el corte minimo y maxima, tanto un atrazo
- * como un adelanto de la cámara respector al objetivo que tiene.
+ * In this class is where you define the minimum and maximum clipping, both a
+ * backward and forward movement of the camera with respect to the target you have.
  * </p>
  * 
  * @author wil
@@ -49,23 +49,24 @@ import com.jme3.math.Vector2f;
  */
 public class Jme3GL2Clipping {
     
-    /** Recorte minimo. */
+    /** Minimum clipping. */
     private Vector2f minimum;
     
-    /** Recorte maximo. */
+    /** Maximum clipping. */
     private Vector2f maximum;
     
-    /** Punto de atraso o adelanto.
+    /**
+     * Backward or forward point.
      * <p>
-     * Es decir, el desface que tendrá la cámara con respector a su
-     * objetivo(si tiene uno establecido).
+     * That is, the offset that the camera will have with respect to it's target
+     * (if it has one set).
      * </p>
      */
     private Vector2f offset;
 
     /**
-     * Constructor de la clase <code>Clipping</code> donde se inicializa los
-     * objetos de recorte y desface.
+     * Class constructor <code>Jme3GL2Clipping</code> where the clipping and
+     * offset objects are initialized.
      */
     public Jme3GL2Clipping() {
         this.maximum = new Vector2f(0.0F, 0.0F);
@@ -74,12 +75,12 @@ public class Jme3GL2Clipping {
     }
     
     /**
-     * Método encargado de calcular la posición de la cámara dentro de los
-     * rangos de recortes.
+     * Method responsible for calculating the camera position within the
+     * clipping ranges.
      * 
-     * @param x posición del objeto en el eje {@code x}.
-     * @param y posición del objeto en el eje {@code y}.
-     * @return nueva posición calculada.
+     * @param x position of the object on the axis {@code x}.
+     * @param y position of the object on the axis {@code y}.
+     * @return new calculated position.
      */
     public Vector2f clamp(float x, float y) {
         if (isClipping()) {
@@ -90,33 +91,34 @@ public class Jme3GL2Clipping {
     }
 
     /**
-     * Determina si hay un recorte que aplicar.
-     * @return un valor boolean.
+     * Determine if there is a clipping to be applied.
+     * @return boolean.
      */
     public boolean isClipping() {
         return minimum != null && maximum != null;
     }
     
     /**
-     * Establece un nuevo recorte <code>Minima</code>.
-     * @param minimum nuevo recorte.
+     * Establishes a new clipping <code>Minimum</code>.
+     * @param minimum new clipping.
      */
     public void setMinimum(Vector2f minimum) {
         this.minimum = minimum;
     }
 
     /**
-     * Establece un nuevo recorte <code>Maxima</code>.
-     * @param maximum nuevo recorte.
+     * Establishes a new clipping <code>Maximum</code>.
+     * @param maximum new clipping.
      */
     public void setMaximum(Vector2f maximum) {
         this.maximum = maximum;
     }
 
     /**
-     * Método encargado de establecer una nueva desface. Si el valor es
-     * <code>null</code>, dicho desfaces será de <code>0</code>.
-     * @param offset nuevo punto de esface.
+     * Method in charge of establishing a new offset. If the value is
+     * <code>null</code>, such a offset will be of <code>0</code>.
+     * 
+     * @param offset new offset point.
      */
     public void setOffset(Vector2f offset) {
         if (offset == null) {
@@ -127,24 +129,24 @@ public class Jme3GL2Clipping {
     }
 
     /**
-     * Devuelve un valor de recorte-minima.
-     * @return recorte.
+     * Returns a minimum clipping value.
+     * @return clipping.
      */
     public Vector2f getMinimum() {
         return minimum;
     }
 
      /**
-     * Devuelve un valor de recorte-maxima.
-     * @return recorte.
+     * Returns a maximum clipping value.
+     * @return clipping.
      */
     public Vector2f getMaximum() {
         return maximum;
     }
 
     /**
-     * Devuelve el valor del desface.
-     * @return desface.
+     * Returns the value of the offset.
+     * @return offset.
      */
     public Vector2f getOffset() {
         return offset;

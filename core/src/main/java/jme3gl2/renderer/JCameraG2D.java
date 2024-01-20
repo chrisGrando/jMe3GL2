@@ -40,21 +40,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Un objeto de la clase <code>JCameraG2D</code> se encarga de gestionar el
- * comportamiento de la cámara predeterminada de los juegos <code>JME</code>
- * en 2D.
+ * An object of the class <code>JCameraG2D</code> is responsible for managing
+ * the behavior of the default camera in games <code>JME</code> in 2D.
  * <p>
- * Con esta clase podemos simular un mundo en dos dimensiones, para manejar las
- * propiedades del gestor de la cámara se pueden utilizar lo siguiente:
- * Lista de propiedades:
+ * With this class we can simulate a two-dimensional world, to handle the
+ * properties of the camera manager we can use the following:
+ * </p>
+ * <p>
+ * List of properties:
+ * </p>
  * <ul>
- * <li><b>FollowInterpolationAmount</b>: Define la velociad de interpolación con
- * que se mueve la cámara</li>
- * <li><b>CameraDistanceFrustum</b>: Define la distancia de la cámra con los
- * objetos de la escena.</li>
- * <li><b>InterpolationByTPF</b>: <code>true</code> si se utiliza una transición
- * ademas de la interpolación normal, es decir el valor de interpolación es
- * multiplicado por los fps</li>
+ *  <li><b>FollowInterpolationAmount</b>: Defines the interpolation speed at
+ *  which the camera is moved.</li>
+ *  <li><b>CameraDistanceFrustum</b>: Defines the distance of the camera from
+ *  the objects in the scene.</li>
+ *  <li><b>InterpolationByTPF</b>: <code>true</code> if a transition is used in
+ *  addition to the normal interpolation, i.e. the interpolation value is multiplied by FPS.</li>
  * </ul>
  * 
  * @author wil
@@ -65,21 +66,21 @@ import java.util.logging.Logger;
 @SuppressWarnings("unchecked")
 public class JCameraG2D extends AbstractJme3GL2camera {
     
-    /** Logger de la clase. */
+    /** Class logger. */
     private static final Logger LOG = Logger.getLogger(JCameraG2D.class.getName());
     
-    /** Posición de la cámara. */
+    /** Camera position. */
     private final Vector3f position;
     
-    /** Recortes de la cámara. */
+    /** Camera clipping. */
     private final Jme3GL2Clipping clipping;
     
-    /** Camara-3D a gestionar en 2D. */
+    /** 3D camera to be managed in 2D. */
     private Camera camera3D;
 
     /**
-     * Constructor predeterminado de la clase <code>Camera2D</code> donde se
-     * inicializa los objeto a utiliza.
+     * Default class constructor <code>Camera2D</code> where the objects to be
+     * used are initialized.
      */
     public JCameraG2D() {
         this.position = new Vector3f();
@@ -94,7 +95,7 @@ public class JCameraG2D extends AbstractJme3GL2camera {
      */
     @Override
     public void initialize(Camera cam) {
-        // Debemos cambiar la proyección de la cámara.
+        // We must change the camera projection
         camera3D = cam;
         camera3D.setParallelProjection(true);
         
@@ -134,9 +135,9 @@ public class JCameraG2D extends AbstractJme3GL2camera {
     }
     
     /**
-     * Devuelve el objetio de la cámara.
-     * @param <T> tipo de dato.
-     * @return objetivo.
+     * Returns the camera target.
+     * @param <T> data type.
+     * @return target.
      */
     public <T extends Spatial> T getTarget() {
         return (T) target.getValue();

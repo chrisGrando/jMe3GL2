@@ -8,28 +8,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Un objeto de la clase <code>JCameraG3D</code> se encarga de gestionar la
- * cámara en 3D.
+ * An object of the class <code>JCameraG3D</code> is responsible for managing
+ * the 3D camera.
  * <p>
- * Con este gestor de cámara podemos crera escenas minimalistas, es decir que
- * podemos acercar los sprites a la cámara lo mas que podemos para tener varias
- * perspectivas de la escena-mundo.
+ * With this camera manager we can create minimalistic scenes, that is to say
+ * that we can bring the sprites as close to the camera as we can to have several
+ * perspectives of the scene/world.
+ * </p>
  * <p>
- * Para manejar las
- * propiedades del gestor de la cámara se pueden utilizar lo siguiente:
- * Lista de propiedades:
+ * The following can be used to manage the properties of the camera manager:
+ * </p>
+ * <p>
+ * List of properties:
+ * </p>
  * <ul>
- * <li><b>FollowInterpolationAmount</b>: Define la velociad de interpolación con
- * que se mueve la cámara</li>
- * <li><b>CameraDistanceFrustum</b>: Define la distancia de la cámra con los
- * objetos de la escena.</li>
- * <li><b>InterpolationByTPF</b>: <code>true</code> si se utiliza una transición
- * ademas de la interpolación normal, es decir el valor de interpolación es
- * multiplicado por los fps</li>
- * <li><b>SmoothingDepth</b>: <code>true</code> si se aplica la distancia sin
- * ninguna interpolación, de lo contrario <code>false</code> donde la distancia
- * de la cámara tiene una trancición. Esto es valído si <code>InterpolationByTPF</code>
- * no esta activa(<code>false</code>)</li>
+ *  <li><b>FollowInterpolationAmount</b>: Defines the interpolation speed at
+ *  which the camera moves.</li>
+ *  <li><b>CameraDistanceFrustum</b>: Defines the distance of the camera from
+ *  the objects in the scene.</li>
+ *  <li><b>InterpolationByTPF</b>: <code>true</code> if a transition is used in
+ *  addition to the normal interpolation, i.e. the interpolation value is
+ *  multiplied by the FPS.</li>
+ *  <li><b>SmoothingDepth</b>: <code>true</code> if the distance is applied
+ *  without any interpolation, otherwise <code>false</code> where the camera
+ *  distance has a transition. This is valid if <code>InterpolationByTPF</code>
+ *  is not active (<code>false</code>).</li>
  * </ul>
  * 
  * @author wil
@@ -39,21 +42,21 @@ import java.util.logging.Logger;
  */
 public class JCameraG3D extends AbstractJme3GL2camera {
 
-    /** Logger de la clase. */
+    /** Class logger. */
     private static final Logger LOG = Logger.getLogger(JCameraG3D.class.getName());
 
-    /** Posición de la cámara. */
+    /** Camera position. */
     private final Vector3f position;
     
-    /** Recortes de la cámara. */
+    /** Camera clipping. */
     private final Jme3GL2Clipping clipping;
     
-    /** Camara-3D a gestionar en 2D. */
+    /** 3D camera to be managed in 2D. */
     private Camera cam;
 
     /**
-     * Constructor predeterminado de la clase <code>JCameraG3D</code> donde se
-     * inicializa los objeto a utiliza.
+     * Default class constructor <code>JCameraG3D</code> where the objects to be
+     * used are initialized.
      */
     public JCameraG3D() {
         this.position = new Vector3f(0.0F, 0.0F, 0.0F);

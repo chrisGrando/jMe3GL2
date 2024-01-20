@@ -31,8 +31,8 @@
  */
 
 /**
- * En este paquete se alojan los objetos que se encargan de la renderización
- * de los modelos 2D, así como el manejo de la cámara en 2D.
+ * This package contains the objects that are responsible for rendering the 2D
+ * models, as well as the 2D camera management.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
