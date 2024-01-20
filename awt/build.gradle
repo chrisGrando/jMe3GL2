@@ -41,7 +41,14 @@ tasks.register('myJavadocs', Javadoc) {
     source = sourceSets.main.allJava
 }
 
-build.finalizedBy('generatePomFileForMavenJavaPublication')
+tasks.register('copyPomFileToLibsFolder', Copy) {
+    dependsOn 'generatePomFileForMavenJavaPublication'
+    from "${buildDir}/publications/mavenJava/pom-default.xml"
+    into "${buildDir}/libs"
+    rename 'pom-default.xml', 'jMe3GL2-awt-' + version + '.pom'
+}
+
+build.finalizedBy('copyPomFileToLibsFolder')
 
 gradle.projectsEvaluated {
     tasks.withType(JavaCompile).tap {
