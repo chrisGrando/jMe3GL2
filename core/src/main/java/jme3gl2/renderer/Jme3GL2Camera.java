@@ -47,10 +47,10 @@ public interface Jme3GL2Camera {
     void update(float tpf);
     
     /**
-     * Returns a trimmer object, where it is in charge of managing the camera
+     * Returns a clipping object, where it is in charge of managing the camera
      * limits.
      * 
-     * @return trimmer object.
+     * @return clipping object.
      */
     public Jme3GL2Clipping getClipping();
     
