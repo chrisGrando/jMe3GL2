@@ -41,10 +41,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Clase <code>AnimatedSprite</code> se encarga de proporcionar un control de
- * manejo de múltiples texturas.
+ * Class <code>AnimatedSprite</code> is responsible for providing multiple
+ * texture handling control.
  * <br>
- * <b>Con esta clase podemos crear animaciones.</b>
+ * <b>With this class we can create animations.</b>
  * 
  * @author wil
  * @version 1.5-SNAPSHOT
@@ -53,36 +53,36 @@ import java.util.logging.Logger;
  */
 public class AnimatedSprite extends AbstractAnimatedControl<Texture> {
     
-    /** Logger de la clase. */
+    /** Class logger. */
     private static final Logger LOG = Logger.getLogger(AnimatedSprite.class.getName());
 
-    /** Material del 'modelos 2D.' */
+    /** 2D model material. */
     private Material mat;
     
     /**
-     * {@code true} si la malla del modelo se redimensiona deacuerdo con las
-     * dimensiones de su textura-sprite, de lo contrario {@code false}.
+     * {@code true} if the mesh of the model is resized according to the
+     * dimensions of its texture/sprite, otherwise {@code false}.
      */
     protected boolean dynamic;
     
     /**
-     * Tipo de escalado.
+     * Scaling type.
      * @see ScaleType
      */
     protected ScaleType scaleType;
 
-    /** Dimensiones originales de la malla. */
+    /** Original mesh dimensions. */
     protected Vector2f originalDim;
     
     /**
-     * Constructor predeterminado de la clase {@code AnimatedSprite}.
+     * Default class constructor {@code AnimatedSprite}.
      */
     public AnimatedSprite() {
     }
 
     /**
-     * Construcor de la clase <code>AnimatedSprite</code>.
-     * @param lighting un valor boolean.
+     * Class constructor <code>AnimatedSprite</code>.
+     * @param lighting boolean.
      */
     public AnimatedSprite(boolean lighting) {
         super(lighting);
@@ -101,9 +101,9 @@ public class AnimatedSprite extends AbstractAnimatedControl<Texture> {
     }
 
     /**
-     * Implementación del método <code>addAnimation(String, E[])</code>.
-     * @param name Un {@code String} como clave.
-     * @param frames Un arreglo de {@code Texture} como valor.
+     * Implementation of the method <code>addAnimation(String, E[])</code>.
+     * @param name An {@code String} as key.
+     * @param frames An array of {@code Texture} as value.
      */
     @Override
     public void addAnimation(String name, Texture[] frames) {
@@ -115,9 +115,9 @@ public class AnimatedSprite extends AbstractAnimatedControl<Texture> {
     }
 
     /**
-     * Implementación del método <code>playAnimation(String, float)</code>.
-     * @param name Un {@code String} como clave.
-     * @param timePerFrame Un {@code Float} como valor.
+     * Implementation of the method <code>playAnimation(String, float)</code>.
+     * @param name An {@code String} as key.
+     * @param timePerFrame An {@code Float} as value.
      */
     @Override
     public void playAnimation(String name, float timePerFrame) {
@@ -148,7 +148,7 @@ public class AnimatedSprite extends AbstractAnimatedControl<Texture> {
     }
 
     /**
-     * Establece un nuevo estado de animación.
+     * Sets a new animation state.
      * @param dynamic boolean
      * @see AnimatedSprite#dynamic
      */
@@ -157,19 +157,17 @@ public class AnimatedSprite extends AbstractAnimatedControl<Texture> {
     }
 
     /**
-     * Establece un nuevo tipo de escalado.
-     * @param scaleType tipo-escala.
+     * Sets a new type of scaling.
+     * @param scaleType scale type.
      */
     public void setScaleType(ScaleType scaleType) {
         this.scaleType = scaleType;
     }
     
     /**
-     * Método encargado de gestionar las dimensiones dinamicas de un modelo
-     * 2D animado.
-     * 
-     * @param text textura.
-     * @return nuevo tamaño.
+     * Method for managing the dynamic dimensions of an animated 2D model.
+     * @param text texture.
+     * @return new size.
      */
     private Vector2f getDynamicSize(Texture text) {
         float max, min;
@@ -211,8 +209,8 @@ public class AnimatedSprite extends AbstractAnimatedControl<Texture> {
     }
 
     /**
-     * Implementación del método <code>controlUpdate(float)</code>.
-     * @param tpf Un {@code Float} como valor.
+     * Implementation of the method <code>controlUpdate(float)</code>.
+     * @param tpf An {@code Float} as value.
      * @see AbstractAnimatedControl#controlUpdate(float) 
      */
     @Override

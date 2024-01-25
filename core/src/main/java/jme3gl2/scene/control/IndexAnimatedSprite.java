@@ -35,10 +35,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Clase <code>IndexAnimatedSprite</code> se encarga de proporcionar un control
- * de manejo para la manipulación de la malla.
+ * Class <code>IndexAnimatedSprite</code> is responsible for providing handling
+ * control for mesh handling.
  * <br>
- * <b>Con esta clase podemos crear animaciones.</b>
+ * <b>With this class we can create animations.</b>
  * 
  * @author wil
  * @version 1.5-SNAPSHOT
@@ -47,20 +47,20 @@ import java.util.logging.Logger;
  */
 public class IndexAnimatedSprite extends AbstractAnimatedControl<Integer>{
 
-    /** Logger de la clase. */
+    /** Class logger. */
     private static final Logger LOG = Logger.getLogger(IndexAnimatedSprite.class.getName());
 
     /**
-     * Constructor predeterminado de la clase {@code IndexAnimatedSprite}.
+     * Default class constructor {@code IndexAnimatedSprite}.
      */
     public IndexAnimatedSprite() {
         super(false);
     }
     
     /**
-     * Implementación del método <code>addAnimation(String, E[])</code>.
-     * @param name Un {@code String} como clave.
-     * @param frames Un arreglo de {@code Integer} como valor.
+     * Implementation of the method <code>addAnimation(String, E[])</code>.
+     * @param name An {@code String} as key.
+     * @param frames An array of {@code Integer} as value.
      */
     @Override
     public void addAnimation(String name, Integer[] frames) {
@@ -72,9 +72,9 @@ public class IndexAnimatedSprite extends AbstractAnimatedControl<Integer>{
     }
 
     /**
-     * Implementación del método <code>playAnimation(String, float)</code>.
-     * @param name Un {@code String} como clave.
-     * @param timePerFrame Un {@code Float} como valor.
+     * Implementation of the method <code>playAnimation(String, float)</code>.
+     * @param name An {@code String} as key.
+     * @param timePerFrame an {@code Float} as value.
      * @see AbstractAnimatedControl#playAnimation(java.lang.String, float) 
      */
     @Override
@@ -99,8 +99,8 @@ public class IndexAnimatedSprite extends AbstractAnimatedControl<Integer>{
     }
 
     /**
-     * Implementación del método <code>controlUpdate(float)</code>.
-     * @param tpf Un {@code Float} como valor.
+     * Implementation of the method <code>controlUpdate(float)</code>.
+     * @param tpf An {@code Float} as value.
      * @see AbstractAnimatedControl#controlUpdate(float) 
      */
     @Override

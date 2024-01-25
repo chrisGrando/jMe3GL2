@@ -31,17 +31,17 @@
  */
 
 /**
- * Paquete encargado de proprocionar controles para las animaciones 2D(Sprites).
+ * Package in charge of providing controls for 2D animations (Sprites).
  * 
  * <div>
- * <ul>
- * <li>
- *  <b>AnimatedSprite:</b> Control de animaciones individuales.
- * </li>
- * <li>
- *  <b>IndexAnimatedSprite:</b> Contro para un mapa de animaciones.
- * </li>
- * </ul>
+ *  <ul>
+ *   <li>
+ *    <b>AnimatedSprite:</b> Control of individual animations.
+ *   </li>
+ *   <li>
+ *    <b>IndexAnimatedSprite:</b> Control for a map of animations.
+ *   </li>
+ *  </ul>
  * </div>
  * 
  * @author wil

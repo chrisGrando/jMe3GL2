@@ -39,22 +39,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Una animación con la clase <code>RibbonBoxAnimationSprite</code> utilza una
- * imagen como cinta animada, en donde se puede controlar la animación por
- * medio de cuadros.
+ * An animation with the class <code>RibbonBoxAnimationSprite</code> uses an
+ * image as an animated ribbon, where the animation can be controlled by frames.
  * 
  * <p>
- * <b>Ejemplo:</b>
+ * <b>Example:</b>
  * <pre><code>
- * Imagen:
- * +----+----+----+---+  // Donde A,B,C y D son imagenes que actuan como
- * | A  | B  | C  | D |  // un cuadros de una cinta.
+ * Image:
+ * 
+ * +----+----+----+---+
+ * | A  | B  | C  | D |
  * +----+----+----+---+
  *   0    1    2    3
  * 
- * Cada cuadro corresponde a un movimineto de la animación, por medio de los
- * cuadros podemos animar un modelo 2D, es como una cinta de película
+ * Where A, B, C and D are images that act as frames of a ribbon.
  * </code></pre>
+ * 
+ * Each frame corresponds to a movement of the animation, by means of the frames
+ * we can animate a 2D model, it's like a movie ribbon.
+ * </p>
  * 
  * @author wil
  * @version 1.5-SNAPSHOT
@@ -63,24 +66,24 @@ import java.util.logging.Logger;
  */
 public class RibbonBoxAnimationSprite extends AbstractAnimatedControl<RibbonBox> {
 
-    /** Logger de la clase. */
+    /** Class logger. */
     private static final Logger LOG = Logger.getLogger(RibbonBoxAnimationSprite.class.getName());
     
-    /** Indice actual de la caja de animaciones. */
+    /** Current index of the animation frame. */
     private int index;
 
-    /** Material del 'modelos 2D.' */
+    /** Material of the 2D models. */
     private Material mat;
 
     /**
-     * Constructor predeterminado de la clase {@code RibbonBoxAnimationSprite}.
+     * Default class constructor {@code RibbonBoxAnimationSprite}.
      */
     public RibbonBoxAnimationSprite() {
     }
 
     /**
-     * Construcor de la clase <code>ibbonBoxAnimationSprite</code>.
-     * @param lighting un valor boolean.
+     * Class constructor <code>ibbonBoxAnimationSprite</code>.
+     * @param lighting boolean.
      */
     public RibbonBoxAnimationSprite(boolean lighting) {
         super(lighting);
@@ -98,9 +101,9 @@ public class RibbonBoxAnimationSprite extends AbstractAnimatedControl<RibbonBox>
     }
     
     /**
-     * Implementación del método <code>addAnimation(String, E[])</code>.
-     * @param name Un {@code String} como clave.
-     * @param frames Un arreglo de {@code Integer} como valor.
+     * Implementation of the method <code>addAnimation(String, E[])</code>.
+     * @param name An {@code String} as key.
+     * @param frames An array of {@code Integer} as value.
      */
     @Override
     public void addAnimation(String name, RibbonBox... frames) {
@@ -115,9 +118,9 @@ public class RibbonBoxAnimationSprite extends AbstractAnimatedControl<RibbonBox>
     }
 
     /**
-     * Implementación del método <code>playAnimation(String, float)</code>.
-     * @param name Un {@code String} como clave.
-     * @param timePerFrame Un {@code Float} como valor.
+     * Implementation of the method <code>playAnimation(String, float)</code>.
+     * @param name An {@code String} as key.
+     * @param timePerFrame An {@code Float} as value.
      * @see AbstractAnimatedControl#playAnimation(java.lang.String, float) 
      */
     @Override
@@ -149,8 +152,8 @@ public class RibbonBoxAnimationSprite extends AbstractAnimatedControl<RibbonBox>
     }
 
     /**
-     * Implementación del método <code>controlUpdate(float)</code>.
-     * @param tpf Un {@code Float} como valor.
+     * Implementation of the method <code>controlUpdate(float)</code>.
+     * @param tpf An {@code Float} as value.
      * @see AbstractAnimatedControl#controlUpdate(float) 
      */
     @Override

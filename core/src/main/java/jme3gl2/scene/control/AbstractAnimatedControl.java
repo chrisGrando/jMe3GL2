@@ -48,84 +48,78 @@ import java.util.Set;
 import jme3gl2.physics.control.PhysicsBody2D;
 
 /**
- * Un <code>AbstractAnimatedControl</code> es el encargado de gestionar una plantilla
- * para aplicar una cierta animación a un <code>Sprite</code>.
+ * An <code>AbstractAnimatedControl</code> is in charge of managing a template
+ * for applying a certain animation to a <code>Sprite</code>.
  * <p>
- * Dependerá de cómo se quiere aplicar la animación, es decir si es una 
- * animación con texturas o una que manipule los vértices.</p>
+ * It will depend on how you want to apply the animation, i.e. whether it is an
+ * animation with textures or one that manipulates vertices.
+ * </p>
  * 
  * @author wil
  * @version 1.5-SNAPSHOT
- * @param <E> Tipo de animación.
+ * @param <E> animation type.
  * 
  * @since 1.0.0
  */
 public abstract 
 class AbstractAnimatedControl<E extends Object> extends AbstractControl {
     
-    /**
-     * Mapa de animaciones.
-     */
-    protected Map<String, E[]> animations 
-                                = new HashMap<>();
+    /** Animation map. */
+    protected Map<String, E[]> animations = new HashMap<>();
     
     /**
-     * Mapa encargado de almacenar los oyentes de cambio para las animaciones
-     * para poder gestionarse desde afuera.
+     * Map in charge of storing the change listeners for the animations so that
+     * they can be managed from the outside.
      */
     protected List<SpriteAnimationChangeListener<PhysicsBody2D>> animationChangeListeners = 
-            new ArrayList<>();
+        new ArrayList<>();
     
     /**
-     * <code>true</code> si la animación se repite constante mente de principio
-     * a fin, de lo contrario <code>false</code> para animar un 'tira' donde
-     * se detiene una vez alcanzado el límite(tamaño) establecido.
+     * <code>true</code> if the animation is repeated constantly from beginning
+     * to end, otherwise <code>false</code> to animate a 'strip' where it stops
+     * once the set limit (size) is reached.
      */
     protected boolean loop;
     
-    /**
-     * Animación actual activa.
-     */
+    /** Current active animation. */
     protected E[] currentAnimation;
     
-    /** {@code Sprite} en donde se aplicara la animación. */
+    /** {@code Sprite} where the animation will be applied. */
     protected Sprite sprite;
     
-    /**
-     * Velocidad con la que se aplicará la animación.
-     */
+    /** Speed at which the animation will be applied. */
     protected float speed = 1;
     
-    /** Indice actual de las animaciones. */
+    /** Current index of animations. */
     protected int currentIndex;
     
-    /** Nombre actual de la animación. */
+    /** Current name of the animation. */
     protected String currentAnimationName;
     
-    /** Tiempo con que activará dicha animación. */
+    /** Time at which the animation will be activated. */
     protected float animationFrameTime = 1f;
     
-    /** El lapso de tiempo transcurrido. */
+    /** The lapse of time elapsed. */
     protected float elapsedeTime = 0f;
     
     /**
-     * <code>true</code> si se esta utilizando un meterial del tipo: <code>
-     * Common/MatDefs/Light/Lighting.j3md</code> o que herede del mismo, de 
-     * lo contrario sera <code>false</code>.
+     * <code>true</code> if you are using a material of type: <code>
+     * Common/MatDefs/Light/Lighting.j3md</code> or inherit from it, otherwise
+     * it will be <code>false</code>.
      */
     protected boolean lighting;
 
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     public AbstractAnimatedControl() {
         this(false);
     }
 
     /**
-     * Constructor de la clase <code>AbstractAnimatedControl</code> donde se
-     * puede especificar el tipo de material que se esta utilizando.
-     * @param lighting un valor boolean.
+     * Class constructor <code>AbstractAnimatedControl</code> where you can
+     * specify the type of material you are using.
+     * @param lighting boolean.
      */
     public AbstractAnimatedControl(boolean lighting){
         this.lighting = lighting;
@@ -133,30 +127,30 @@ class AbstractAnimatedControl<E extends Object> extends AbstractControl {
     }
     
     /**
-     * Método encargado de agregar un nuevo oyemte a la lista.
-     * @param sacl nuevo-oyente de cambios.
+     * Method for adding a new listener to the list.
+     * @param sacl new listener of changes.
      */
     public void addSpriteAnimationChangeListener(SpriteAnimationChangeListener<PhysicsBody2D> sacl) {
         this.animationChangeListeners.add(sacl);
     }
     
     /**
-     * Elimina un oyente registrado previamente.
-     * @param sacl oyente a eliminar.
+     * Deletes a previously registered listener.
+     * @param sacl listener to be eliminated.
      */
     public void removeSpriteAnimationChangeListener(SpriteAnimationChangeListener<PhysicsBody2D> sacl) {
         this.animationChangeListeners.remove(sacl);
     }
     
     /**
-     * Limpia los 'registros' de todo los oyentes.
+     * Clears the 'records' of all listeners.
      */
     public void removeAllSpriteAnimationChangeListener() {
         this.animationChangeListeners.clear();
     }
     
     /**
-     * Devuelve <code>true</code> si la animación es infinita, de lo contrario
+     * Returns <code>true</code> if the animation is infinite, otherwise
      * <code>false</code>.
      * @return boolean.
      */
@@ -165,7 +159,7 @@ class AbstractAnimatedControl<E extends Object> extends AbstractControl {
     }
 
     /**
-     * Establece el estado de este control de animación.
+     * Sets the status of this animation control.
      * @param loop boolean.
      */
     public void setLoop(boolean loop) {
@@ -173,8 +167,8 @@ class AbstractAnimatedControl<E extends Object> extends AbstractControl {
     }
     
     /**
-     * Método encargado de disparar el evento de cambio de animación para
-     * notificarlo en el oyente.
+     * Method in charge of triggering the animation change event to notify the
+     * listener.
      */
     protected void fireSpriteAnimationChangeListener() {
         for (final SpriteAnimationChangeListener<PhysicsBody2D> changeListener : this.animationChangeListeners) {
@@ -207,32 +201,32 @@ class AbstractAnimatedControl<E extends Object> extends AbstractControl {
     }
 
     /**
-     * Devuelve el nombre actiaul de la anicación actual aplicada.
-     * @return nombre-animación.
+     * Returns the current name of the current animation applied.
+     * @return animation name.
      */
     public String getCurrentAnimationName() {
         return currentAnimationName;
     }
 
     /**
-     * Devuelve una {@code Set} con los nombres de las animaciones.
-     * @return Lista de nombres.
+     * Returns a {@code Set} with the names of the animations.
+     * @return list of names.
      */
     public Set<String> getAnimations() {
         return animations.keySet();
     }
 
     /**
-     * Devuelve la velocidad de la animación.
-     * @return Velocidad de animación.
+     * Returns the speed of the animation.
+     * @return animation speed.
      */
     public float getSpeed() {
         return speed;
     }
 
     /**
-     * Establece una nueva velocidad para las animaciones.
-     * @param speed Velocidad de animación.
+     * Sets a new speed for animations.
+     * @param speed animation speed.
      */
     public void setSpeed(float speed) {
         this.speed = speed;
@@ -245,31 +239,32 @@ class AbstractAnimatedControl<E extends Object> extends AbstractControl {
      * @see AbstractControl#render(com.jme3.renderer.RenderManager, com.jme3.renderer.ViewPort) 
      */
     @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) { }
+    protected void controlRender(RenderManager rm, ViewPort vp) {
+    }
     
     /**
-     * Método encargado de agregar una nueva animación a la lista.
-     * @param name Nombre de la animación.
-     * @param frames Areglo de la nimación (datos).
+     * Method in charge of adding a new animation to the list.
+     * @param name name of the animation.
+     * @param frames animation setup (data).
      */
     public abstract void addAnimation(String name, E[] frames);
     
     /**
-     * Método encargado de iniciar con una animación.
-     * @param name Nombre de la animación.
-     * @param timePerFrame Tiempo por cuadro.
+     * Method responsible for starting an animation.
+     * @param name name of the animation.
+     * @param timePerFrame time per frame.
      */
     public abstract void playAnimation(String name, float timePerFrame);
     
     /**
-     * Método encargado de gestionar el nombre del párametro que se utiliza
-     * para establecer la textura de un material.
+     * Method for managing the name of the parameter used to establish the
+     * texture of a material.
      * <p>
-     * Si {@code lighting} es como valor <code>true</code>, en valor devuelto
-     * es: <b>DiffuseMap</b> para establecer una textura, de lo contrario
-     * <b>ColorMap</b>.
+     * If {@code lighting} is as a value <code>true</code>, in value returned is:
+     * <b>DiffuseMap</b> to set a texture, otherwise <b>ColorMap</b>.
+     * </p>
      * 
-     * @return nombre clave para establecer la textira.
+     * @return key name to establish the text.
      */
     protected String getNameParam() {
         return lighting ? "DiffuseMap" : "ColorMap";

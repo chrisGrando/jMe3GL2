@@ -34,26 +34,26 @@ package jme3gl2.scene.control;
 import jme3gl2.physics.control.PhysicsBody2D;
 
 /**
- * Un oyente <code>SpriteAnimationChangeListener</code> es una interfaz encargado
- * de gestionar los cambios de animación.
+ * An listener <code>SpriteAnimationChangeListener</code> is an interface in
+ * charge of managing animation changes.
  * <p>
- * Con esta interfaz se puede gestionar los cambios que aplicar un control de
- * animaciónm, es decir en que punto esta.
+ * With this interface you can manage the changes that an animation control
+ * applies, i.e. at what point it is at.
+ * </p>
  * 
  * @author wil
  * @version 1.0-SNAPSHOT 
- * @param <E> tipo-cuerpo.
+ * @param <E> body type.
  * 
  * @since 2.5.0
  */
 public interface SpriteAnimationChangeListener<E extends PhysicsBody2D> {
     
     /**
-     * Método encargado de notificar el cambio que se de en el controlador
-     * de animación.
+     * Method in charge of notifying the change in the animation controller.
      * 
-     * @param body cuerpo físico.
-     * @param index índice de la animación actual.
+     * @param body physical body.
+     * @param index index of the current animation.
      */
     void changeAnimation(E body, int index);
 }

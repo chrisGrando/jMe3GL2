@@ -44,8 +44,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Un objeto de la clase <code>RibbonBox</code> se encarga de gestionar la
- * textura y los cuadros de la animación por medio del control 
+ * An object of the class <code>RibbonBox</code> is in charge of managing the
+ * texture and frames of the animation by means of the control 
  * {@link RibbonBoxAnimationSprite}.
  * 
  * @author wil
@@ -55,40 +55,39 @@ import java.util.logging.Logger;
  */
 public class RibbonBox implements Savable, Cloneable {
 
-    /** Logger de la clase. */
+    /** Class logger. */
     private static final Logger LOG = Logger.getLogger(RibbonBox.class.getName());
 
-    /** Vector encargado de almacenar las columnas y files de la malla. */
-    private Vector2f columnsAndRows 
-            = new Vector2f(1.0F, 1.0F);
+    /** Vector in charge of storing the columns and files of the mesh. */
+    private Vector2f columnsAndRows = new Vector2f(1.0F, 1.0F);
     
-    /** Textura de esta cinta. */
+    /** Texture of this ribbon. */
     private Texture texture;
     
-    /** Cuadro de animación. */
+    /** Animation frames. */
     private int[] frames;
 
     /**
-     * {@code true} si esta cinta se está utilizando par la animación
-     * de un modelo 2D, de lo contrario {@code false}.
+     * {@code true} if this ribbon is being used for animation of a 2D model,
+     * otherwise {@code false}.
      */
     private boolean inAction;
     
     /**
-     * Constructor predeterminado.
+     * Default constructor.
      */
     protected RibbonBox() {
         this(null, new int[0], 0, 0);
     }
     
     /**
-     * Intancie un nuevo objeto de la clase <code>RibbonBox</code> para generar
-     * una cita de animación.
+     * Instantiate a new object of the class <code>RibbonBox</code> to generate
+     * an animation ribbon.
      * 
-     * @param texture textura animada.
-     * @param frames cuadro de animación.
-     * @param columns número de columnas para la nueva cinta.
-     * @param rows número de filas para la nueva cinta.
+     * @param texture animated texture.
+     * @param frames animation frames.
+     * @param columns number of columns for the new ribbon.
+     * @param rows number of rows for the new ribbon.
      */
     public RibbonBox(Texture texture, int[] frames, int columns, int rows) {
         this.columnsAndRows.set(columns, rows);
@@ -97,33 +96,29 @@ public class RibbonBox implements Savable, Cloneable {
     }
 
     /**
-     * Método encargado de generar un clon de este objeto.
+     * Method in charge of generating a clone of this object.
      * @see Object#clone() 
-     * @return Clon objeto.
+     * @return object clone.
      */
     @Override
-    public RibbonBox clone() {
-        try {
-            RibbonBox clon = (RibbonBox) super.clone();
-            clon.texture = texture != null ? texture.clone() : null;
-            clon.frames  = frames  != null ? frames.clone()  : null;
-            return clon;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
+    public RibbonBox clone() throws CloneNotSupportedException {
+        RibbonBox clon = (RibbonBox) super.clone();
+        clon.texture = texture != null ? texture.clone() : null;
+        clon.frames  = frames  != null ? frames.clone()  : null;
+        return clon;
     }
 
     /**
-     * Establece el estado de acción de esta cinta.
-     * @param inAction estado.
+     * Sets the action status of this ribbon.
+     * @param inAction status.
      */
-    void setInAction(boolean inAction) {
+    public void setInAction(boolean inAction) {
         this.inAction = inAction;
     }
 
     /**
-     * Establece una nueva textura animada.
-     * @param texture nueva textura.
+     * Sets a new animated texture.
+     * @param texture new texture.
      */
     public void setTexture(Texture texture) {
         if (inAction) {
@@ -134,8 +129,8 @@ public class RibbonBox implements Savable, Cloneable {
     }
 
     /**
-     * Establece un nuevo areglo de cuadros para la animación.
-     * @param frames nuevos cuadros.
+     * Sets a new frame array for the animation.
+     * @param frames new frames.
      */
     public void setFrames(int[] frames) {
         if (inAction) {
@@ -146,25 +141,24 @@ public class RibbonBox implements Savable, Cloneable {
     }
     
     /**
-     * Devuelve la textura actual.
-     * @return textura.
+     * Returns the current texture.
+     * @return texture.
      */
     public Texture getTexture() {
         return texture;
     }
 
     /**
-     * Devuelve los cuadro de la animación actual.
-     * @return cuadro animación.
+     * Returns the frames of the current animation.
+     * @return animation frames.
      */
     public int[] getFrames() {
         return frames;
     }
 
     /**
-     * Método encargado de gestionar el estado de está cinta.
+     * Method in charge of managing the status of this ribbon.
      * @see RibbonBox#inAction
-     * 
      * @return boolean.
      */
     public boolean inAction() {
@@ -172,16 +166,16 @@ public class RibbonBox implements Savable, Cloneable {
     }
     
     /**
-     * Devuelve el número de columnas.
-     * @return Columnas.
+     * Returns the number of columns.
+     * @return columns.
      */
     public int getColumns() {
         return (int) columnsAndRows.x;
     }
     
     /**
-     * Devuelve el número de filas.
-     * @return Filas.
+     * Returns the number of rows.
+     * @return rows.
      */
     public int getRows() {
         return (int) columnsAndRows.y;
@@ -193,7 +187,7 @@ public class RibbonBox implements Savable, Cloneable {
      * @param ex JmeExporter.
      * @see Savable#write(com.jme3.export.JmeExporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException exception.
      */
     @Override
     public void write(JmeExporter ex) throws IOException {
@@ -209,7 +203,7 @@ public class RibbonBox implements Savable, Cloneable {
      * @param im JmeImporter
      * @see Savable#read(com.jme3.export.JmeImporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException exception.
      */
     @Override
     public void read(JmeImporter im) throws IOException {

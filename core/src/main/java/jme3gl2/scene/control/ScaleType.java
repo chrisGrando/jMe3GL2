@@ -32,7 +32,7 @@
 package jme3gl2.scene.control;
 
 /**
- * Un <code>ScaleType</code> se encarga de definir el tipo de escala de un
+ * An <code>ScaleType</code> is responsible for defining the type of scale for a
  * <code>AbstractAnimatedControl</code>.
  *
  * @author wil
@@ -43,24 +43,24 @@ package jme3gl2.scene.control;
 public enum ScaleType {
 
     /**
-     * Toma el ancho de la textura como punto de referencia, es decir que el
-     * ancho es el 100%, mientras que el largo será escalado.
+     * It takes the width of the texture as a reference point, i.e. the width is
+     * 100%, while the height will be scaled.
      */
     GL2_WIDTH,
     
     /**
-     * Toma el largo de la textura como punto de referencia, es decir que el
-     * largo es el 100%, mientras que el ancho será escalado.
+     * It takes the height of the texture as a reference point, i.e. the height
+     * is 100%, while the width will be scaled.
      */
     GL2_HEIGHT,
     
     /**
-     * Se toma en valor maximo (ancho-largo) como referencia.
+     * The maximum value (width or height) is taken as a reference.
      */
     GL2_MAX,
     
     /**
-     * Se toma en valor minimo (ancho-largo) como referencia.
+     * The minimum value (width or height) is taken as a reference.
      */
     GL2_MIN;
 }
