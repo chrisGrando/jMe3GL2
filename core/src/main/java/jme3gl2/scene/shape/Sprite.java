@@ -77,8 +77,8 @@ import java.io.IOException;
  * </p>
  * 
  * <pre><code>
- * width  : 1.0F -> Equivalent to 100%
- * height : 0.5F -> Equivalent to 50%
+ * width  : 1.0F --- Equivalent to 100%
+ * height : 0.5F --- Equivalent to 50%
  * </code></pre>
  * 
  * <p>

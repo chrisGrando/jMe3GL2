@@ -44,6 +44,8 @@ import java.util.logging.Logger;
  * 
  * <p>
  * <b>Example:</b>
+ * </p>
+ * 
  * <pre><code>
  * Image:
  * 
@@ -55,6 +57,7 @@ import java.util.logging.Logger;
  * Where A, B, C and D are images that act as frames of a ribbon.
  * </code></pre>
  * 
+ * <p>
  * Each frame corresponds to a movement of the animation, by means of the frames
  * we can animate a 2D model, it's like a movie ribbon.
  * </p>
