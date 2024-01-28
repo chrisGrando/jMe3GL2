@@ -31,10 +31,10 @@
  */
 
 /**
- * En este paquete se aloja la forma que pueden tener los modelos 2D.
+ * This package contains the shape that 2D models can have.
  * <p>
- * Existe una sola forma de un modelo. La clase <code>Sprite</code> es la malla
- * predetermina que utilizan los modelos 2D, es decir las geometrías de jme3.
+ * There is only one form of a model. The type <code>Sprite</code> is the default
+ * mesh used by the 2D models, i.e. the geometries of the JME3.
  * </p>
  * 
  * @author wil

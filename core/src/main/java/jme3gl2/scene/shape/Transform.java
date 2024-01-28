@@ -42,14 +42,16 @@ import com.jme3.math.Vector3f;
 import java.io.IOException;
 
 /**
- * Un objeto <code>Transform</code> es el encargado de gestionar la 
- * transformación de la malla <code>Sprite</code> para 'modelos 2D'.
+ * An object <code>Transform</code> is in charge of managing the transformation
+ * of the mesh <code>Sprite</code> for 2D models.
  * <p>
- * Con esta clase se puede manipular las vértices de la malla, así como las 
- * coordenadas de ello para que se pueda voltear.</p>
+ * With this class you can manipulate the vertices of the mesh, as well as the
+ * coordinates of the mesh so that it can be flipped.
+ * </p>
  * <p>
- * <b>NOTA:</b> No cambie directamente las propiedades de su malla con esta
- * clase, utilice los métodos proprocionados por la malla<code>Sprite</code></p>.
+ * <b>NOTE:</b> Do not directly change the properties of your mesh with this
+ * class, use the methods provided by the mesh <code>Sprite</code>.
+ * </p>.
  * 
  * @author wil
  * @version 1.5-SNAPSHOT
@@ -60,90 +62,81 @@ public final
 class Transform implements Savable, Cloneable {
     
     /**
-     * Un {@code FlipType} es una clase interna encargada de la enumeración de
-     * los diferentes tipos de volteados que la malla {@code Sprite} puede 
-     * hacer.
+     * An {@code FlipType} is an internal class in charge of the enumeration of
+     * the different types of flips that the mesh {@code Sprite} can have.
      */
     public static enum FlipType {
         
         /**
-         * Voltea horizontalmente, haciendo que el objeto mire hacia el
-         * otra forma (izquierda/derecha).
+         * Flip horizontally, making the object face the other way (left/right).
          */
         Flip_H, 
         
         /**
-         * Voltea verticalmente, haciendo que el objeto mire hacia el
-         * otra forma (arriba/abajo).
+         * Flip vertically, making the object face the other way (up/down).
          */
         Flip_V, 
         
         /**
-         * Cuando desee voltear horizontal y verticalmente al mismo
-         * tiempo, puede utilizar esta opción.
+         * When you want to flip horizontally and vertically at the same time,
+         * you can use this option.
          */
         Flip_HV, 
         
         /**
-         * Deje las coordenadas de textura del objeto de malla como están.
+         * Leave the texture coordinates of the mesh object as they are.
          */
         NonFlip;
     }
     
     /**
-     * Vector encargado de almacenar las dimensiones de la malla {@code Sprite}
-     * en 2D.
+     * Vector in charge of storing mesh dimensions of the {@code Sprite} in 2D.
      */
-    private Vector2f size 
-            = new Vector2f(0.0F, 0.0F);
+    private Vector2f size = new Vector2f(0.0F, 0.0F);
     
-    /** Vector encargado de almacenar las columnas y files de la malla. */
-    private Vector2f columnsAndRows 
-            = new Vector2f(1.0F, 1.0F);
+    /** Vector in charge of storing the columns and rows of the mesh. */
+    private Vector2f columnsAndRows = new Vector2f(1.0F, 1.0F);
     
-    /** Vector encargado de almacenar las posiciones. */
-    private Vector2f position 
-            = new Vector2f(0.0F, 0.0F);
+    /** Vector in charge of storing the positions. */
+    private Vector2f position = new Vector2f(0.0F, 0.0F);
     
-    /** Vector encargado de almacenar el valor de escala. */
-    private Vector2f scale 
-            = new Vector2f(1.0F, 1.0F);
+    /** Vector in charge of storing the scale value. */
+    private Vector2f scale = new Vector2f(1.0F, 1.0F);
     
     /**
-     * Tipo de volteo.
+     * Type of flip.
      * 
      * @see FlipType
      */
-    private FlipType flipType 
-                = FlipType.NonFlip;
+    private FlipType flipType = FlipType.NonFlip;
 
     /**
-     * Solo serialización. No utilice.
+     * Serialization only. Do not use.
      */
     public Transform() {        
     }
     
     /**
-     * Instancia un nuevo objeto <code>Transform</code>. Establezca las 
-     * dimensiones que tendrá los vértices de la malla.
+     * Instantiate a new object <code>Transform</code>. Set the dimensions of
+     * the mesh vertices.
      * 
-     * @param width el ancho deseado.
-     * @param height la altura deseada.
+     * @param width the desired width.
+     * @param height the desired height.
      */
     public Transform(float width, float height) {
         this(width, height, 1, 1, 0, 0);
     }
     
     /**
-     * Instancia un nuevo objeto <code>Transform</code>. Establezca los valores
-     * predeterminados de la transformación.
+     * Instantiate a new object <code>Transform</code>. Set the default values
+     * of the transformation.
      * 
-     * @param width el ancho deseado.
-     * @param height la altura deseada.
-     * @param columns número de columnas deseada. 
-     * @param rows número de filas deseada.
-     * @param colPosition posición de columna.
-     * @param rowPosition posición de fila.
+     * @param width the desired width.
+     * @param height the desired height.
+     * @param columns desired number of columns.
+     * @param rows desired number of rows.
+     * @param colPosition column position.
+     * @param rowPosition row position.
      */
     public Transform(float width, float height, int columns, int rows, int colPosition, int rowPosition) {
         this.size.set(width, height);                
@@ -154,7 +147,7 @@ class Transform implements Savable, Cloneable {
     /**
      * (non-JavaDoc.)
      * @see Object#clone() 
-     * @return Clon.
+     * @return Clone.
      */
     @Override
     public Transform clone() {
@@ -172,20 +165,20 @@ class Transform implements Savable, Cloneable {
     }
     
     /**
-     * Método encargado de generar las posiciones de los vértices en el espacio. 
-     * @return Vértices para una malla 2D.
+     * Method in charge of generating the positions of the vertices in space.
+     * @return vertices for a 2D mesh.
      */
     public Vector3f[] getVertices() {
         Vector3f[] vertices = new Vector3f[4];
         
         /*
-         * Establecemos los valore del ancho y la altura de la malla, luego
-         * se escala con los valores respectivos (x, y).
+        We set the values of the width and height of the mesh, then scale it
+        with the respective values (x,y).
         */
         float width  = size.getX() * scale.getX(), 
               height = size.getY() * scale.getY();
         
-        // Posiciones de los vértices en el espacio
+        // Positions of vertices in space
         vertices[0] = new Vector3f(-width * 0.5f, -height * 0.5f, 0f);
         vertices[1] = new Vector3f(width * 0.5f, -height * 0.5f, 0f);
         vertices[2] = new Vector3f(-width * 0.5f, height * 0.5f, 0f);
@@ -194,8 +187,8 @@ class Transform implements Savable, Cloneable {
     }
     
     /**
-     * Método encargado de generar las coordenadas de la textura.
-     * @return Coordenadas textura.
+     * Method in charge of generating the texture coordinates.
+     * @return texture coordinates.
      */
     public Vector2f[] getTextureCoordinates() {
         Vector2f[] texCoord = new Vector2f[4];
@@ -241,8 +234,8 @@ class Transform implements Savable, Cloneable {
     }
 
     /**
-     * Establece una nueva escala para el ancho y largo de la malla.
-     * @param scale nueva escala.
+     * Sets a new scale for the width and length of the mesh.
+     * @param scale new scale.
      */
     public void setScale(Vector2f scale) {
         if (scale == null) {
@@ -252,8 +245,8 @@ class Transform implements Savable, Cloneable {
     }
 
     /**
-     * Establece un nuevo <code>FlipType</code> para la malla.
-     * @param flipType Un nuevo tipo de volteo.
+     * Establishes a new <code>FlipType</code> for the mesh.
+     * @param flipType a new type of flip.
      */
     public void setFlipType(FlipType flipType) {
         this.flipType = flipType;
@@ -261,7 +254,6 @@ class Transform implements Savable, Cloneable {
 
     /**
      * (non-JavaDoc).
-     * 
      * @param columns Integer.
      * @param rows Integer.
      * @see Transform#position
@@ -283,7 +275,7 @@ class Transform implements Savable, Cloneable {
     /**
      * (non-JavaDoc)
      * @param columns Float.
-     * @param rows float
+     * @param rows Float.
      * @see Transform#columnsAndRows
      */
     void setCoords(int columns, int rows) {
@@ -291,64 +283,64 @@ class Transform implements Savable, Cloneable {
     }
     
     /**
-     * Devuelve la escala actual.
-     * @return Vector escala.
+     * Returns the current scale.
+     * @return scale vector.
      */
     public Vector2f getScale() {
         return scale;
     }
     
     /**
-     * Devuelve el tipo de volteado.
-     * @return Tipo de volteado.
+     * Returns the type of flip.
+     * @return type of flip.
      */
     public FlipType getFlipType() {
         return flipType;
     }
     
     /**
-     * Devuelve el ancho de la transformación. 
-     * @return Ancho.
+     * Returns the width of the transformation.
+     * @return width.
      */
     public float getWidth() {
         return size.x;
     }
     
     /**
-     * Devuelve el largo de la transformación. 
-     * @return Largo.
+     * Returns the height of the transformation.
+     * @return height.
      */
     public float getHeight() {
         return size.y;
     }
     
     /**
-     * Devuelve el número de filas.
-     * @return Filas.
+     * Returns the number of rows.
+     * @return rows.
      */
     public int getRows() {
         return (int) columnsAndRows.y;
     }
     
     /**
-     * Devuelve el número de columnas.
-     * @return Columnas.
+     * Returns the number of columns.
+     * @return columns.
      */
     public int getColumns() {
         return (int) columnsAndRows.x;
     }
     
     /**
-     * Devuelve la posición de las filas.
-     * @return Posición fila.
+     * Returns the position of the column.
+     * @return column position.
      */
     public int getColPosition() { 
         return (int) position.x;
     }
     
     /**
-     * Devuelve la posición de las columnas.
-     * @return Posición columna.
+     * Returns the position of the row.
+     * @return row position.
      */
     public int getRowPosition() {
         return (int) position.y;
@@ -360,7 +352,7 @@ class Transform implements Savable, Cloneable {
      * @param ex JmeExporter.
      * @see Savable#write(com.jme3.export.JmeExporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException exception.
      */
     @Override
     public void write(JmeExporter ex) throws IOException {
@@ -378,7 +370,7 @@ class Transform implements Savable, Cloneable {
      * @param im JmeImporter
      * @see Savable#read(com.jme3.export.JmeImporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException exception.
      */
     @Override
     public void read(JmeImporter im) throws IOException {

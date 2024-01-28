@@ -43,38 +43,50 @@ import com.jme3.util.BufferUtils;
 import java.io.IOException;
 
 /**
- * Un objeto de la clase <code>Sprite</code> es un malla que se encarga de
- * manejar 'modelos' 2D.
- * <p>
- * Con un <code>Sprite</code> puede voltear una imagen horizontalmente, así 
- * como verticalmente o una combinación de ambas.</p>
+ * An object of the class <code>Sprite</code> is a mesh that handles 2D models.
  * 
  * <p>
- * Esta malla utiliza una escala de <code>0.0-1.0</code> que se puede traducir 
- * como 0% y 100%, ten encuenta esta escala al cargar la textura de un modelo 2D.
+ * With a <code>Sprite</code> we can flip an image horizontally as well as
+ * vertically or a combination of both.
  * </p>
  * 
  * <p>
- * <b>Ejemplo:</b>
+ * This mesh uses a scale of <code>0.0-1.0</code> which can be translated as 0%
+ * and 100%, keep this scale in mind when loading the texture of a 2D model.
+ * </p>
+ * 
+ * <p>
+ * <b>Example:</b>
+ * <br>
+ * If a texture has the following data:
+ * </p>
+ *
  * <pre><code>
- * Si una textura tiene los siguiente datos:
- * 
- * Anchura: 100px;
- * Largo  :  50px;
- * 
- * Tenemos que tomar una medida como referencia al 100% de las dimensiones para
- * poder definir y así evitar deformar la textura de la geometría.
- * 
- * En este caso tomaremos la anchura, con este dato referenciado las dimensiones
- * de esta malla serían:
- * 
- * width:  1.0F; // Equivalente al 100%.
- * height: 0.5F; // Equivalente al 50%
- * 
- * Este análisis equivale a decir que la anchura es el 100%, mientras que el largo
- * es quivalente al 50% de la anchura. Si se hubiera tomado los datos de manera
- * inversa, seria que ahora la anchura es el 50% del largo que es el 100%.
+ * Width  : 100px
+ * Height :  50px
  * </code></pre>
+ * 
+ * <p>
+ * We have to take a measurement as a reference to 100% of the dimensions to be
+ * able to define and thus avoid deforming the texture of the geometry.
+ * </p>
+ * 
+ * <p>
+ * In this case we will take the width, with this data referenced the dimensions
+ * of this mesh would be:
+ * </p>
+ * 
+ * <pre><code>
+ * width  : 1.0F -> Equivalent to 100%
+ * height : 0.5F -> Equivalent to 50%
+ * </code></pre>
+ * 
+ * <p>
+ * This analysis is equivalent to saying that the width is 100%, while the
+ * height is equivalent to 50% of the width. If the data had been taken
+ * inversely, it would mean that the width is now 50% of the height, which
+ * is 100%.
+ * </p>
  * 
  * @author wil
  * @version 1.6-SNAPSHOT
@@ -84,52 +96,50 @@ import java.io.IOException;
 public class Sprite extends Mesh implements Cloneable {
     
     /**
-     * Objeto encargado de gestionar la transformación de la malla, es decir
-     * sus vérticess así como las coordenadas de la textura de esta malla.
+     * Object in charge of managing the transformation of the mesh, i.e. it's
+     * verticals as well as the texture coordinates of this mesh.
      */
     private Transform transform;
     
     /**
-     * {@code true} si se desea voltear la textura de la malla en la horizontal,
-     * de lo contrario {@code false} si se desea regresar la textura a su estado
-     * original.
+     * {@code true} if you want to flip the mesh texture horizontally, otherwise
+     * {@code false} if you want to return the texture to its original state.
      */
     private boolean flipH;
     
     /**
-     * {@code true} si se desea voltear la textura de la malla en la vertical,
-     * de lo contrario {@code false} si se desea regresar la textura a su estado
-     * original.
+     * {@code true} if you want to flip the mesh texture in the vertical,
+     * otherwise {@code false} if you want to return the texture to its original
+     * state.
      */
     private boolean flipV;
     
     /**
-     * Solo serialización. No utilice.
+     * Serialization only. Do not use.
      */
     public Sprite() {
     }
 
     /**
-     * Instancia un nuevo objeto <code>Sprite</code>. Establezca las 
-     * dimensiones que tendrá los vértices de la malla.
+     * Instantiate a new object <code>Sprite</code>. Set the dimensions of the
+     * mesh vertices.
      * 
-     * @param width el ancho deseado.
-     * @param height la altura deseada.
+     * @param width the desired width.
+     * @param height the desired height.
      */
     public Sprite(float width, float height) {
         this(width, height, 1, 1, 0, 0);
     }
 
     /**
-     * Instancia un nuevo objeto <code>Sprite</code>. Establezca los valores
-     * predeterminados de la malla.
+     * Instantiate a new object <code>Sprite</code>. Set the default mesh values.
      * 
-     * @param width el ancho deseado.
-     * @param height la altura deseada.
-     * @param columns número de columnas deseada. 
-     * @param rows número de filas deseada.
-     * @param colPosition posición de columna.
-     * @param rowPosition posición de fila.
+     * @param width the desired width.
+     * @param height the desired height.
+     * @param columns desired number of columns. 
+     * @param rows desired number of rows.
+     * @param colPosition column position.
+     * @param rowPosition row position.
      */
     public Sprite(float width, float height, int columns, int rows, int colPosition, int rowPosition) {
         this.transform = new Transform(width, height, columns, rows, colPosition, rowPosition);
@@ -137,15 +147,15 @@ public class Sprite extends Mesh implements Cloneable {
     }
 
     /**
-     * Método encargado de inicializar y/o configurar la malla.
+     * Method in charge of initializing and/or configuring the mesh.
      */
     private void initializeMesh() {
         transform.setFlipType(Transform.FlipType.NonFlip);
         
-        // Indices. Definimos el orden en que se debe construir la malla
+        // Indexes. We define the order in which the mesh should be constructed
         short[] indexes = {2, 0, 1, 1, 3, 2};
 
-        // Configuración de búferes
+        // Buffer configuration
         setBuffer(VertexBuffer.Type.Position, 3, BufferUtils.createFloatBuffer(transform.getVertices()));
         setBuffer(VertexBuffer.Type.TexCoord, 2, BufferUtils.createFloatBuffer(transform.getTextureCoordinates()));
         setBuffer(VertexBuffer.Type.Normal, 3, new float[]{0, 0, 1,
@@ -159,7 +169,7 @@ public class Sprite extends Mesh implements Cloneable {
     /**
      * (non-JavaDoc)
      * @see Mesh#jmeClone() 
-     * @return Clons
+     * @return Clone
      */
     @Override
     public Sprite jmeClone() {
@@ -169,7 +179,7 @@ public class Sprite extends Mesh implements Cloneable {
     /**
      * (non-JavaDoc)
      * @see Mesh#deepClone() 
-     * @return Clons
+     * @return Clone
      */
     @Override
     public Sprite deepClone() {
@@ -183,7 +193,7 @@ public class Sprite extends Mesh implements Cloneable {
     /**
      * (non-JavaDoc)
      * @see Mesh#clone() 
-     * @return Clons
+     * @return Clone
      */
     @Override
     public Sprite clone() {
@@ -195,34 +205,34 @@ public class Sprite extends Mesh implements Cloneable {
     }
     
     /**
-     * Actualiza el tamaño de esta malla.
-     * @param width ancho-malla.
-     * @param height largo-malla.
+     * Updates the size of this mesh.
+     * @param width mesh width.
+     * @param height mesh height.
      */
     public void updateVertexSize(float width, float height) {
         transform.setSize(width, height);
         
-        // Configuración de búferes
+        // Buffer configuration
         setBuffer(VertexBuffer.Type.Position, 3, BufferUtils.createFloatBuffer(transform.getVertices()));
         updateTextureCoords();
         updateBound();
     }
 
     /**
-     * Método encargado de actualizar las coordenadas de esta malla.
-     * @param columns nuevo número de columnas.
-     * @param rows nuevo número de filas.
+     * Method in charge of updating the coordinates of this mesh.
+     * @param columns new number of columns.
+     * @param rows new number of rows.
      */
     public void updateMeshCoords(int columns, int rows) {
         updateMeshCoords(columns, rows, 0, 0);
     }
     
     /**
-     * Método encargado de actualizar las coordenadas de esta malla.
-     * @param columns nuevo número de columnas.
-     * @param rows nuevo número de filas.
-     * @param colPosition posición inicial de las nuevas columnas.
-     * @param rowPosition posición inicial de las nuevas filas.
+     * Method in charge of updating the coordinates of this mesh.
+     * @param columns new number of columns.
+     * @param rows new number of rows.
+     * @param colPosition initial position of the new columns.
+     * @param rowPosition initial position of the new rows.
      */
     public void updateMeshCoords(int columns, int rows, int colPosition, int rowPosition) {
         int update = 0;
@@ -244,19 +254,20 @@ public class Sprite extends Mesh implements Cloneable {
     }
     
     /**
-     * Actualiza las coordenadas de la textura.
+     * Updates the texture coordinates.
      * <p>
-     * Esto se puede utilizar cuando se haga un cambio en el {@code Transform}
-     * de esta malla.</p>
+     * This can be used when a change is made in the {@code Transform} of this
+     * mesh.
+     * </p>
      */
     public void updateTextureCoords() {
         updateTextureCoords(transform.getColPosition(), transform.getRowPosition());
     }
     
     /**
-     * Actualiza las coordenadas de la textura con nuevas posiciones.
-     * @param colPosition Nueva posición de columna.
-     * @param rowPosition Nueva posición de fila.
+     * Updates the texture coordinates with new positions.
+     * @param colPosition new column position.
+     * @param rowPosition new row position.
      */
     public void updateTextureCoords(int colPosition, int rowPosition) {
         transform.setPosition(colPosition, rowPosition);
@@ -275,8 +286,8 @@ public class Sprite extends Mesh implements Cloneable {
     }
 
     /**
-     * Establece el tipo del volteado en la horizontal.
-     * @param flipH {@code true} o {@code false} para voltear.
+     * Sets the type of the horizontal flip.
+     * @param flipH {@code true} or {@code false} to flip.
      */
     public void flipH(boolean flipH) {
         if (this.flipH != flipH) {
@@ -286,8 +297,8 @@ public class Sprite extends Mesh implements Cloneable {
     }
 
     /**
-     * Establece el tipo del volteado en la vertical.
-     * @param flipV {@code true} o {@code false} para voltear.
+     * Sets the type of the vertical flip.
+     * @param flipV {@code true} or {@code false} to flip.
      */
     public void flipV(boolean flipV) {
         if (this.flipV != flipV) {
@@ -297,17 +308,17 @@ public class Sprite extends Mesh implements Cloneable {
     }
     
     /**
-     * Método encargado de escalar las dimensiones de esta malla.
-     * @param scale nueva escala.
+     * Method in charge of scaling the dimensions of this mesh.
+     * @param scale new scale.
      */
     public void scale(float scale) {
         this.scale(scale, scale);
     }
     
     /**
-     * Método encargado de escalar las dimensiones de esta malla.
-     * @param scaleX escala en el eje {@code x}.
-     * @param scaleY escala en el eje {@code y}.
+     * Method in charge of scaling the dimensions of this mesh.
+     * @param scaleX scale on the axis {@code x}.
+     * @param scaleY scale on the axis {@code y}.
      */
     public void scale(float scaleX, float scaleY) {
         final Vector2f newVs = new Vector2f(scaleX, scaleY);
@@ -318,53 +329,50 @@ public class Sprite extends Mesh implements Cloneable {
         
         this.transform.setScale(newVs);
         
-        // Se establece nuevas vertices para la malla.
+        // New vertices are established for the mesh.
         setBuffer(VertexBuffer.Type.Position, 3, BufferUtils.createFloatBuffer(transform.getVertices()));
         
-        // Actualizamos las coordenadas.
+        // Update the coordinates.
         updateTextureCoords();
         updateBound();
     }
 
     /**
-     * Devuelve el tipo de volteado en la horizontal.
-     * @return Tipo de volteado.
+     * Returns the type of flip in the horizontal.
+     * @return flip type.
      */
     public boolean isFlipH() {
         return flipH;
     }
 
     /**
-     * Devuelve el tipo de volteado en la vertical.
-     * @return Tipo de volteado.
+     * Returns the type of flip in the vertical.
+     * @return flip type.
      */
     public boolean isFlipV() {
         return flipV;
     }
     
     /**
-     * Método encargado de distorsionar la textura de esta malla a través 
-     * de un índice.
-     * @param index Nuevo índice de actualización.
+     * Method in charge of distorting the texture of this mesh through an index.
+     * @param index new update index.
      */
     public void showIndex(int index) {
         updateTextureCoords(index % transform.getColumns(), index / transform.getColumns());
     }
     
     /**
-     * Método encargado de distorsionar la textura de esta malla a través 
-     * de un índice.
-     * 
-     * @param colPosition Nueva posición de columna.
-     * @param rowPosition Nueva posición de fila.
+     * Method in charge of distorting the texture of this mesh through an index.
+     * @param colPosition new column position.
+     * @param rowPosition new row position.
      */
     public void showIndex(int colPosition, int rowPosition) {
         updateTextureCoords(colPosition, rowPosition);
     }
 
     /**
-     * Devuelve el tranformador de esta malla.
-     * @return Transformador.
+     * Returns the transformer of this mesh.
+     * @return Transform.
      */
     public Transform getTransform() {
         return transform;
@@ -391,7 +399,7 @@ public class Sprite extends Mesh implements Cloneable {
     /**
      * (non-JavaDoc).
      * @see Transform#getScale() 
-     * @return Vector.
+     * @return Vector2f.
      */
     public Vector2f getScale() {
         return transform.getScale();
@@ -403,7 +411,7 @@ public class Sprite extends Mesh implements Cloneable {
      * @param im JmeImporter
      * @see Mesh#read(com.jme3.export.JmeImporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException exception.
      */
     @Override
     public void read(JmeImporter im) throws IOException {
@@ -421,7 +429,7 @@ public class Sprite extends Mesh implements Cloneable {
      * @param ex JmeExporter.
      * @see Mesh#write(com.jme3.export.JmeExporter) 
      * 
-     * @throws IOException Excepción.
+     * @throws IOException exception.
      */
     @Override
     public void write(JmeExporter ex) throws IOException {
