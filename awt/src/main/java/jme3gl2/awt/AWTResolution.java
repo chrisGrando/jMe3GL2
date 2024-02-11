@@ -196,7 +196,7 @@ class AWTResolution implements Cloneable, Savable {
      * @param ex JmeExporter.
      * @see Savable#write(com.jme3.export.JmeExporter) 
      * 
-     * @throws IOException Exception
+     * @throws IOException exception.
      */
     @Override
     public void write(JmeExporter ex) throws IOException {
@@ -213,7 +213,7 @@ class AWTResolution implements Cloneable, Savable {
      * @param im JmeImporter
      * @see Savable#read(com.jme3.export.JmeImporter) 
      * 
-     * @throws IOException Exception
+     * @throws IOException exception.
      */
     @Override
     public void read(JmeImporter im) throws IOException {

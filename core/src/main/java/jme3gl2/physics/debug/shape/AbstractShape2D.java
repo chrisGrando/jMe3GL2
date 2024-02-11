@@ -135,7 +135,7 @@ public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable
      * @param im JmeImporter
      * @see com.jme3.scene.Mesh#read(com.jme3.export.JmeImporter) 
      * 
-     * @throws IOException Exception.
+     * @throws IOException exception.
      */
     @Override
     public void read(JmeImporter im) throws IOException {
@@ -152,7 +152,7 @@ public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable
      * @param ex JmeExporter.
      * @see com.jme3.scene.Mesh#write(com.jme3.export.JmeExporter) 
      * 
-     * @throws IOException Exception.
+     * @throws IOException exception.
      */
     @Override
     public void write(JmeExporter ex) throws IOException {
