@@ -35,7 +35,7 @@ import com.jme3.asset.AssetManager;
 import com.jme3.scene.Geometry;
 
 /**
- * Clase de conveniencia para implementar la interfaz {@link Spritesheet}. 
+ * Convenience class to implement the interface {@link Spritesheet}. 
  * @author wil
  * @version 1.0.1
  * @since 2.0.0
@@ -46,23 +46,26 @@ public abstract class SpritesheetAdapter implements Spritesheet {
      * (non-JavaDoc)
      * @see Spritesheet#render(jMe3GL2.scene.tile.TileMap, jMe3GL2.scene.tile.Tile, com.jme3.asset.AssetManager) 
      * 
-     * @param tileMap Tile-Map
-     * @param tile Tile
-     * @param assetManager Asset-Manager
-     * @return Modelo.
+     * @param tileMap tile map.
+     * @param tile tile.
+     * @param assetManager asset manager.
+     * @return model.
      */
     @Override
-    public Geometry render(TileMap tileMap, Tile tile, AssetManager assetManager) { return null; }
+    public Geometry render(TileMap tileMap, Tile tile, AssetManager assetManager) {
+        return null;
+    }
 
     /**
      * (non-JavaDoc)
      * @see Spritesheet#update(jMe3GL2.scene.tile.TileMap, jMe3GL2.scene.tile.Tile, com.jme3.asset.AssetManager, com.jme3.scene.Geometry) 
      * 
-     * @param tileMap Tile-Map
-     * @param tile Tile
-     * @param assetManager Asset-Manager
-     * @param geom Geometry
+     * @param tileMap tile map.
+     * @param tile tile.
+     * @param assetManager asset manager.
+     * @param geom geometry.
      */
     @Override
-    public void update(TileMap tileMap, Tile tile, AssetManager assetManager, Geometry geom) { }
+    public void update(TileMap tileMap, Tile tile, AssetManager assetManager, Geometry geom) {
+    }
 }

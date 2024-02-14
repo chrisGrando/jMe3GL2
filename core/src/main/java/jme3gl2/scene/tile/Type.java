@@ -32,8 +32,8 @@
 package jme3gl2.scene.tile;
 
 /**
- * Un <code>Type</code> se encarga de enumerar los diferentes tipos de
- * datos que soporta {@link Properties}
+ * A <code>Type</code> is responsible for listing the different types of data
+ * that supports {@link Properties}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -43,119 +43,120 @@ package jme3gl2.scene.tile;
 enum Type {
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Integer}
      */
     Int,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Float}
      */
     Float, 
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Boolean}
      */
     Boolean, 
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.String}
      */
     String,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Long}
      */
     Long,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Double}
      */
     Double, 
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Short}
      */
     Short, 
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Byte}
      */
     Byte,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Enum}
      */
     Enum,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.lang.Character}
      */
     Character,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.math.BigDecimal}
      */
     BigDecimal,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.math.BigInteger
      */
     BigInteger,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.util.BitSet}
      */
     BitSet,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.nio.FloatBuffer}
      */
     FloatBuffer,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.nio.IntBuffer}
      */
     IntBuffer,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.nio.ByteBuffer}
      */
     ByteBuffer,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@link java.nio.ShortBuffer}
      */
     ShortBuffer,
     
     /**
-     * Tipo de dato: 
+     * Data type: 
      *          {@code  com.jme3.export.Savable
      */
     Savable;
     
     /**
-     * Evalua un objeto para determinar su tipo de dato.
-     * @param o Objeto a evaluer.
-     * @return Tipo de dato.
-     * @throws IllegalArgumentException Si el objeto que se evalua, no esta
-     *                                  soportado o es <code>NULL</code>
+     * Evaluates an object to determine its data type.
+     * 
+     * @param o object to be evaluated.
+     * @return data type.
+     * @throws IllegalArgumentException if the object to be evaluated is not
+     * supported or is <code>NULL</code>.
      */
     public static Type jmeValueOf(Object o) throws IllegalArgumentException {
         if (o == null)

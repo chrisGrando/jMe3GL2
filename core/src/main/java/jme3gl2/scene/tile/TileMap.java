@@ -44,44 +44,54 @@ import java.util.Iterator;
 import java.util.logging.Logger;
 
 /**
- * Un objeto de la clase <code>TileMap</code> es un nodo que hereda de la clase
- * <code>GeometryGroupNode</code> que es un conjunto de geometrías.
+ * An object of the class <code>TileMap</code> is a node that inherits from the
+ * class <code>GeometryGroupNode</code> which is a set of geometries.
+ * 
  * <p>
- * Con un <code>TileMap</code> podemos ser capaz de usar una imagen que integra
- * todo nuestros recursos en ella, luego ir agregando los necesario a nuestro
- * escena.
+ * With a <code>TileMap</code> we can be able to use an image that integrates
+ * all our resources into it, then add them to our scene.
  * </p>
- * <p>
- * Esta clase pide la cantidad en la horizontal y vertical de los azulejos que
- * contienen nuestro imagen. Es decir, cuantos iconos/azujeos contiene nuestro
- * image-map.
  * 
  * <p>
- * Una manera de averiguarlo, es sabiendo el tamaño exacta de cada azulejo en
- * piexele. Dividiendo el ancho de la imagen con el tamaño de los azulejos
- * obtenemos la cantidad de columna, y con el largo las files.
+ * This class asks for the number of tiles horizontally and vertically that
+ * contain our image. That is to say, how many icons/tiles our image map contains.
+ * </p>
+ * 
+ * <p>
+ * One way to find out is to know the exact size of each tile in pixels. Dividing
+ * the width of the image with the size of the tiles we get the number of columns,
+ * and with the length we get the files.
+ * </p>
+ * 
  * <pre><code>
- * <b>EJEMPLO:</b>
+ * <b>EXAMPLE:</b>
  * 
- * Si se tiene una imagen que mida:
- * ancho: 1152 píxeles
- * largo: 1280 píxeles
+ * If you have an image that measures:
+ * width:  1152 pixels
+ * height: 1280 pixels
  * 
- * y que cada azulejos miden:
+ * And that each tile measures:
  * 128px x 128px.
- * 
- * Podemos decir que tenemos 9 columnas y 10 filas dado que si se divide
- * el ancho total con el ancho que cada azulejo: 
- * 
- * 1152/128 = 9  # columnas
- * 1280/128 = 10 #filas
- * 
- * NOTA: Claro que este calculo solo se aplica si los azulejos estan pegados 
- * uno a la par del otro o distribuidos de manera simétrica.
  * </code></pre>
+ * 
  * <p>
- * Para agregar los azulejos a nuetro nodo escena, solo se tiene que utilizar el
- * siguiente método: <code>addTile()</code>.
+ * We can say that we have 9 columns and 10 rows given that if we divide the
+ * total width with the width of each tile:
+ * </p>
+ * 
+ * <pre><code>
+ * 1152/128 = 9  # columns
+ * 1280/128 = 10 # rows
+ * </code></pre>
+ * 
+ * <p>
+ * NOTE: Of course, this calculation only applies if the tiles are next to each
+ * other or symmetrically distributed.
+ * </p>
+ * 
+ * <p>
+ * To add the tiles to our scene node, just use the following method:
+ * <code>addTile()</code>.
  * </p>
  * 
  * @author wil
@@ -90,24 +100,25 @@ import java.util.logging.Logger;
  */
 public class TileMap extends GeometryGroupNode {
 
-    /** Looger de la clase. */
+    /** Class logger. */
     private static final Logger LOG = Logger.getLogger(TileMap.class.getName());
     
     /**
-     * Clase interna encargado de gestionar las reglas al agregar o eliminar
-     * un {@code Tile} del mapa de azulejos.
+     * Internal class in charge of managing the rules when adding or removing a
+     * {@code Tile} from the tile map.
      */
     class TileRule {
-        // modelos del azulejo.
+        /** Tile geometry. */
         Geometry model;
         
-        // azulejo-modelo.
+        /** Tile model. */
         Tile tileModel;
 
         /**
-         * Constructor predeterminado de la clase <code>TileRule</code>.
-         * @param model mode a gestionar.
-         * @param tileModel azulejos del modelo.
+         * Default constructor of the class <code>TileRule</code>.
+         * 
+         * @param model model to manage.
+         * @param tileModel model tiles.
          */
         public TileRule(Geometry model, Tile tileModel) {
             this.model     = model;
@@ -115,30 +126,29 @@ public class TileMap extends GeometryGroupNode {
         }
     }
 
-    /** Administrador de recursos. */
+    /** Resource manager. */
     private final AssetManager assetManager;
     
-    /**
-     * Administrador de azulejos.
-     */
+    /** Tile manager. */
     private Tilesheet tilesHeet;
     
-    /** Propiedades de mapa secena. */
+    /** Scene map properties. */
     private Properties properties;
     
-    /** Lista de azulejos. */
+    /** List of tiles. */
     private final ArrayList<TileRule> tiles;
     
     /**
-     * <code>true</code> si se verifica la lista de azulejos al eliminar un
-     * nodo hijo de este mapa, de lo contrario será <code>false</code>.
+     * <code>true</code> if the tile list is checked when deleting a child node
+     * of this map, otherwise it will be <code>false</code>.
      */
     boolean checkRemove = true;
     
     /**
-     * Genere un <code>TileMap</code> utilizando este constructor.
-     * @param assetManager administrador-jme3.
-     * @param name nombre para este mapa de escena.
+     * Generate a <code>TileMap</code> using this constructor.
+     * 
+     * @param assetManager JME3 manager.
+     * @param name name for this scene map.
      */
     public TileMap(AssetManager assetManager, String name) {
         super(name);
@@ -149,54 +159,60 @@ public class TileMap extends GeometryGroupNode {
     }
 
     /**
-     * Establece un {@link Tilesheet} nuevo para este mapa de datos.
-     * @param tilesHeet nuevo {@link Tilesheet}.
+     * Sets up a new {@link Tilesheet} for this data map.
+     * 
+     * @param tilesHeet new {@link Tilesheet}.
      */
     public void setTilesHeet(Tilesheet tilesHeet) {
         this.tilesHeet = tilesHeet;
     }
 
     /**
-     * Devuelve el administrdor de recursos.
-     * @return admin-recuros
+     * Returns the resource manager.
+     * 
+     * @return resource manager.
      */
     public AssetManager getAssetManager() {
         return assetManager;
     }
 
     /**
-     * Devuelve el gestor de azulejos.
-     * @return gestor.
+     * Returns the tile manager.
+     * 
+     * @return manager.
      */
     public Tilesheet getTilesHeet() {
         return tilesHeet;
     }
 
     /**
-     * Establece las propiedades de este nodo de mapas.
+     * Sets the properties of this map node.
      * <p>
-     * <b>NOTA:</b> Antes de agregar nuevos {@link Tile} al este mapa de escena,
-     * establesca las propiedades dado que estos cambios no se aplicaran con lo
-     * hijos ya existentes.</p>
-     * @param properties nuevas propiedades.
+     * <b>NOTE:</b> Before adding new {@link Tile} to this scene map, set the
+     * properties since these changes will not apply to existing children.
+     * </p>
+     * 
+     * @param properties new properties.
      */
     public void setProperties(Properties properties) {
         this.properties = properties;
     }
 
     /**
-     * Método encargado de establecer el espacio físico.
-     * @param physicsSpace espacio físico.
+     * Method in charge of establishing the physical space.
+     * 
+     * @param physicsSpace physical space.
      */
     public void setPhysicsSpace(PhysicsSpace<PhysicsBody2D> physicsSpace) {
         tilesHeet.getSpritesheetPhysics().setPhysicsSpace(physicsSpace);
     }
     
     /**
-     * Agrega un nuevo {@link Tile} a este nodo de azulejos.
-     * @param c columna del azulejo.
-     * @param r fila azulejo.
-     * @param properties propiedades.
+     * Adds a new {@link Tile} to this tile node.
+     * 
+     * @param c tile column.
+     * @param r tile row.
+     * @param properties properties.
      */
     public void addTile(int c, int r, Properties properties) {
         final Tile tile = new Tile();
@@ -208,22 +224,24 @@ public class TileMap extends GeometryGroupNode {
     }
     
     /**
-     * Agrega un nuevo {@link Tile} a este nodo de azulejos.
-     * @param tile nuvo dato a agregar.
+     * Adds a new {@link Tile} to this tile node.
+     * 
+     * @param tile new data to be added.
      */
     public void addTile(final Tile tile) {
         addTile(tile, true);
     }
     
     /**
-     * Agrega un nuevo {@link Tile} a este nodo de azulejos.
+     * Adds a new {@link Tile} to this tile node.
      * <p>
-     * <b>NOTA:</b> Utilizar este método unicamente si se tiene el control
-     * total del manejo de azulejos, de lo contrario no los toque</p>
+     * <b>NOTE:</b> Use this method only if you have full control of the tile
+     * handling, otherwise do not touch the tiles.
+     * </p>
      * 
-     * @param tile nuvo dato a agregar.
-     * @param verifID {@code true} si se desea tener un identiricador unico,
-     *                  de lo contrario {@code false}.
+     * @param tile new data to be added.
+     * @param verifID {@code true} if you wish to have a unique identifier,
+     * otherwise {@code false}.
      */
     protected void addTile(final Tile tile, boolean verifID) {
         boolean exists = false;
@@ -252,9 +270,10 @@ public class TileMap extends GeometryGroupNode {
     }
     
     /**
-     * Establece nuevas propiedades a un {@link Tile} con el id de ello.
-     * @param id identificador del azulejo.
-     * @param properties nuevas propiedades.
+     * Set new properties to a {@link Tile} with the id of it.
+     * 
+     * @param id tile identifier.
+     * @param properties new properties.
      */
     public void setTile(String id, Properties properties) {
         setTile(id, new Tile() {{
@@ -263,9 +282,10 @@ public class TileMap extends GeometryGroupNode {
     }
     
     /**
-     * Establece un {@link Tile} nuevo con el id de ello.
-     * @param id identificador del azulejo.
-     * @param tile nuevo azulejo.
+     * Set a new {@link Tile} with the id of it.
+     * 
+     * @param id tile identifier.
+     * @param tile new tile.
      */
     public void setTile(String id, Tile tile) {
         if (!id.equals(tile.getId())) {
@@ -287,13 +307,13 @@ public class TileMap extends GeometryGroupNode {
     }
     
     /**
-     * Método encargado de establecer nuevas propiedades a un azulejo.
+     * Method for establishing new properties to a tile.
      * <p>
-     * Para localizar dicho {@link Tile} se utiliza su identificador {@code id}.
+     * To locate this {@link Tile} its identifier is used {@code id}.
      * </p>
      * 
-     * @param id identificador unico.
-     * @param p nuevas propiedades.
+     * @param id unique identifier.
+     * @param p new properties.
      */
     public void setTileProperties(String id, Properties p) {
         for (int i = 0; i < tiles.size(); i++) {
@@ -311,8 +331,9 @@ public class TileMap extends GeometryGroupNode {
     }
     
     /**
-     * Elimina un azulejo de escena.
-     * @param id identificador del azulejo.
+     * Removes a scene tile.
+     * 
+     * @param id tile identifier.
      */
     public void removeTile(String id) {
         for (int i = 0; i < tiles.size(); i++) {
@@ -331,8 +352,9 @@ public class TileMap extends GeometryGroupNode {
     }
 
     /**
-     * Devueleve un iterador de azulejos.
-     * @return iterador.
+     * Returns a tile iterator.
+     * 
+     * @return iterator.
      */
     public Iterator<Tile> iteratorTile() {
         final Iterator<TileRule> it = this.tiles.iterator();
@@ -347,8 +369,9 @@ public class TileMap extends GeometryGroupNode {
     }
     
     /**
-     * Devuelve las propiedades de este mapa de azulejos.
-     * @return propiedades.
+     * Returns the properties of this tile map.
+     * 
+     * @return properties.
      */
     public Properties getProperties() {
         return properties;
@@ -356,7 +379,7 @@ public class TileMap extends GeometryGroupNode {
     
     /**
      * (non-JavaDoc)
-     * @param geom geometry
+     * @param geom geometry.
      */
     @Override
     public void onTransformChange(Geometry geom) {
@@ -365,7 +388,7 @@ public class TileMap extends GeometryGroupNode {
 
     /**
      * (non-JavaDoc)
-     * @param geom geometry
+     * @param geom geometry.
      */
     @Override
     public void onMaterialChange(Geometry geom) {
@@ -374,7 +397,7 @@ public class TileMap extends GeometryGroupNode {
 
     /**
      * (non-JavaDoc)
-     * @param geom gemetry
+     * @param geom geometry.
      */
     @Override
     public void onMeshChange(Geometry geom) {
@@ -383,7 +406,7 @@ public class TileMap extends GeometryGroupNode {
 
     /**
      * (non-JavaDoc)
-     * @param geom geometry
+     * @param geom geometry.
      */
     @Override
     public void onGeometryUnassociated(Geometry geom) {

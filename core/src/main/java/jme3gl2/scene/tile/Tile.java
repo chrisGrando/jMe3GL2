@@ -40,8 +40,8 @@ import com.jme3.export.Savable;
 import java.io.IOException;
 
 /**
- * Un objeto de la clase <code>Tile</code> se encarga de gestionar los datos
- * de un azulejo en escena.
+ * An object of class <code>Tile</code> is responsible for managing the data of
+ * a tile in scene.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT 
@@ -49,35 +49,30 @@ import java.io.IOException;
  */
 public class Tile implements Savable, Cloneable {
     
-    /** Propiedades de este objeto. */
+    /** Properties of this object. */
     private Properties properties;
 
     /**
-     * Constructor predeterminado de la clase <code>Tile</code>.
+     * Default constructor of the class <code>Tile</code>.
      */
     public Tile() {
         this.properties = new Properties();
     }
     
     /**
-     * Método encargado de clonar este objeto.
-     * @see Object#clone() 
-     * 
-     * @return clon objeto.
+     * Method in charge of cloning this object.
+     * @see Object#clone()
+     * @return object clone.
      */
     @Override
-    public Tile clone() {
-        try {
-            Tile clon = (Tile) super.clone();
-            clon.properties = properties.clone();
-            return clon;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
+    public Tile clone() throws CloneNotSupportedException {
+        Tile clon = (Tile) super.clone();
+        clon.properties = properties.clone();
+        return clon;
     }
     
     /**
-     * Devuelve el id unico para este {@link Tile}.
+     * Returns the unique id for this {@link Tile}.
      * @return id.
      */
     public String getId() {
@@ -85,16 +80,16 @@ public class Tile implements Savable, Cloneable {
     }
     
     /**
-     * Devuelve las propiedades.
-     * @return propiedades
+     * Returns the properties.
+     * @return properties.
      */
     public Properties getProperties() {
         return properties;
     }
     
     /**
-     * Establece una nueva propiedad.
-     * @param properties propiedad nueva.
+     * Sets a new property.
+     * @param properties new property.
      */
     public void setProperties(Properties properties) {
         if (properties == null) {
@@ -107,9 +102,8 @@ public class Tile implements Savable, Cloneable {
      * (non-JavaDoc).
      * 
      * @param ex JmeExporter.
-     * @see Savable#write(com.jme3.export.JmeExporter) 
-     * 
-     * @throws IOException Excepción.
+     * @see Savable#write(com.jme3.export.JmeExporter)
+     * @throws IOException exception.
      */
     @Override
     public void write(JmeExporter ex) throws IOException {
@@ -121,9 +115,8 @@ public class Tile implements Savable, Cloneable {
      * (non-JavaDoc).
      * 
      * @param im JmeImporter
-     * @see Savable#read(com.jme3.export.JmeImporter) 
-     * 
-     * @throws IOException Excepción.
+     * @see Savable#read(com.jme3.export.JmeImporter)
+     * @throws IOException exception.
      */
     @Override
     public void read(JmeImporter im) throws IOException {

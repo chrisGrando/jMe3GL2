@@ -34,15 +34,14 @@ package jme3gl2.scene.tile;
 import com.jme3.scene.Node;
 
 /**
- * Un objeto de la clase <code>TileMapGroupNode</code> se puede utilizar como
- * nodo padre para todos los {@link TileMap} que se desean agrupar en un nodo
- * scena para tener una mejor limpieza.
+ * An object of class <code>TileMapGroupNode</code> can be used as a parent node
+ * for all {@link TileMap} that you want to group into a scene node for better
+ * cleanup.
  * 
  * @author wil
- * @param <T> tipo de dato.
+ * @param <T> data type.
  * @version 1.0-SNAPSHOT
  * @since 2.0.0
  */
 public class TileMapGroupNode<T extends TileMap> extends Node {
-    /* CODE */
 }
