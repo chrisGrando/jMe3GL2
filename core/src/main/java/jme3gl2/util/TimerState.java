@@ -32,14 +32,14 @@
 package jme3gl2.util;
 
 /**
- * Un objeto de la clase <code>TimerState</code> se encarga de enumerar los
- * 3 estados posibles de un {@link Timer}:
+ * An object of class <code>TimerState</code> is responsible for enumerating the
+ * 3 possible states of a {@link Timer}:
  * <div>
- * <ul>
- * <li><b>Start:</b> inicializando.</li>
- * <li><b>Pause:</b> pausa momentanea.</li>
- * <li><b>Stop:</b> estador muerto.</li>
- * </ul>
+ *  <ul>
+ *   <li><b>Start:</b> initializing.</li>
+ *   <li><b>Pause:</b> momentary pause.</li>
+ *   <li><b>Stop:</b> dead status.</li>
+ *  </ul>
  * </div>
  * 
  * @author wil
@@ -50,25 +50,25 @@ package jme3gl2.util;
 public enum TimerState {
     
     /**
-     * Estado de inicialización del temporizador {@link Timer}, esto
-     * llama al método <code>start()</code>.
+     * Initialization state of the timer {@link Timer}, this calls the method
+     * <code>start()</code>.
      */
     Start,
     
     /**
-     * Estado de pausa o detenimiento temporal del temporizador {@link Timer}, esto
-     * llama al método <code>pause(boolean pause)</code>.
+     * Temporary pause or stop state of the timer {@link Timer}, this calls the
+     * method <code>pause(boolean pause)</code>.
      */
     Pause,
     
     /**
-     * Hace todo loa contrario que {@code Pause}, es decir que reanudar los
-     * procesos siempre y cuando este no se haya muerto.
+     * It does the opposite of {@code Pause}, i.e. it resumes the processes as
+     * long as it has not died.
      */
     Resume,
     
     /**
-     * Detiene completamente los procesos del temporizador.
+     * Completely stops the timer processes.
      */
     Stop;
 }

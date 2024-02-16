@@ -38,8 +38,8 @@ import org.dyn4j.geometry.Vector2;
 import org.dyn4j.geometry.Vector3;
 
 /**
- * Clase <code>Converter</code> se encarga de proprocionar métodos de converción
- * entre vectores y/o números(float &harr; double).
+ * Class <code>Converter</code> is responsible for providing methods for converting
+ * between vectors and/or numbers. (float &harr; double).
  * 
  * @author wil
  * @version 1.2-SNAPSHOT
@@ -50,15 +50,16 @@ public final
 class Converter {
     
     /**
-     * Constructor privado de la clase.
+     * Private constructor of the class.
      */
-    private Converter() {}
+    private Converter() {
+    }
     
     /**
-     * Método encargado de convertir un arreglo de <code>Vector3</code> a un
-     * nuevo arreglo de <code>Vector3f</code>.
-     * @param vertices arreglo de vectores a convertir.
-     * @return nuevo arreglo.
+     * Method in charge of converting an array of <code>Vector3</code> to a new
+     * array of <code>Vector3f</code>.
+     * @param vertices array of vectors to be converted.
+     * @return new array.
      */
     public static Vector3f[] toArrayVector3f(final Vector3[] vertices) {
         final Vector3f[] vectors = new Vector3f[vertices.length];
@@ -69,10 +70,10 @@ class Converter {
     }
     
     /**
-     * Método encargado de convertir un arreglo de <code>Vector2</code> a un
-     * nuevo arreglo de <code>Vector3f</code>.
-     * @param vertices arreglo de vectores a convertir.
-     * @return nuevo arreglo.
+     * Method in charge of converting an array of <code>Vector2</code> to a new
+     * array of <code>Vector3f</code>.
+     * @param vertices array of vectors to be converted.
+     * @return new array.
      */
     public static Vector3f[] toArrayVector3f(final Vector2[] vertices) {
         final Vector3f[] vectors = new Vector3f[vertices.length];
@@ -83,9 +84,9 @@ class Converter {
     }
     
     /**
-     * Convierte un vector {@code Vector2} en {@code Vector2f}.
-     * @param v Vector a convertir.
-     * @return Vector nuevo.
+     * Converts a vector {@code Vector2} to {@code Vector2f}.
+     * @param v vector to convert.
+     * @return new vector.
      */
     public static Vector2f toVector2f(Vector2 v) {
         float x = Double.valueOf(v.x).floatValue(),
@@ -94,9 +95,9 @@ class Converter {
     }
     
     /**
-     * Convierte un vector {@code Vector3} en {@code Vector3f}.
-     * @param v Vector a convertir.
-     * @return Vector nuevo.
+     * Converts a vector {@code Vector3} to {@code Vector3f}.
+     * @param v vector to convert.
+     * @return new vector.
      */
     public static Vector3f toVector3f(Vector3 v) {
         float x = Double.valueOf(v.x).floatValue(),
@@ -106,9 +107,9 @@ class Converter {
     }
     
     /**
-     * Convierte un vector {@code Vector2} en {@code Vector3f}.
-     * @param v Vector a convertir.
-     * @return Vector nuevo.
+     * Converts a vector {@code Vector2} to {@code Vector3f}.
+     * @param v vector to convert.
+     * @return new vector.
      */
     public static Vector3f toVector3f(Vector2 v) {
         float x = Double.valueOf(v.x).floatValue(),
@@ -117,45 +118,45 @@ class Converter {
     }
     
     /**
-     * Convierte un vector {@code Vector2f} en {@code Vector2}.
-     * @param v Vector a convertir.
-     * @return Vector nuevo.
+     * Converts a vector {@code Vector2f} to {@code Vector2}.
+     * @param v vector to convert.
+     * @return new vector.
      */
     public static Vector2 toVector2(Vector2f v) {
         return new Vector2(v.x, v.y);
     }
     
     /**
-     * Convierte un vector {@code Vector3f} en {@code Vector2}.
-     * @param v Vector a convertir.
-     * @return Vector nuevo.
+     * Converts a vector {@code Vector3f} to {@code Vector2}.
+     * @param v vector to convert.
+     * @return new vector.
      */
     public static Vector2 toVector2(Vector3f v) {
         return new Vector2(v.x, v.y);
     }
     
     /**
-     * Convierte un vector {@code Vector3f} en {@code Vector3}.
-     * @param v Vector a convertir.
-     * @return Vector nuevo.
+     * Converts a vector {@code Vector3f} to {@code Vector3}.
+     * @param v vector to convert.
+     * @return new vector.
      */
     public static Vector3 toVector3(Vector3f v) {
         return new Vector3(v.x, v.y, v.z);
     }
     
     /**
-     * Convierte un numero {@code double} a {@code float}.
-     * @param d número a convertir.
-     * @return nuevo número.
+     * Converts a number {@code double} to {@code float}.
+     * @param d number to be converted.
+     * @return new number.
      */
     public static float toFloat(double d) {
         return Double.valueOf(d).floatValue();
     }
     
     /**
-     * Convierte un numero {@code float} a {@code double}.
-     * @param f número a convertir.
-     * @return nuevo número.
+     * Converts a number {@code float} to {@code double}.
+     * @param f number to be converted.
+     * @return new number.
      */
     public static double toDouble(float f) {
         return Float.valueOf(f).doubleValue();

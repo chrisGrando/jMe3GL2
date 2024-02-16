@@ -31,10 +31,10 @@
  */
 
 /**
- * Paquete utilidades.
+ * Utilities package.
  * <p>
- * En este paquete podemos encontrar clases u objetos que son de ayuda al crear
- * un modelo 2D e incluso un juego (<b>Mundo JME3</b>).
+ * In this package we can find classes or objects that are helpful when creating
+ * a 2D model and even a game (<b>JME3 World</b>).
  * </p>
  * 
  * @author wil

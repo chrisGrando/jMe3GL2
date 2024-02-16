@@ -32,8 +32,8 @@
 package jme3gl2.util;
 
 /**
- * Un <code>TimerTask</code> es una interfaz encargado de activar una tarea
- * del temporizador <code>Timer</code>.
+ * An <code>TimerTask</code> is an interface responsible for triggering a timer
+ * task <code>Timer</code>.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -43,8 +43,8 @@ package jme3gl2.util;
 public interface TimerTask {
     
     /**
-     * Método encargado de activar una tarea.
-     * @param timer el temporizador que ejecuto esta tarea.
+     * Method responsible for activating a task.
+     * @param timer the timer that executes this task.
      */
     void doTask(Timer timer);
 }
