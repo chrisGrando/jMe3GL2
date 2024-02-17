@@ -36,7 +36,8 @@ import com.jme3.asset.TextureKey;
 import com.jme3.texture.Texture;
 
 /**
- * Clase de utilidad para cargar, administrar y modificar texturas.
+ * Utility class for loading, managing and modifying textures.
+ * 
  * @author wil
  * @version 1.0.0
  * @since 2.5.0
@@ -44,11 +45,11 @@ import com.jme3.texture.Texture;
 public final class TextureUtilities {
     
     /**
-     * Devuelve una textura almacenada en el classpath dada la ruta.
+     * Returns a texture stored in the classpath given the path.
      *
-     * @param assetManager administrador de los activos
-     * @param path la ruta dentro del classpath
-     * @return Texture
+     * @param assetManager asset manager.
+     * @param path the path within the classpath.
+     * @return texture.
      */
     public static final Texture getTextureFromClassPath(AssetManager assetManager, String path){
         Texture tex = assetManager.loadTexture(new TextureKey(path, false));
@@ -58,11 +59,11 @@ public final class TextureUtilities {
     }
     
     /**
-     * Devuelve una arreglo de texturas almacenadas en el classpath dada la ruta.
+     * Returns an array of textures stored in the classpath given the path.
      * 
-     * @param assetManager administrador de los activos
-     * @param paths la ruta dentro del classpath
-     * @return Texture[]
+     * @param assetManager asset manager.
+     * @param paths the path within the classpath.
+     * @return texture array.
      */
     public static final Texture[] getArrayTextureFromClassPath(AssetManager assetManager, String ...paths) {
         if (paths == null) {

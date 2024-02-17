@@ -31,7 +31,8 @@
  */
 
 /**
- * Paquete utilidaes.
+ * Utility package.
+ * 
  * @author wil
  * @version 1.0.0
  * @since 2.5.0

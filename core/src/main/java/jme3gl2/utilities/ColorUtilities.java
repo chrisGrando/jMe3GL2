@@ -34,23 +34,28 @@ package jme3gl2.utilities;
 import com.jme3.math.ColorRGBA;
 
 /**
- * Clase de utilidad para cargar, administrar y modificar colores RGBA.
+ * Utility class for loading, managing and modifying RGBA colors.
+ * 
  * @author wil
  * @version 1.0.0
  * @since 2.5.0
  */
 public final class ColorUtilities {
     
-    /** Factor escala- */
+    /** Scale factor. */
     private static final float FACTOR = 0.7F;
     
-    /** Constructor privado. */
-    private ColorUtilities() {};
+    /**
+     * Private constructor.
+     */
+    private ColorUtilities() {
+    }
     
     /**
-     * Devuelve un color más oscuro que el actual.
-     * @param color color
-     * @return color oscuro
+     * Returns a darker color than the current color.
+     * 
+     * @param color color.
+     * @return dark color.
      */
     public static final ColorRGBA darker(ColorRGBA color) {
         return new ColorRGBA(Math.max((color.getRed()   * 255.0F) * FACTOR, 0) / 255.0F,
@@ -60,9 +65,10 @@ public final class ColorUtilities {
     }
     
     /**
-     * Devuelve un color más claro que el actual.
-     * @param color color
-     * @return color claro
+     * Returns a lighter color than the current color.
+     * 
+     * @param color color.
+     * @return light color.
      */
     public static final ColorRGBA brighter(ColorRGBA color) {
         float r = color.getRed()   * 255.0F;

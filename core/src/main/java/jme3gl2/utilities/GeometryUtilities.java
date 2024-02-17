@@ -49,9 +49,9 @@ import org.dyn4j.geometry.Vector2;
 import org.dyn4j.geometry.Wound;
 
 /**
- * Un <code>jMe3GL2Geometry</code> se encarga de auxiliarnos como intermediario
- * entre la clase {@code org.dyn4j.geometry.Geometry}, con el fin de evitar
- * errores con la clase {@code com.jme3.scene.Geometry}.
+ * An <code>jMe3GL2Geometry</code> is in charge of assisting us as an intermediary
+ * between the class {@code org.dyn4j.geometry.Geometry}, in order to avoid errors
+ * with the class {@code com.jme3.scene.Geometry}.
  * 
  * @author wil
  * @version 1.1-SNAPSHOT
@@ -60,8 +60,11 @@ import org.dyn4j.geometry.Wound;
  */
 public final class GeometryUtilities {
     
-    /** Constructor privado. */
-    private GeometryUtilities() {}
+    /** 
+     * Private constructor.
+     */
+    private GeometryUtilities() {
+    }
 
     /**
      * (non-JavaDoc)
@@ -254,7 +257,7 @@ public final class GeometryUtilities {
      * @param count int
      * @param radius double
      * @param theta double
-     * @return pilygon
+     * @return polygon
      */
     public static final Polygon createUnitCirclePolygon(int count, double radius, double theta) {
         return Geometry.createUnitCirclePolygon(count, radius, theta);
@@ -748,7 +751,7 @@ public final class GeometryUtilities {
      * 
      * @param capsule capsule
      * @param scale double
-     * @return cpasule
+     * @return capsule
      */
     public static final Capsule scale(Capsule capsule, double scale) {
         return Geometry.scale(capsule, scale);
