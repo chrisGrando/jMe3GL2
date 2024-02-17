@@ -40,11 +40,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Un objeto de la clase <code>InputHandlerAppState</code> se encarga de 
- * administrar todas las entradas a tarvez de la interfaz {@link InputHandler}
- * que se generen.
+ * An object of class <code>InputHandlerAppState</code> is in charge of managing
+ * all the inputs generated through the {@link InputHandler} interface.
  * <p>
- * Se encarga de inicializarlas o destruirlas.
+ * It is responsible for initializing or destroying them.
  * </p>
  * 
  * @author wil
@@ -54,13 +53,10 @@ import java.util.List;
 @SuppressWarnings(value = {"unchecked"})
 public class InputHandlerAppState extends AbstractAppState {
 
-    /**
-     * Listas de entradas entrantes.
-     */
-    private final List<InputHandler> inputHandlers 
-            = new ArrayList<>();
+    /** Lists of incoming inputs. */
+    private final List<InputHandler> inputHandlers = new ArrayList<>();
     
-    /** Administrador de entradas {@code jme3}. */
+    /** Input manager {@code jme3}. */
     private InputManager inputManager;
 
     /**
@@ -83,12 +79,11 @@ public class InputHandlerAppState extends AbstractAppState {
     }
     
     /**
-     * Método encargado de agregar e inicializar una entrada que implemente la
-     * interfaz {@link InputHandler}.
-     * 
-     * @param <T> tipo de entrada.
-     * @param inputHandler nueva entrada a registrar.
-     * @return entrada registrada.
+     * Method in charge of adding and initializing an input that implements the
+     * interface. {@link InputHandler}.
+     * @param <T> input type.
+     * @param inputHandler new input to be registered.
+     * @return registered input.
      */
     public <T extends InputHandler> T addInputHandler(T inputHandler) {
         if (!inputHandler.isInitialized()) {
@@ -99,12 +94,11 @@ public class InputHandlerAppState extends AbstractAppState {
     }
     
     /**
-     * Devuelve el primer {@link InputHandler} que es una instancia de subclase 
-     * de la clase especificada.
-     * 
-     * @param <T> el tipo deseado de {@link InputHandler}
-     * @param inputClass clase del tipo deseado.
-     * @return Primer estado adjunto que es una instancia de {@code inputClass}.
+     * Returns the first {@link InputHandler} which is a subclass instance of
+     * the specified class.
+     * @param <T> the desired type of {@link InputHandler}.
+     * @param inputClass class of the desired type.
+     * @return first state attached which is an instance of {@code inputClass}.
      */
     public <T extends InputHandler> T getInputHandler(Class<T> inputClass) {
         synchronized (inputHandlers) {
@@ -118,20 +112,20 @@ public class InputHandlerAppState extends AbstractAppState {
     }
     
     /**
-     * Devuelve una entrada a traves de un índice.
-     * @param <T> tipo de entrada.
-     * @param index índice de la entrada.
-     * @return entrada registrada.
+     * Returns an input through an index.
+     * @param <T> input type.
+     * @param index index of the input.
+     * @return registered input.
      */
     public <T extends InputHandler> T getInputHandler(int index) {
         return (T) this.inputHandlers.get(index);
     }
     
     /**
-     * Elimina una entrada.
-     * @param <T> tipo de entrada.
-     * @param inputHandler entrada a eliminar.
-     * @return entrada eliminada.
+     * Deletes an input.
+     * @param <T> input type.
+     * @param inputHandler input to be deleted.
+     * @return input deleted.
      */
     public <T extends InputHandler> T removeInputHandler(T inputHandler) {
         if (inputHandler.isInitialized()) {

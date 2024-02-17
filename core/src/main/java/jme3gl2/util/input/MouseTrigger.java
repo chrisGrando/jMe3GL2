@@ -34,9 +34,9 @@ package jme3gl2.util.input;
 import com.jme3.input.controls.Trigger;
 
 /**
- * Interfaz <code>MouseTrigger</code> que se encarga de preparar un método
- * con el nombre del mapa al agregarse como una entrada en el administrador
- * de datos que proprociona jme3 {@code InputManager}.
+ * Interface <code>MouseTrigger</code> that is responsible for preparing a method
+ * with the name of the map when added as an input in the data manager providing
+ * JME3 {@code InputManager}.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -45,8 +45,8 @@ import com.jme3.input.controls.Trigger;
 public interface MouseTrigger extends Trigger {
     
     /**
-     * Nombre para esta entrada.
-     * @return nombre-entrada.
+     * Name for this input.
+     * @return input name.
      */
     public String getInputName();
 }

@@ -34,7 +34,7 @@ package jme3gl2.util.input;
 import com.jme3.input.controls.KeyTrigger;
 
 /**
- * Un objeto de la clase <code>Key</code> resenta un código clave.
+ * An object of class <code>Key</code> resents a key code.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -42,13 +42,13 @@ import com.jme3.input.controls.KeyTrigger;
  */
 public class Key extends KeyTrigger {
     
-    /** nombre clave de la entrada. */
+    /** Key name of the input. */
     private final String keyName;
     
     /**
-     * Instancie un nuevo objeto de la clase <code>Key</code>.
-     * @param keyCode codigo de la entrada.
-     * @param keyName nombre de esta entrada.
+     * Instantiate a new object of the class <code>Key</code>.
+     * @param keyCode input code.
+     * @param keyName input name.
      */
     public Key(int keyCode, String keyName) {
         super(keyCode);
@@ -56,8 +56,8 @@ public class Key extends KeyTrigger {
     }
 
     /**
-     * Método encargado de devolver el nombre de esta llave.
-     * @return nombre clave.
+     * Method in charge of returning the name of this key.
+     * @return key name.
      */
     public String getKeyName() {
         return keyName;

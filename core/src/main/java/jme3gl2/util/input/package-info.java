@@ -31,8 +31,8 @@
  */
 
 /**
- * Paquete utilidades que proprociona una ayuda con las entradas y salidas
- * de datos por parte del usuario.
+ * Utility package that provides help with data input and output by the user.
+ * 
  * @author wil
  * @version 1.0-SNAPSHOT
  * @since 2.0.0

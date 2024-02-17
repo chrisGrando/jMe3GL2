@@ -32,8 +32,8 @@
 package jme3gl2.util.input;
 
 /**
- * Clase enumeara <code>InputHandlerType</code> encargado de definir el tipo de
- * entrada que administrara esta plantilla.
+ * Class enumerate <code>InputHandlerType</code> in charge of defining the type
+ * of input that will manage this template.
  * 
  * @author wil
  * @version 1.0-SNAPSHOT
@@ -42,13 +42,12 @@ package jme3gl2.util.input;
 public enum InputHandlerType {
 
     /**
-     * Entrada por medio de una acción utilizando la interfaz
-     * {@code ActionListener} que jme3 proprociona.
+     * Input by means of an action using the interface {@code ActionListener}
+     * that JME3 provides.
      */
     Action,
     /**
-     * Entrada analógico utilizando la interfaz {@code AnalogListener} que jme3
-     * proprociona.
+     * Analog input using the interface {@code AnalogListener} that JME3 provides.
      */
     Analog;
 }
