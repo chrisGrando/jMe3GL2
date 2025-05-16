@@ -14,7 +14,7 @@ plugins {
 }
 
 group 'jme3gl2.core'
-version '2.5.3'
+version '2.5.3.1'
 
 dependencies {
     // Implementation of the jme3 library and the dyn4j engine

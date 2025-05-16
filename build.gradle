@@ -1,6 +1,6 @@
 allprojects  {
     project.ext {
-        jmonkeyengineVersion = '3.8.0-stable'
+        jmonkeyengineVersion = '3.8.1-stable'
         dyn4jVersion = '5.0.2'
     }
     repositories {
