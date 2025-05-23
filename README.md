@@ -1,4 +1,11 @@
 # jMe3GL2 - [jMonkeyEngine3 Graphics Library 2D]
+> [!CAUTION]
+> With the release of jMonkeyEngine v3.8.1 and the official jMe3GL2 v3.0.0, this fork that was built
+> around version 2.5.0 is now **deprecaded** and no longer will receive updates.
+> However, since version v3.0.0 of jMe3GL2 API is **incompatible** with version 2.5.0, this branch
+> will remain here for those that are still using the old API version in their projects and,
+> unless that is your case, it's use is NOT recommended.
+
 jMe3GL2 is a set of classes that can be used to develop a 2D game in jMonkeyEngine3.
 It is a mapping library for jME3 to Dyn4J.
 
