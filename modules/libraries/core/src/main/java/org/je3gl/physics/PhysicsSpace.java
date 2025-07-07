@@ -57,7 +57,7 @@ public class PhysicsSpace<E extends PhysicsBody2D> extends World<E> {
 
     /** Class logger. */
     private static final Logger LOGGER = Logger.getLogger(PhysicsSpace.class.getName());    
-    /** physics default speed. */
+    /** Physics default speed. */
     private static final float DEFAULT_SPEED = 1.0F;
     
     /**

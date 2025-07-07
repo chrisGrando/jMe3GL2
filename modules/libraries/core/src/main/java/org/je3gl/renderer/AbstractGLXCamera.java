@@ -44,7 +44,7 @@ import org.je3gl.renderer.effect.GLXEffect;
 public abstract class AbstractGLXCamera implements GLXCamera {
     
     /** GLX (Camera) effects list. */
-    private SafeArrayList<GLXEffect> effects = new SafeArrayList<>(GLXEffect.class);
+    private final SafeArrayList<GLXEffect> effects = new SafeArrayList<>(GLXEffect.class);
     
     /** Status (enabled | disabled).*/
     protected boolean enabled = true;

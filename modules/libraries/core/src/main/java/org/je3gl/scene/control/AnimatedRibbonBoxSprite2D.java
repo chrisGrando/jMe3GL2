@@ -36,7 +36,7 @@ import com.jme3.scene.Spatial;
 /**
  * An animation with the <code>AnimatedRibbonBoxSprite2D</code> class uses one 
  * or more images as an animated ribbon, where you can control the animation through frames.
- * <p>
+ * <br>
  * <b>Example:</b>
  * <pre><code>
  * Image:
@@ -66,7 +66,7 @@ public class AnimatedRibbonBoxSprite2D extends AbstractAnimation2DControl<Spatia
      * Generate a new instance of the <code>AnimatedRibbonBoxSprite2D</code> class 
      * where you can specify the type of animation renderer to use from among those
      * supported by default by jMe3GL2.
-     * <p>
+     * <br>
      * Supported list
      * <ul>
      * <li>{@link org.je3gl.scene.control.UnshadedHandlerFunction}</li>

@@ -65,14 +65,10 @@ public class Tile implements Savable, Cloneable {
      * @return object clone
      */
     @Override
-    public Tile clone() {
-        try {
-            Tile clon = (Tile) super.clone();
-            clon.properties = properties.clone();
-            return clon;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
+    public Tile clone() throws CloneNotSupportedException {
+        Tile clon = (Tile) super.clone();
+        clon.properties = properties.clone();
+        return clon;
     }
     
     /**

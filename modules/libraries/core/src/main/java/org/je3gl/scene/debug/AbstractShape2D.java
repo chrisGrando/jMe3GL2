@@ -44,7 +44,7 @@ import java.nio.FloatBuffer;
 /**
  * Abstract class <code>AbstractShape2D</code> in charge of implementing the basis
  * for generating primitive shapes.
- * <p>
+ * <br>
  * <b>Lines</b> are used to generate the shapes.
  * 
  * @author wil
@@ -53,7 +53,7 @@ import java.nio.FloatBuffer;
  */
 public abstract class AbstractShape2D extends Mesh implements Savable, Cloneable {
     
-    /**Arrangement of the mesh vertices. */
+    /** Arrangement of the mesh vertices. */
     protected Vector3f[] vertices;
     
     /**

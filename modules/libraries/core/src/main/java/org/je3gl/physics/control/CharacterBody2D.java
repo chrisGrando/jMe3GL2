@@ -65,7 +65,7 @@ import org.dyn4j.world.listener.StepListenerAdapter;
  * If this object comes into contact (collision) with another object (<code>CharacterBody2D</code>) 
  * of the same type, the flags will not activate (it would not make sense for 
  * 2 characters to activate the flags).
- * 
+ * </p>
  * @author wil
  * @version 2.0.0
  * @since 1.0.0
@@ -127,16 +127,11 @@ public class CharacterBody2D extends PhysicsBody2D {
          * @see java.lang.Object#clone() 
          */
         @Override
-        protected BooleanHandler clone() {
-            try {
-                BooleanHandler clon = (BooleanHandler) 
-                                        BooleanHandler.super.clone();
-                clon.active = active;
-                clon.hasBeenHandled = hasBeenHandled;
-                return clon;
-            } catch (CloneNotSupportedException e) {
-                throw new RuntimeException(e);
-            }
+        protected BooleanHandler clone() throws CloneNotSupportedException {
+            BooleanHandler clon = (BooleanHandler) BooleanHandler.super.clone();
+            clon.active = active;
+            clon.hasBeenHandled = hasBeenHandled;
+            return clon;
         }
         
         /**
@@ -218,7 +213,7 @@ public class CharacterBody2D extends PhysicsBody2D {
         }
     };
     
-    /** *  A default listener for interface {@link org.je3gl.listener.CharacterContactListener}. */
+    /** A default listener for interface {@link org.je3gl.listener.CharacterContactListener}. */
     private final CharacterContactListener<CharacterBody2D, PhysicsBody2D> defaultCharacterContactListener = new CharacterContactListener<CharacterBody2D, PhysicsBody2D>() {
         @Override
         public boolean trackIsOnGround(CharacterBody2D character, PhysicsBody2D platform, ContactConstraint<PhysicsBody2D> contactConstraint) {
@@ -259,19 +254,14 @@ public class CharacterBody2D extends PhysicsBody2D {
             AABB wAABB = character.createAABB();
             AABB pAABB = platform.createAABB();
 
-            if ((Double.compare(Math.abs(wAABB.getMinY() - pAABB.getMaxY()), ERROR) < 0)
-                    || (Double.compare(Math.abs(pAABB.getMinY() - wAABB.getMaxY()), ERROR) < 0)) {
-                return false;
-            }
-            return true;
-        }};
-    
-    /** *  A default listener for interface {@link org.je3gl.listener.OneWayContactDisabler}. */
-    private final OneWayContactDisabler<PhysicsBody2D> defaultOneWayContactDisabler = (PhysicsBody2D body) -> {
-        if (is(body, Type.ONE_WAY_PLATFORM)) {
-            return true;
+            return !((Double.compare(Math.abs(wAABB.getMinY() - pAABB.getMaxY()), ERROR) < 0)
+                || (Double.compare(Math.abs(pAABB.getMinY() - wAABB.getMaxY()), ERROR) < 0));
         }
-        return false;
+    };
+    
+    /** A default listener for interface {@link org.je3gl.listener.OneWayContactDisabler}. */
+    private final OneWayContactDisabler<PhysicsBody2D> defaultOneWayContactDisabler = (PhysicsBody2D body) -> {
+        return is(body, Type.ONE_WAY_PLATFORM);
     };
     
     /**
@@ -431,7 +421,6 @@ public class CharacterBody2D extends PhysicsBody2D {
     protected boolean allowOneWayUp(PhysicsBody2D character, PhysicsBody2D platform) {
         AABB wAABB = character.createAABB();
         AABB pAABB = platform.createAABB();
-
         // NOTE: this would need to change based on the shape of the platform and it's orientation
         // 
         // one thought might be to store the allowed normal of the platform on the platform body
@@ -439,10 +428,8 @@ public class CharacterBody2D extends PhysicsBody2D {
         // same direction
         //
         // another option might be to project both onto the platform normal to see where they are overlapping
-        if (wAABB.getMinY() < pAABB.getMinY()) {
-            return true;
-        }
-        return false;
+
+        return wAABB.getMinY() < pAABB.getMinY();
     }
 
     /**

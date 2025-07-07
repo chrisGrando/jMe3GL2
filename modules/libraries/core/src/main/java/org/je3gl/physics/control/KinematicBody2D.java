@@ -37,7 +37,7 @@ package org.je3gl.physics.control;
  * <p>
  * They are not affected by physics at all; compared to other types of bodies,
  * such as a character or a rigid body, they are the same as a static body.
- *
+ * </p>
  * @author wil
  * @version 1.5.5
  * @since 1.2.0

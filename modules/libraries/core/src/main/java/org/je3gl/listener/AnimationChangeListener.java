@@ -41,7 +41,7 @@ import org.je3gl.scene.control.Animation2D;
  * <p>
  * There are two ways to tell if the animation has made a change: the <code>beforeAnimation2DChange()</code>
  * method reports the previous frame and the <code>afterAnimation2DChange</code> method reports the new change.
- * <p>
+ * </p>
  * Example:
  * <pre><code>
  * AnimationChangeListener&#60;?, ?, ?&#62; listener = new AnimationChangeListener&#60;&#62;() {

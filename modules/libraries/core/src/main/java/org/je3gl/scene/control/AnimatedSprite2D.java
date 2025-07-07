@@ -40,7 +40,7 @@ import com.jme3.texture.Texture;
  * <p>
  * With this control we can create animations with independent textures, that is; 
  * which will form an animation with a list of textures in a linear manner.
- * <p>
+ * </p>
  * <b>Example:</b>
  * Suppose you have the following textures (images):
  * <pre><code>
@@ -63,7 +63,7 @@ public class AnimatedSprite2D extends AbstractAnimatedSprite2D<Spatial, SpriteAn
      * Generate a new instance of the <code>AnimatedSprite2D</code> class 
      * where you can specify the type of animation renderer to use from among those
      * supported by default by jMe3GL2.
-     * <p>
+     * <br>
      * Supported list:
      * <ul>
      * <li>{@link org.je3gl.scene.control.UnshadedHandlerFunction}</li>

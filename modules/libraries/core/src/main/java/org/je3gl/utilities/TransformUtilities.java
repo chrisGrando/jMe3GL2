@@ -49,7 +49,7 @@ public class TransformUtilities {
      * com.jme3.math.Vector3f)}, this method doesn't assume the quaternion is
      * normalized. Instead, rotation is performed using a normalized version of
      * the quaternion.
-     *
+     * </p>
      * @param rotation the desired rotation (not null, not zero, unaffected)
      * @param input the vector to rotate (not null, finite, unaffected unless
      * it's {@code storeResult})     * 
@@ -98,7 +98,7 @@ public class TransformUtilities {
      * <p>
      * Unlike {@link com.jme3.math.Quaternion#norm()}, this method returns a
      * double-precision value for precise comparison of lengths.
-     *
+     * </p>
      * @param q the input value (not null, unaffected)
      * @return the squared length (&ge;0)
      */

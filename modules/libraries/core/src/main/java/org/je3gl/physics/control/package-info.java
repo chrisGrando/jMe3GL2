@@ -36,7 +36,7 @@
  * Any object that inherits from the <b>PhysicsBody2D</b> class is considered a physical 
  * body by <a href="https://dyn4j.org/">dyn4j</a> and a <code>Spatial</code> control 
  * by  <a href="https://jmonkeyengine.org/">jMonkeyEngine3</a>.
- * 
+ * </p>
  * @author wil
  * @version 1.5.0
  * @since 1.5.0

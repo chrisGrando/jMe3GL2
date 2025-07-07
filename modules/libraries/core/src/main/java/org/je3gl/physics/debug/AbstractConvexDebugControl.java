@@ -61,9 +61,11 @@ import org.dyn4j.geometry.Vector2;
  * <b>Dyn4j</b> has the freedom to transfer a form <code>Convex</code>
  * to a specific point of a body, since it is relative to the physical body it
  * has to be controlled separately.
+ * </p>
  * <p>
  * The following shapes, their positions and rotations are peculiar and therefore
  * have a class dedicated to obtain these coordinates:
+ * </p>
  * <ul>
  * <li>Capsule</li>
  * <li>Circle</li>

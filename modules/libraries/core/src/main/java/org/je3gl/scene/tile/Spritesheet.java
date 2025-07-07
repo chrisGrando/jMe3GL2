@@ -40,7 +40,7 @@ import com.jme3.scene.Geometry;
  * <p>
  * Each {@link Tile} added to the scene node has a list of properties to customize
  * the generated 2D model.
- * 
+ * </p>
  * @author wil
  * @version 1.0.5
  * @since 2.0.0

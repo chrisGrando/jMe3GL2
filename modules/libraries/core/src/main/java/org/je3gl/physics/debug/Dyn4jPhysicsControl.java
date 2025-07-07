@@ -49,7 +49,7 @@ import org.dyn4j.dynamics.BodyFixture;
  */
 class Dyn4jPhysicsControl extends AbstractPhysicsDebugControl<PhysicsBody2D> {
 
-    /** body. */
+    /** Body. */
     private final PhysicsBody2D body;    
     /** Renderer for physical shapes. */
     protected Graphics2DRenderer renderer;
@@ -79,9 +79,8 @@ class Dyn4jPhysicsControl extends AbstractPhysicsDebugControl<PhysicsBody2D> {
      * Method for establishing the <code>Spatial</code> to control, it will
      * normally be a <code>Node</code> to which the geometries of the debugged
      * physical bodies will be added.
-     * <p>
+     * <br>
      * Only bodies that are available in the stack are added.
-     * 
      * @param spatial <code>Spatial</code> to control
      */
     @Override
@@ -105,7 +104,7 @@ class Dyn4jPhysicsControl extends AbstractPhysicsDebugControl<PhysicsBody2D> {
      * <p>
      * If there is a change or a new shape, the parent node is notified to
      * discard its children and then add the new geometry stack.
-     * 
+     * </p>
      * @param tpf time per frames per second
      */
     @Override

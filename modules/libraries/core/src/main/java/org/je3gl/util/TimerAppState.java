@@ -47,7 +47,7 @@ import java.util.logging.Logger;
  * <p>
  * In simpler terms, it is in charge of updating them, checking when they are
  * paused or resuming them.
- * 
+ * </p>
  * @author wil
  * @version 1.5.0
  * @since 1.3.0

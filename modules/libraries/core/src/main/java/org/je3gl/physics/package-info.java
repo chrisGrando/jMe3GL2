@@ -34,7 +34,7 @@
  * Package responsible for managing the <a href="https://dyn4j.org/">dyn4j</a> 
  * physics engine to provide performance for 2D games created using jMe3GL2 and
  * <a href="https://jmonkeyengine.org/">jMonkeyEngine3</a>.
- * <p>
+ * <br>
  * Classes that make up this package:
  * <ul>
  * <li><b>Dyn4jAppState</b>: State in charge of managing the physics engine, in 

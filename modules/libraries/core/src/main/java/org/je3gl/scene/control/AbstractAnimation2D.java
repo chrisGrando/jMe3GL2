@@ -46,7 +46,7 @@ import java.io.IOException;
  */
 public abstract class AbstractAnimation2D<T extends AbstractAnimation2D<T>> implements Animation2D, Savable, Cloneable, JmeCloneable {
     
-    /* size (mesh). **/
+    /* Size (mesh). **/
     private Float width,  // <- mesh width (Sprite)
                   height; // <- mesh height (Sprite)
     

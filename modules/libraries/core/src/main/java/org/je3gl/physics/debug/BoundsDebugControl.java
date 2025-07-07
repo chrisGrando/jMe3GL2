@@ -85,7 +85,7 @@ final class BoundsDebugControl<E extends PhysicsBody2D> extends AbstractPhysicsD
     /**
      * Method for verifying if there is a <code>Bounds</code> for the actual
      * physical world. If so, a form can be generated for it.
-     * <p>
+     * <br>
      * Note: Only compatible with the form <code>AxisAlignedBounds</code>.
      */
     protected void renderBounds() {

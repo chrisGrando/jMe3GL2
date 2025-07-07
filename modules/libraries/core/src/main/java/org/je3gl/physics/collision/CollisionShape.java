@@ -165,9 +165,9 @@ public class CollisionShape<E extends Convex> implements Savable, Cloneable {
         }
     }
     
-    /** shape. */
+    /** Shape. */
     private E shape;
-    /** type. */
+    /** Type. */
     private Type type;
 
     /**
@@ -192,96 +192,92 @@ public class CollisionShape<E extends Convex> implements Savable, Cloneable {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public CollisionShape<E> clone() {
-        try {
-            CollisionShape<E> clon = (CollisionShape<E>)
-                                    super.clone();
-            clon.type = type;            
-            switch (type) {
-                case Circle:
-                    Circle circle = (Circle) shape;
-                    clon.shape    = (E) dyn4jCreateCircle(circle.getRadius());
-                    clon.shape.translate(circle.getCenter().copy());
-                    break;
-                case Rectangle:
-                    Rectangle rectangle = (Rectangle) shape;
-                    clon.shape = (E) dyn4jCreateRectangle(rectangle.getWidth(), rectangle.getHeight());
-                    if (Math.abs(rectangle.getRotationAngle()) > Epsilon.E) {
-                        clon.shape.rotate(rectangle.getRotationAngle());
-                    }
-                    clon.shape.translate(rectangle.getCenter().copy());
-                    break;
-                case Triangle:
-                    Triangle triangle   = (Triangle) shape;
-                    Vector2[] tVertices = triangle.getVertices();                    
-                    clon.shape = (E) dyn4jCreateTriangle(tVertices[0].copy(), tVertices[1].copy(), tVertices[2].copy());
-                    break;
-                case Polygon:
-                    Polygon polygon     = (Polygon) shape;
-                    Vector2[] pVertices = new Vector2[polygon.getVertices().length];
+    public CollisionShape<E> clone() throws CloneNotSupportedException {
+        CollisionShape<E> clon = (CollisionShape<E>) super.clone();
+        clon.type = type;
+        switch (type) {
+            case Circle:
+                Circle circle = (Circle) shape;
+                clon.shape = (E) dyn4jCreateCircle(circle.getRadius());
+                clon.shape.translate(circle.getCenter().copy());
+                break;
+            case Rectangle:
+                Rectangle rectangle = (Rectangle) shape;
+                clon.shape = (E) dyn4jCreateRectangle(rectangle.getWidth(), rectangle.getHeight());
+                if (Math.abs(rectangle.getRotationAngle()) > Epsilon.E) {
+                    clon.shape.rotate(rectangle.getRotationAngle());
+                }
+                clon.shape.translate(rectangle.getCenter().copy());
+                break;
+            case Triangle:
+                Triangle triangle = (Triangle) shape;
+                Vector2[] tVertices = triangle.getVertices();
+                clon.shape = (E) dyn4jCreateTriangle(tVertices[0].copy(), tVertices[1].copy(), tVertices[2].copy());
+                break;
+            case Polygon:
+                Polygon polygon = (Polygon) shape;
+                Vector2[] pVertices = new Vector2[polygon.getVertices().length];
 
-                    for (int i = 0; i < pVertices.length; i++) {
-                        pVertices[i] = polygon.getVertices()[i].copy();
-                    }
-                    clon.shape = (E) dyn4jCreatePolygon(pVertices);
-                    break;
-                case Segment: /*case Link:*/
-                    Segment segment   = (Segment) shape;
-                    Vector2[] segVert = segment.getVertices();                    
-                    clon.shape = (E) dyn4jCreateSegment(segVert[0].copy(), segVert[1].copy());
-                    break;
-                case Capsule:
-                    Capsule capsule = (Capsule) shape;
-                    clon.shape      = (E) dyn4jCreateCapsule(capsule.getLength(), capsule.getCapRadius() * 2.0);
-                    if (Math.abs(capsule.getRotationAngle()) > Epsilon.E) {
-                        clon.shape.rotate(capsule.getRotationAngle());
-                    }
-                    clon.shape.translate(capsule.getCenter().copy());
-                    break;
-                case Ellipse:
-                    Ellipse ellipse = (Ellipse) shape;
-                    clon.shape      = (E) dyn4jCreateEllipse(ellipse.getHalfWidth() * 2.0, ellipse.getHalfHeight() * 2.0);
-                    if (Math.abs(ellipse.getRotationAngle()) > Epsilon.E) {
-                        clon.shape.rotate(ellipse.getRotationAngle());
-                    }
-                    clon.shape.translate(ellipse.getCenter().copy());
-                    break;
-                case HalfEllipse:
-                    HalfEllipse halfEllipse = (HalfEllipse) shape;
+                for (int i = 0; i < pVertices.length; i++) {
+                    pVertices[i] = polygon.getVertices()[i].copy();
+                }
+                clon.shape = (E) dyn4jCreatePolygon(pVertices);
+                break;
+            case Segment:
+                /*case Link:*/
+                Segment segment = (Segment) shape;
+                Vector2[] segVert = segment.getVertices();
+                clon.shape = (E) dyn4jCreateSegment(segVert[0].copy(), segVert[1].copy());
+                break;
+            case Capsule:
+                Capsule capsule = (Capsule) shape;
+                clon.shape = (E) dyn4jCreateCapsule(capsule.getLength(), capsule.getCapRadius() * 2.0);
+                if (Math.abs(capsule.getRotationAngle()) > Epsilon.E) {
+                    clon.shape.rotate(capsule.getRotationAngle());
+                }
+                clon.shape.translate(capsule.getCenter().copy());
+                break;
+            case Ellipse:
+                Ellipse ellipse = (Ellipse) shape;
+                clon.shape = (E) dyn4jCreateEllipse(ellipse.getHalfWidth() * 2.0, ellipse.getHalfHeight() * 2.0);
+                if (Math.abs(ellipse.getRotationAngle()) > Epsilon.E) {
+                    clon.shape.rotate(ellipse.getRotationAngle());
+                }
+                clon.shape.translate(ellipse.getCenter().copy());
+                break;
+            case HalfEllipse:
+                HalfEllipse halfEllipse = (HalfEllipse) shape;
 
-                    double width = halfEllipse.getHalfWidth() * 2.0;
-                    double height = halfEllipse.getHeight();
+                double width = halfEllipse.getHalfWidth() * 2.0;
+                double height = halfEllipse.getHeight();
 
-                    clon.shape = (E) dyn4jCreateHalfEllipse(width, height);
-                    if (Math.abs(halfEllipse.getRotationAngle()) > Epsilon.E) {
-                        clon.shape.rotate(halfEllipse.getRotationAngle());
-                    }
-                    clon.shape.translate(halfEllipse.getCenter().copy());
-                    break;
-                case Slice:
-                    Slice slice = (Slice) shape;
+                clon.shape = (E) dyn4jCreateHalfEllipse(width, height);
+                if (Math.abs(halfEllipse.getRotationAngle()) > Epsilon.E) {
+                    clon.shape.rotate(halfEllipse.getRotationAngle());
+                }
+                clon.shape.translate(halfEllipse.getCenter().copy());
+                break;
+            case Slice:
+                Slice slice = (Slice) shape;
 
-                    double theta = slice.getTheta();
-                    double radius = slice.getSliceRadius();
-                    double originalX = 2.0 * radius * Math.sin(theta * 0.5) / (1.5 * theta);
+                double theta = slice.getTheta();
+                double radius = slice.getSliceRadius();
+                //double originalX = 2.0 * radius * Math.sin(theta * 0.5) / (1.5 * theta);
 
-                    clon.shape = (E) dyn4jCreateSlice(radius, theta);
+                clon.shape = (E) dyn4jCreateSlice(radius, theta);
 
-                    if (Math.abs(slice.getRotationAngle()) > Epsilon.E) {
-                        clon.shape.rotate(slice.getRotationAngle());
-                    }
-                    clon.shape.translate(slice.getCenter().copy());
-                    break;
-                case Custom:
-                    LOGGER.log(Level.WARNING, "This physical shape cannot be cloned");
-                    break;
-                default:
-                    throw new AssertionError();
-            }
-            return clon;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
+                if (Math.abs(slice.getRotationAngle()) > Epsilon.E) {
+                    clon.shape.rotate(slice.getRotationAngle());
+                }
+                clon.shape.translate(slice.getCenter().copy());
+                break;
+            case Custom:
+                LOGGER.log(Level.WARNING, "This physical shape cannot be cloned");
+                break;
+            default:
+                throw new AssertionError();
         }
+        return clon;
     }
     
     /**

@@ -123,40 +123,40 @@ public class PhysicsFixture implements Savable, Cloneable {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public PhysicsFixture clone() {
-        try {
-            // To 'clone' this object, we must first encapsulate the body shape 
-            // into an CollisionShape<?> where the copy will be made.
-            PhysicsFixture clon = (PhysicsFixture) super.clone();            
-            CollisionShape<?> temp = new CollisionShape<>(bf.getShape());
-            
-            clon.type = type;
-            clon.bf   = new BodyFixture(temp.clone().getShape());
-            
-            // Whether it is possible to clone user data (except null values)
-            Object userData = bf.getUserData();
-            if ((userData instanceof JmeCloneable) || (userData instanceof Cloneable)) {
-                Cloner cloner = new Cloner();
-                userData = cloner.clone(userData);
-            } else {
-                if (userData != null) {
-                    LOGGER.log(Level.INFO, "Could NOT clone {0} (probably a primitive type)", userData.getClass().getName());
-                }
+    public PhysicsFixture clone() throws CloneNotSupportedException {
+        // To 'clone' this object, we must first encapsulate the body shape 
+        // into an CollisionShape<?> where the copy will be made.
+        PhysicsFixture clon = (PhysicsFixture) super.clone();
+        CollisionShape<?> temp = new CollisionShape<>(bf.getShape());
+
+        clon.type = type;
+        clon.bf = new BodyFixture(temp.clone().getShape());
+
+        // Whether it is possible to clone user data (except null values)
+        Object userData = bf.getUserData();
+        if ((userData instanceof JmeCloneable) || (userData instanceof Cloneable)) {
+            Cloner cloner = new Cloner();
+            userData = cloner.clone(userData);
+        } else {
+            if (userData != null) {
+                LOGGER.log(Level.INFO, "Could NOT clone {0} (probably a primitive type)", userData.getClass().getName());
             }
-            
-            clon.bf.setUserData(userData);
-            if (clon.type == PhysicsFilter.CATEGOTY) {
-                CategoryFilter cf = (CategoryFilter) bf.getFilter();                
-                clon.bf.setFilter(new CategoryFilter(cf.getCategory(), cf.getMask()));
-            } else if (clon.type == PhysicsFilter.DEFAULT) {
-                // nothing
-            } else if (clon.type == PhysicsFilter.CUSTOM) {
-                LOGGER.log(Level.WARNING, "The class {0} is not known.", bf.getFilter().getClass().getName());
-            }
-            return clon;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
         }
+
+        clon.bf.setUserData(userData);
+        if (null != clon.type) switch (clon.type) {
+            case CATEGOTY:
+                CategoryFilter cf = (CategoryFilter) bf.getFilter();
+                clon.bf.setFilter(new CategoryFilter(cf.getCategory(), cf.getMask()));
+                break;
+            case CUSTOM:
+                LOGGER.log(Level.WARNING, "The class {0} is not known.", bf.getFilter().getClass().getName());
+                break;
+            default:
+                break;
+        }
+        
+        return clon;
     }
     
     /**

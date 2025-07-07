@@ -42,6 +42,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Optional;
 
 import org.je3gl.physics.control.PhysicsBody2D;
 import org.je3gl.physics.debug.Dyn4jDebugAppState;
@@ -58,6 +59,7 @@ import org.dyn4j.world.PhysicsWorld;
  * <p>
  * Note that the dyn4j engine is independent of jme3; therefore, you must have
  * knowledge of how to handle both.
+ * </p>
  * @param <E> of type {@link org.je3gl.physics.control.PhysicsBody2D}
  * @author wil
  * @version 1.5.0
@@ -94,17 +96,18 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
      * <p>
      * Please note that if a limit is set, the physics engine will disable the world 
      * upon reaching the limit
+     * </p>
      */
     protected Bounds bounds = null;
     
     /** Physical space configurations. */
     private Settings settings;
     
-    /**The physical space of bodies. */
+    /** The physical space of bodies. */
     protected PhysicsSpace<E> physicsSpace = null;    
     /** <code>TPF</code> since last update call; in seconds. */
     protected float tpf = 0;    
-    /**accumulated <code>TPF</code>. */
+    /** Accumulated <code>TPF</code>. */
     protected float tpfSum = 0;
     
     //--------------------------------------------------------------------------
@@ -306,12 +309,12 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
     protected void printInformation() {
         StringBuilder buff = new StringBuilder();
         buff.append("[jMe3GL2] :Physical engine initialized with the following properties")
-             .append('\n');
+            .append('\n');
         buff.append(" *  Threading Type: ").append(threadingType)
             .append('\n');
-        buff.append(" *  Initial Capacity: ").append(initialCapacity == null ? CollisionWorld.DEFAULT_INITIAL_BODY_CAPACITY : initialCapacity)
+        buff.append(" *  Initial Capacity: ").append(Optional.ofNullable(initialCapacity).orElse(CollisionWorld.DEFAULT_INITIAL_BODY_CAPACITY))
             .append('\n');
-        buff.append(" *  Initial Joint Capacity: ").append(initialJointCapacity == null ? PhysicsWorld.DEFAULT_INITIAL_JOINT_CAPACITY : initialJointCapacity)
+        buff.append(" *  Initial Joint Capacity: ").append(Optional.ofNullable(initialJointCapacity).orElse(PhysicsWorld.DEFAULT_INITIAL_JOINT_CAPACITY))
             .append('\n');
         buff.append(" *  Bounds: ").append(bounds != null ? bounds.getClass().getName() : null)
             .append('\n');
@@ -446,6 +449,7 @@ public class Dyn4jAppState<E extends PhysicsBody2D> extends AbstractAppState {
      * <p>
      * <b>WARNING</b>: Once this method is executed (remove it from the state manager)
      * the physical space will be invalidated so it will be unusable.
+     * </p>
      */
     @Override
     public void cleanup() {

@@ -57,7 +57,7 @@ import org.dyn4j.geometry.MassType;
 /**
  * Class that implements the default administrators used by the class {@link org.je3gl.scene.tile.TileMap} 
  * as default values.
- * <p>
+ * <br>
  * Properties table:
  * <table>
  * <tr>

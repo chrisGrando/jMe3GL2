@@ -58,7 +58,7 @@ import java.util.logging.Logger;
  * material (as it exists in several 'custom types') differently, this is achieved 
  * through the {@link org.je3gl.scene.control.AnimatedMaterialsHandlerFunction} interface 
  * which provides the necessary methods to perform said action.
- * <p>
+ * </p>
  * <b>jMe3GL2</b> supports two types of animated managers by default:
  * <ul>
  * <li>
@@ -163,7 +163,7 @@ public abstract class AbstractAnimation2DControl<O extends Spatial, A extends An
      * Generate a new instance of the <code>AbstractAnimation2DControl</code> class 
      * where you can specify the type of animation renderer to use from among those
      * supported by default by jMe3GL2.
-     * <p>
+     * <br>
      * Supported list
      * <ul>
      * <li>{@link org.je3gl.scene.control.UnshadedHandlerFunction}</li>
@@ -199,7 +199,7 @@ public abstract class AbstractAnimation2DControl<O extends Spatial, A extends An
      * @see java.lang.Object#clone() 
      */
     @Override
-    public Object clone() {
+    public Object clone() throws CloneNotSupportedException {
         final Cloner cloner = new Cloner();
         return cloner.clone(this);
     }

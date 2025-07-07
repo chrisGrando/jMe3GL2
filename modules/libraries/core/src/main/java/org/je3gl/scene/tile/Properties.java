@@ -760,9 +760,9 @@ public class Properties implements Savable, Cloneable {
                 return new BigDecimal(((Number)val).doubleValue());
             } else {
                 
-                // Using the string constructor to hold "nice" values for double
-                // and float, the double constructor will translate the doubles to
-                // "exact" values instead of the likely intended representation.
+                /* Using the string constructor to hold "nice" values for double
+                   and float, the double constructor will translate the doubles to
+                   "exact" values instead of the likely intended representation. */
                 return new BigDecimal(val.toString());
             }
         }
@@ -1341,58 +1341,51 @@ public class Properties implements Savable, Cloneable {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public Properties clone() {
-        try {
-            // Clone the object JmeProperties
-            Properties clon = (Properties) 
-                               super.clone();
-            
-            // Cloned object
-            final Cloner cloner = new Cloner();
-            
-            // Since cloning only superficially affects the objects, we will 
-            // also clone the Map along with its data that supports cloning.
-            clon.properties = (HashMap<String, Savable>) properties.clone();
-                        
-            for (final Entry<?, ?> entry : clon.properties.entrySet()) {
-                if (entry.getKey() == null) {
-                    throw new NullPointerException("Null key.");
-                }
-                
-                final Object oldvalue = entry.getValue();
-                if (oldvalue == null)
-                    continue;
-                
-                Object newvalue;
-                if (oldvalue instanceof Property) {
-                    newvalue = ((Property) oldvalue).clone();
-                } else if (oldvalue instanceof Savable) {
-                    if (oldvalue instanceof JmeCloneable ||
-                        oldvalue instanceof Cloneable ||
-                        cloner.isCloned(oldvalue)) {
-                        
-                        // We cloned the object!
-                        newvalue = cloner.clone(oldvalue);
-                    } else {
-                        newvalue = oldvalue;                        
-                        LOGGER.log(Level.WARNING,"The object[key={0}, object={1}] does not support cloning.", new Object[] {
-                                                                                        quote(String.valueOf(entry.getKey())),
-                                                                                        quote(oldvalue.getClass().getName())});
-                    }
-                } else {
-                    throw new UnsupportedOperationException("Object [" + oldvalue.getClass().getName() + "] not supported.");
-                }
-                
-                clon.properties.put(String.valueOf(entry.getKey()), wrap(newvalue));
+    public Properties clone() throws CloneNotSupportedException {
+        // Clone the object JmeProperties
+        Properties clon = (Properties) super.clone();
+
+        // Cloned object
+        final Cloner cloner = new Cloner();
+
+        /* Since cloning only superficially affects the objects, we will 
+           also clone the Map along with its data that supports cloning. */
+        clon.properties = (HashMap<String, Savable>) properties.clone();
+
+        for (final Entry<?, ?> entry : clon.properties.entrySet()) {
+            if (entry.getKey() == null)
+                throw new NullPointerException("Null key.");
+
+            final Object oldvalue = entry.getValue();
+            if (oldvalue == null)
+                continue;
+
+            Object newvalue;
+            if (oldvalue instanceof Property) {
+                newvalue = ((Property) oldvalue).clone();
             }
-            
-            // We return the cloned object together with its properties
-            return clon;
-        } catch (CloneNotSupportedException e) {
-            // If it gives an error or for some reason Jm Properties does not 
-            // support cloning.
-            throw new InternalError(e);
+            else if (oldvalue instanceof Savable) {
+                if (oldvalue instanceof JmeCloneable || oldvalue instanceof Cloneable || cloner.isCloned(oldvalue)) {
+                    // We cloned the object!
+                    newvalue = cloner.clone(oldvalue);
+                }
+                else {
+                    newvalue = oldvalue;
+                    LOGGER.log(Level.WARNING, "The object[key={0}, object={1}] does not support cloning.", new Object[]{
+                        quote(String.valueOf(entry.getKey())),
+                        quote(oldvalue.getClass().getName())
+                    });
+                }
+            }
+            else {
+                throw new UnsupportedOperationException("Object [" + oldvalue.getClass().getName() + "] not supported.");
+            }
+
+            clon.properties.put(String.valueOf(entry.getKey()), wrap(newvalue));
         }
+
+        // We return the cloned object together with its properties
+        return clon;
     }
     
     /**
@@ -1697,13 +1690,13 @@ public class Properties implements Savable, Cloneable {
                 }
             }
             
-            // Integer representation.
-            // This will reduce any value to the smallest reasonable object representation.
-            // (Integer, Long or BigInteger).
-            // 
-            // BigInteger downconversion: We use a bit length comparison similar to
-            // BigInteger#intValueExact uses. It increases GC, but objects are kept
-            // only what they need. i.e. less runtime overhead if the value is long-lived.
+            /* Integer representation.
+               This will reduce any value to the smallest reasonable object representation.
+               (Integer, Long or BigInteger).
+               
+               BigInteger downconversion: We use a bit length comparison similar to
+               BigInteger#intValueExact uses. It increases GC, but objects are kept
+               only what they need. i.e. less runtime overhead if the value is long-lived. */
             
             BigInteger bi = new BigInteger(val);
             if(bi.bitLength() <= 31){

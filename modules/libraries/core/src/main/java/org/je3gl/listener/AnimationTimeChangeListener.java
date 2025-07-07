@@ -39,7 +39,7 @@ import org.je3gl.scene.control.Animation2D;
  * Interface in charge of managing the progress of an animation throughout its 
  * life cycle. With this interface we can obtain information about the exact time 
  * in which the frames of a certain animation pass.
- * <p>
+ * <br>
  * Example:
  * <pre><code>
  * AnimationTimeChangeListener&#60;?, ?, ?&#62; listener = new AnimationTimeChangeListener&#60;&#62;() {
@@ -62,7 +62,7 @@ public interface AnimationTimeChangeListener<O extends Spatial, A extends Animat
     /**
      * Method responsible for reporting the progress of the animations managed by 
      * the animated control, normally providing 2 types of data:
-     * <p>
+     * <br>
      * <b>Type of information</b>
      * <ul>
      * <li><b>range</b>: A range between 1 and 100%</li>

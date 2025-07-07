@@ -39,7 +39,7 @@ import java.util.List;
  * is, it is updated along with the game scenes.
  * <p>
  * To activate or perform one or more tasks, use the interface {@link org.je3gl.util.TimerTask}.
- * 
+ * </p>
  * @author wil
  * @version 1.0.5
  * @since 1.2.0
@@ -74,7 +74,7 @@ public class Timer {
     }
 
     /**
-     * Establede el estado que gestiona este temporizador.
+     * Sets the state that this timer manages.
      * 
      * @param timerState state
      * @since 3.0.0
@@ -301,7 +301,7 @@ public class Timer {
      * <p>
      * <b>NOTE:</b> It should be noted that setting a new time will automatically
      * reset the timer.
-     * 
+     * </p>
      * @param maxTime maximum time
      */
     public void setMaxTime(float maxTime) {

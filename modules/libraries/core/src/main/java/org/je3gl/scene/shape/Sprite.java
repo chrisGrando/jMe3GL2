@@ -47,13 +47,15 @@ import java.io.IOException;
  * A <code>Sprite</code> uses a percentage scale, meaning that the dimensions of 
  * this mesh are in the range of 0 to 1 (0% - 100%) which must be taken into account
  * when generating a 2D model so that it does not deform in the process.
- * <p>
+ * </p>
  * <b>Example</b>:
+ * <br>
  * If a texture has the following dimensions
  * <pre>{@code 
  * Width : 100px;
  * Height:  50px;
  * }</pre>
+ * <br>
  * We have to take as a reference a measurement of 100% of the dimensions to be 
  * able to define and thus avoid deforming the texture of the geometry.
  * <br>
@@ -254,7 +256,7 @@ public class Sprite extends Mesh implements Cloneable {
     }
     
     /**
-      *Apply new positions for the fragmentation of this mesh (texture).
+     * Apply new positions for the fragmentation of this mesh (texture).
      * @param cp new position on the horizontal (column)
      * @param rp new position in the vertical (row)
      */
@@ -295,6 +297,7 @@ public class Sprite extends Mesh implements Cloneable {
      * <p>
      * <b>WARNING</b>: Do not abuse this method as it is not controlled (may have 
      * unnecessary rendering costs).
+     * </p>
      */
     public void updateTextureCoords() {
         transform.flipType = valueOfFlipType(flipH, flipV);

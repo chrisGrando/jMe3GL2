@@ -57,9 +57,9 @@ public class Vehicle2D extends PhysicsBody2D {
     /** Class logger. */
     private static final Logger LOGGER = Logger.getLogger(Vehicle2D.class.getName());
 
-    /** rear wheel. */
+    /** Rear wheel. */
     protected PhysicsBody2D rearWheel;
-    /** front wheel.*/
+    /** Front wheel.*/
     protected PhysicsBody2D frontWheel;
     
     /** Joint used for the rear wheel. */

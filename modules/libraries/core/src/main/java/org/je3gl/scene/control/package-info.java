@@ -33,7 +33,7 @@
 /**
  * Package responsible for managing animation control for 2D models, this package 
  * offers 3 animated controls that can be used to meet the demands of a full 2D game.
- * <p>
+ * <br>
  * List of currently supported animated controls:
  * <ul>
  * <li><b>AnimatedSprite2D</b>: Animated control where you can generate an animation 

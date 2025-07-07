@@ -48,18 +48,18 @@ import org.je3gl.scene.control.Animation2D;
 public class AnimationEvent<O extends Spatial, A extends Animation2D, E extends AbstractAnimation2DControl<O, A, E>> {
     
     /** 2D model. */
-    private O model;
+    private final O model;
     /** Frame animation. */
-    private A animation;
+    private final A animation;
     /** Animated control. */
-    private E control;
+    private final E control;
     
-    /** current animation name. */
-    private String name;
-    /** animation frame index. */
-    private int index;
-    /** current frame of the animation. */
-    private int frame;
+    /** Current animation name. */
+    private final String name;
+    /** Animation frame index. */
+    private final int index;
+    /** Current frame of the animation. */
+    private final int frame;
 
     /**
      * Generate a new animated event with class <code>AnimationEvent</code>.

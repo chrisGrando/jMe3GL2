@@ -36,7 +36,7 @@ import com.jme3.scene.Spatial;
 /**
  * Abstract class for linear animations where it only depends on its simple frames
  * without any intervention from the animated control.
- * <p>
+ * <br>
  * This class is used by the following animated controls:
  * <ul>
  * <li>{@link org.je3gl.scene.control.AnimatedSingleSprite2D}</li>

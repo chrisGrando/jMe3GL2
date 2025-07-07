@@ -35,7 +35,7 @@
  * <p>
  * The objects in this package can be exported and imported with the objects
  * provided by <code>jme3</code>.
- * 
+ * </p>
  * @author wil
  * @version 1.0.1
  * @since 1.5.0

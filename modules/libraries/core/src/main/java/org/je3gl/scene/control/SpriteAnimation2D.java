@@ -90,7 +90,7 @@ public class SpriteAnimation2D extends AbstractAnimation2D<SpriteAnimation2D> im
     }
     
     /**
-     * Devuelve la textura animada.
+     * Returns the animated texture.
      * @return object
      */
     public Texture getTexture() {

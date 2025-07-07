@@ -50,13 +50,14 @@ import java.util.logging.Logger;
  * <p>
  * With a <code>TileMap</code> we can be able to use an image that integrates
  * all our resources into it, then add them to our scene.
- * <p>
+ * </p>
  * This class asks for the number of tiles horizontally and vertically that
  * contain our image. That is to say, how many icons/tiles our image map contains.
  * <p>
  * One way to find out is to know the exact size of each tile in pixels. Dividing
  * the width of the image with the size of the tiles we get the number of columns,
  * and with the length we get the files.
+ * </p>
  * <pre><code>
  * <b>EXAMPLE:</b>
  * 
@@ -70,6 +71,7 @@ import java.util.logging.Logger;
  * <p>
  * We can say that we have 9 columns and 10 rows given that if we divide the
  * total width with the width of each tile:
+ * </p>
  * <pre><code>
  * 1152/128 = 9  # columns
  * 1280/128 = 10 # rows
@@ -77,8 +79,9 @@ import java.util.logging.Logger;
  * <p>
  * <b>NOTE</b>: Of course, this calculation only applies if the tiles are next to each
  * other or symmetrically distributed.
- * <p>
+ * </p>
  * To add the tiles to our scene node, just use the following method:
+ * <br>
  * <code>addTile()</code>.
  * 
  * @author wil
@@ -175,6 +178,7 @@ public class TileMap extends GeometryGroupNode {
      * <p>
      * <b>NOTE:</b> Before adding new {@link Tile} to this scene map, set the
      * properties since these changes will not apply to existing children.
+     * </p>
      * 
      * @param properties new properties
      */
@@ -221,7 +225,7 @@ public class TileMap extends GeometryGroupNode {
      * <p>
      * <b>NOTE:</b> Use this method only if you have full control of the tile
      * handling, otherwise do not touch the tiles.
-     * 
+     * </p>
      * @param tile new data to be added
      * @param verifID {@code true} if you wish to have a unique identifier,
      * otherwise {@code false}
@@ -233,10 +237,10 @@ public class TileMap extends GeometryGroupNode {
             if (element == null) {
                 continue;
             }            
-            //if (element.equals(tile)) {
-            //    exists = true;
-            //    break;
-            //}            
+            /*if (element.equals(tile)) {
+                exists = true;
+                break;
+            }*/
             if (verifID && (element.getId().equals(tile.getId()))) {
                 LOG.log(Level.WARNING, "[{0}] existing tile.", tile.getId());
             }
@@ -293,7 +297,7 @@ public class TileMap extends GeometryGroupNode {
      * Method for establishing new properties to a tile.
      * <p>
      * To locate this {@link Tile} its identifier is used {@code id}.
-     * 
+     * </p>
      * @param id unique identifier
      * @param p new properties
      */

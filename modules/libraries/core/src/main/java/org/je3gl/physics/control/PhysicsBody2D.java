@@ -69,7 +69,7 @@ import org.je3gl.utilities.TransformUtilities;
  * An object of the <code>PhysicsBody2D</code> class is the body that the physics 
  * engine uses to give realism to the games. With this control we can manage a 
  * 2D model with or without physics.
- * 
+ * </p>
  * @author wil
  * @version 1.5.5
  * @since 1.0.0
@@ -78,12 +78,12 @@ public abstract class PhysicsBody2D extends Body implements Control, Cloneable, 
     /** Class logger. */
     private static final Logger LOGGER = Logger.getLogger(PhysicsBody2D.class.getName());
     /** List of physical space listeners. */
-    private List<SpaceListener<PhysicsBody2D>> spaceListeners = new ArrayList<>();
+    private final List<SpaceListener<PhysicsBody2D>> spaceListeners = new ArrayList<>();
     
     /**
      * temporary storage during calculations TODO thread safety
      */
-    private Quaternion tmpInverseWorldRotation = new Quaternion();
+    private final Quaternion tmpInverseWorldRotation = new Quaternion();
     
     /** Physical space. */
     protected PhysicsSpace<PhysicsBody2D> physicsSpace;
@@ -413,19 +413,15 @@ public abstract class PhysicsBody2D extends Body implements Control, Cloneable, 
      * Do not use this method to clone, since this generated clone is partial 
      * which implies that its attributes are not cloned; They remain intertwined
      * with the original object.
-     * <p>
+     * <br>
      * <b>WARNING:</b> Any changes applied to this copy will affect the original object.
      * 
      * @see com.jme3.util.clone.Cloner
      * @return partial clone/copy
      */
     @Override
-    protected Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
     
     /* non-Javadoc)
@@ -450,7 +446,19 @@ public abstract class PhysicsBody2D extends Body implements Control, Cloneable, 
         int fSize = original.getFixtureCount();        
         for (int j = 0; j < fSize; j++) {
             BodyFixture bf  = original.getFixture(j);
-            addFixture(new PhysicsFixture(bf).clone());
+            try {
+                addFixture(new PhysicsFixture(bf).clone());
+            }
+            catch (CloneNotSupportedException e) {
+                String error = "";
+                
+                for(var ce : e.getStackTrace()) {
+                    String row = ce.toString();
+                    error += row + "\n";
+                }
+                
+                System.err.println(error);
+            }
         }
         
         // set the transform

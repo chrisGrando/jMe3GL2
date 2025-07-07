@@ -43,7 +43,7 @@ import org.je3gl.util.Serializable;
  * objects (models), each of them has different properties that may or may not 
  * match. Therefore, it is important to maintain independence when applying 
  * animations to each model.
- * 
+ * </p>
  * @author wil
  * @version 1.0.0
  * @since 3.0.0

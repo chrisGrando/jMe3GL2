@@ -39,7 +39,7 @@ import com.jme3.scene.Spatial;
  * <p>
  * With this control we can create linear animations using a single texture that 
  * contains all the animations of the 2D mode.
- * <p>
+ * </p>
  * <b>Example:</b>
  * Suppose you have the following texture and inside are all the images of an animation:
  * <pre><code>
@@ -66,7 +66,7 @@ public class AnimatedSingleSprite2D extends AbstractAnimatedSprite2D<Spatial, Si
      * Generate a new instance of the <code>AnimatedSingleSprite2D</code> class 
      * where you can specify the type of animation renderer to use from among those
      * supported by default by jMe3GL2.
-     * <p>
+     * <br>
      * Supported list
      * <ul>
      * <li>{@link org.je3gl.scene.control.UnshadedHandlerFunction}</li>

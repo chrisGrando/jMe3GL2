@@ -63,7 +63,7 @@ public class RibbonBoxAnimation2D extends AbstractAnimation2D<RibbonBoxAnimation
     private int[] frames;
     
     /**
-     * current index of the animation, this is handled by the animation control 
+     * Current index of the animation, this is handled by the animation control 
      * which determines the frame rate of the animation.
      */
     int index;

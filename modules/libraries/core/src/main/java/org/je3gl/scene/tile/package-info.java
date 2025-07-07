@@ -31,15 +31,16 @@
  */
 
 /**
- * Paquete padre de todo los objeto de escena.
+ * Parent package of all scene objects.
  * <p>
- * Los objetos más destacados de este paquete son:
+ * The most notable items in this pack are:
+ * </p>
  * <ul>
  * <li>
- *  <b>TileMap:</b> Gestiona un mapa de azulejos.
+ *  <b>TileMap:</b> Manages a tile map.
  * </li>
  * <li>
- *  <b>Tile:</b> Azulejos de la escena.
+ *  <b>Tile:</b> Scene tiles.
  * </li>
  * </ul>
  * 

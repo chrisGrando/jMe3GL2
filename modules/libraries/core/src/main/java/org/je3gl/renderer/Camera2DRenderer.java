@@ -52,7 +52,7 @@ import org.je3gl.renderer.effect.GLXEffect;
  * <p>
  * With this we can use the 3D camera that provides us with {@code JME} in a 2D
  * world.
- * 
+ * </p>
  * @author wil
  * @version 2.5.0
  * @since 2.0.0
@@ -74,6 +74,7 @@ public class Camera2DRenderer extends BaseAppState {
          * <p>
          * Objects will never touch the camera, i.e. no matter how close they
          * get, they cannot reach the front view.
+         * </p>
          */
         GLX_25D,
         

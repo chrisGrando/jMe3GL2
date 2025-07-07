@@ -63,7 +63,7 @@ public class GLXClipping extends AbstractGLXEffect {
      * <p>
      * If you want to remove the trimmings, with values <code>null</code> as a
      * parameter they will be erased.
-     * 
+     * </p>
      * @param minimumClipping minimum clipping.
      * @param maximumClipping maximum clipping.
      */
