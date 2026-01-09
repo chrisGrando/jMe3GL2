@@ -35,9 +35,9 @@ import java.awt.*;
 import java.util.*;
 
 /**
- * Class in charge of implementing the '<code>Jme3GL2DisplaySystem</code> interface 
+ * Class in charge of implementing the <code>Jme3GL2DisplaySystem</code> interface 
  * where the resolution of supported screens is determined with the help of the 
- * <b>Java AWT API</b>
+ * <b>Java AWT API</b>.
  * 
  * @author wil
  * @version 1.1.1
@@ -57,7 +57,7 @@ final class Jme3GL2DesktopDisplaySystem implements Jme3GL2DisplaySystem {
         device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         modes  = device.getDisplayModes();
         
-        // sort the list of resolutions.
+        // Sort the list of resolutions.
         Arrays.sort(modes, new DisplayModeSorter());
     }
     
@@ -131,7 +131,7 @@ final class Jme3GL2DesktopDisplaySystem implements Jme3GL2DisplaySystem {
     
     /**
      * Returns a list of resolutions greater than the minimum set by the 
-     * {@link org.je3gl.jawt.JAWTResolution} class but less than the given limit
+     * {@link org.je3gl.jawt.JAWTResolution} class but less than the given limit.
      * 
      * @param heightLimit screen height limit
      * @param widthLimit screen width limit

@@ -197,7 +197,7 @@ public final class JAWTResolution implements Cloneable, Savable {
      * @see com.jme3.export.Savable#read(com.jme3.export.JmeImporter) 
      * 
      * @param im {@link com.jme3.export.JmeImporter}
-     * @throws IOException hrows
+     * @throws IOException throws
      */
     @Override
     public void read(JmeImporter im) throws IOException {

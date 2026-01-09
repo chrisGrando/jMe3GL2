@@ -33,11 +33,11 @@ package org.je3gl.jawt;
 
 /**
  * An interface in charge of managing the user's screen to determine the resolutions 
- * of the monitor where the game is run.
+ * of the monitor where the game is running.
  * <p>
  * This feature uses <code>AWT</code> components to determine screen resolutions, so 
  * it only works in a desktop environment (typically Android and IOS run games in full screen).
- * 
+ * </p>
  * @author wil
  * @version 1.1.5
  * @since 2.0.0
@@ -51,7 +51,7 @@ public interface Jme3GL2DisplaySystem {
     public JAWTResolution[] getResolutions();
     
     /**
-     * Returns the resolution of the full screen, this solution will be the screen 
+     * Returns the resolution of the full screen, this resolution will be the screen 
      * where the game is running.
      * 
      * @return {@link org.je3gl.jawt.JAWTResolution}
