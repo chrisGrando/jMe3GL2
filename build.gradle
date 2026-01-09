@@ -1,7 +1,7 @@
 allprojects {
 
-    group = 'org.j3gl'
-    version = '3.0.0'
+    group = 'org.je3gl'
+    version = '3.0.1'
 
     project.ext {
         // global dependencies
@@ -36,13 +36,32 @@ subprojects {
         useJUnitPlatform() // Use JUnit Platform for unit tests.
     }
 
+    tasks.register('copyPomFileToLibsFolder', Copy) {
+        dependsOn 'generatePomFileForMavenJavaPublication'
+        from "${buildDir}/publications/mavenJava/pom-default.xml"
+        into "${buildDir}/libs"
+        rename 'pom-default.xml', project.name + '-' + version + '.pom'
+    }
+
+    build.finalizedBy('copyPomFileToLibsFolder')
+
     publishing {
         publications {
             mavenJava(MavenPublication) {
-                groupId = 'com.github.JNightRide'
+                groupId = project.group
                 artifactId = project.name
                 version = project.version
                 from components.java
+
+                pom {
+                    url = 'https://github.com/chrisGrando/jMe3GL2'
+                    licenses {
+                        license {
+                            name = 'The 3-Clause BSD License'
+                            url = 'https://opensource.org/license/bsd-3-clause/'
+                        }
+                    }
+                }
             }
         }
     }

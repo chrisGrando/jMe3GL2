@@ -19,3 +19,4 @@ dependencies {
     testRuntimeOnly 'org.jmonkeyengine:jme3-plugins:' + jmonkeyengineVersion
 }
 
+javadoc.dependsOn(':modules:libraries:jMe3GL2-core:copyPomFileToLibsFolder')
