@@ -56,7 +56,7 @@ import org.dyn4j.geometry.MassType;
 public class Physical2D extends SimpleApplication {
     
     /**
-     * The main method; uses zero arguments in args array
+     * The main method; uses zero arguments in args array.
      * @param args command line arguments
      */
     public static void main(String[] args) {

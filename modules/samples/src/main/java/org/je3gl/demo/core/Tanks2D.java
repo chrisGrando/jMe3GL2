@@ -71,7 +71,7 @@ import static org.je3gl.utilities.MaterialUtilities.*;
 public class Tanks2D extends SimpleApplication {
     
     /**
-     * The main method; uses zero arguments in args array
+     * The main method; uses zero arguments in args array.
      * @param args command line arguments
      */
     public static void main(String[] args) {
@@ -79,9 +79,9 @@ public class Tanks2D extends SimpleApplication {
         app.start();
     }
     
-    /** Object in charge of managing the 'T' key */
+    /** Object in charge of managing the 'T' key. */
     private static final BooleanStateKeyboardInputHandler VK_LEFT = new BooleanStateKeyboardInputHandler(new Key(KeyInput.KEY_T, "left"));
-    /** Object in charge of managing the 'Y' key */
+    /** Object in charge of managing the 'Y' key. */
     private static final BooleanStateKeyboardInputHandler VK_RIGHT = new BooleanStateKeyboardInputHandler(new Key(KeyInput.KEY_Y, "right"));
     
     /**
@@ -108,7 +108,7 @@ public class Tanks2D extends SimpleApplication {
          */
         @Override
         protected void controlRender(RenderManager rm, ViewPort vp) {
-            // nothing
+            
         }
     }
 

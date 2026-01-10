@@ -45,7 +45,7 @@ import static org.je3gl.plugins.Debugger.*;
 public class ScreenResolution {
     
     /**
-     * The main method; uses zero arguments in args array
+     * The main method; uses zero arguments in args array.
      * @param args command line arguments
      */
     public static void main(String[] args) {

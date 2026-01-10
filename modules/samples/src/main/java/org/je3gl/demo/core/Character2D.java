@@ -67,7 +67,7 @@ import static org.je3gl.utilities.MaterialUtilities.*;
 public class Character2D extends SimpleApplication {
     
     /**
-     * The main method; uses zero arguments in args array
+     * The main method; uses zero arguments in args array.
      * @param args command line arguments
      */
     public static void main(String[] args) {
@@ -75,11 +75,11 @@ public class Character2D extends SimpleApplication {
         app.start();
     }
     
-    /** Object in charge of managing the 'A' key */
+    /** Object in charge of managing the 'A' key. */
     private static final BooleanStateKeyboardInputHandler VK_LEFT = new BooleanStateKeyboardInputHandler(new Key(KeyInput.KEY_A, "left"));
-    /** Object in charge of managing the 'D' key */
+    /** Object in charge of managing the 'D' key. */
     private static final BooleanStateKeyboardInputHandler VK_RIGHT = new BooleanStateKeyboardInputHandler(new Key(KeyInput.KEY_D, "right"));
-    /** Object in charge of managing the 'SPACE' key */
+    /** Object in charge of managing the 'SPACE' key. */
     private static final BooleanStateKeyboardInputHandler VK_JUMP = new BooleanStateKeyboardInputHandler(new Key(KeyInput.KEY_SPACE, "jump"));
     
     /**
@@ -92,7 +92,7 @@ public class Character2D extends SimpleApplication {
         /** Maximum speed. */
         private final double speed = 2;
 
-        /** Constructor- */
+        /** Constructor */
         public Player() { }
         
         /* (non-Javadoc)
