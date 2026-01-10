@@ -36,9 +36,9 @@ import java.io.PrintStream;
 /**
  * A small debugger that can be enabled or disabled as follows:
  * <pre><code>
- * System.getProperty("jMe3GL2.Debug", "true")
+ * System.setProperty("jMe3GL2.Debug", "true");
  * ...
- * System.getProperty("jMe3GL2.Debug", "false")
+ * System.setProperty("jMe3GL2.Debug", "false");
  * </code></pre>
  * 
  * @author wil
