@@ -58,7 +58,7 @@ public class J2OLoader implements AssetLoader {
     private static boolean J2O_INIT = false;
     
     /**
-     *Register the loader of the assets with extension: ".j2o" | ".J2O"
+     * Register the loader of the assets with extension: ".j2o" | ".J2O"
      * @param app application
      */
     public static void initialize(Application app) {

@@ -41,10 +41,11 @@ import com.jme3.input.controls.AnalogListener;
  * <p>
  * <b>jMonkeyEngine3</b> provides 2 inputs, by means of action or analog, each
  * having different ways of interacting.
+ * </p>
  * <p>
  * The action input is activated only once, while the analog input remains active
  * until the input exits.
- * 
+ * </p>
  * @author wil
  * @version 1.0.5
  * @since 2.0.0
@@ -104,7 +105,7 @@ public abstract class AbstractKeyboardInputHandler extends AbstractInputHandler 
     /**
      * Instantiate a new object of the class <code>AbstractKeyboardInputHandler</code>.
      * @param type input type
-     * @param keys key of the inputs (keyboard inputs)
+     * @param keys key(s) of the input(s) (keyboard inputs)
      */
     public AbstractKeyboardInputHandler(InputHandlerType type, Key... keys) {
         this.keyAdapter = new CustomKeyListener();

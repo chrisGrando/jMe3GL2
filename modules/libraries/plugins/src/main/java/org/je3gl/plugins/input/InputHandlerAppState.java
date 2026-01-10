@@ -44,7 +44,7 @@ import java.util.List;
  * all the inputs generated through the {@link InputHandler} interface.
  * <p>
  * It is responsible for initializing or destroying them.
- * 
+ * </p>
  * @author wil
  * @version 1.0.5
  * @since 2.0.0

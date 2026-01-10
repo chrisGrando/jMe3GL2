@@ -53,7 +53,7 @@ public class BooleanStateMouseInputHandler extends AbstractMouseInputHandler {
 
     /**
      * Instantiate a new object of the class <code>BooleanStateMouseInputHandler</code>.
-     * @param mouseTrigger data input.¿
+     * @param mouseTrigger mouse input data
      */
     public BooleanStateMouseInputHandler(MouseTrigger mouseTrigger) {
         super(mouseTrigger);
@@ -70,7 +70,7 @@ public class BooleanStateMouseInputHandler extends AbstractMouseInputHandler {
         this.active = true;
         this.location = point;
 
-        // If the status went from inactive to active it marks 
+        // If the status went from inactive to active, it marks 
         // that it needs to be handled
         if (!active0) {
             this.hasBeenHandled = false;
@@ -109,7 +109,7 @@ public class BooleanStateMouseInputHandler extends AbstractMouseInputHandler {
     }
 
     /**
-     * Clears the status of this data input.
+     * Clears the status of this mouse input data.
      */
     private void clearState() {
         this.active = false;

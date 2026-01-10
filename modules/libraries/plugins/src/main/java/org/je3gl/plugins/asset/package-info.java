@@ -31,7 +31,7 @@
  */
 
 /**
- * Package where everything related to the assets of a 2D game is housed.
+ * Package where everything related to the assets of a 2D game is hosted.
  * 
  * @author wil
  * @version 1.0.0

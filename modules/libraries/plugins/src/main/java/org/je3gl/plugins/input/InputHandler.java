@@ -58,7 +58,7 @@ public interface InputHandler {
      */
     public boolean isInitialized();
 
-    /**  Method responsible for installing the inputs.  */
+    /** Method responsible for installing the inputs. */
     public void install();
     /** Method responsible for uninstalling the inputs. */
     public void uninstall();

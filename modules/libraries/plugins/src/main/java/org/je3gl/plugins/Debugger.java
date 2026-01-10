@@ -34,7 +34,8 @@ package org.je3gl.plugins;
 import java.io.PrintStream;
 
 /**
- * A small debugger that can be enabled or disabled as follows:<pre><code>
+ * A small debugger that can be enabled or disabled as follows:
+ * <pre><code>
  * System.getProperty("jMe3GL2.Debug", "true")
  * ...
  * System.getProperty("jMe3GL2.Debug", "false")
@@ -53,7 +54,7 @@ public final class Debugger {
     private final static Boolean DEBUG;
     /** Prefix that is added to messages. */
     private final static String PREFIX;
-    // init
+    // Init
     static {
         DEBUG = Boolean.valueOf(System.getProperty("jMe3GL2.Debug", "false"));
         PREFIX = "jMe3GL2";
